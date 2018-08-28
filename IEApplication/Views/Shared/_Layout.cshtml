@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Teeth Set Go</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/imagehover.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href='@Url.Action("Index", "Home")'>
+                    <img src="~/Content/img/Logo.png" width="130px" height="68px" style="margin-top:0px;vertical-align:auto">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="font-size:20px">@Html.ActionLink("Home", "Index", "Home", null, new { @style = "font-size:18px;" })</li>
+                    @*<li><a href="#organisations">Insurance</a></li>*@
+                    <li style="font-size:20px"><a href="#courses" style = "font-size:18px;" >Dental Issues</a></li>
+                    @*<li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
+                    <li class="btn-trial"><a href="#footer">Free Trail</a></li>*@
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </nav>
+    <!--/ Navigation bar-->
+    <div
+         >
+        @RenderBody()
+        <hr />
+        <footer id="footer" class="footer">
+            <div class="container text-center">
+
+
+                ©2016 Mentor Theme. All rights reserved
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor
+                    -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+                </div>
+            </div>
+        </footer>
+        <!--/ Footer-->
+    </div>
+
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.easing.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/custom.js"></script>
+    <script src="~/Content/contactform/contactform.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
