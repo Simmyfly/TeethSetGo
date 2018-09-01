@@ -3,6 +3,76 @@
     ViewBag.Title = "Dental Clinics with waiting times";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-<h2>@ViewBag.Message</h2>
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    iframe {
+        width: 95%;
+        height:600px;
+    }
+</style>
 
+<div class="container" style="margin:8%;width:85%;height:80%;border-radius: 25px;
+    border: 2px solid #5fcf80;
+    padding: 20px; ">
+    <p style="font-size:18px"> In your case of dental treatment, usually would be treated as non-emergency and arranged in general category waiting list.</p>
+    <p style="margin-bottom:20px;font-size:18px"> Please find below the public number of people waiting for each public dental clinic in Queensland.</p>
+
+    <iframe src="https://simmyfly.shinyapps.io/IEVis/"></iframe>
+
+
+
+        <h4>Categories Definition</h4>
+
+        <table style="width:80%;margin-bottom:45px;font-size:13px">
+            <tr>
+                <th>Category</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Clinical Assessment</td>
+                <td>Clinical Assessment (to determine need for priority treatment) desirable within 1 month</td>
+            </tr>
+            <tr>
+                <td>General</td>
+                <td>Routine check up and dental treatment) desirable within 24 months</td>
+
+            </tr>
+            <tr>
+                <td>Priority 1</td>
+                <td>Dental treatment desirable within 1 month.</td>
+            </tr>
+            <tr>
+                <td>Priority 2</td>
+                <td>Dental treatment desirable within 3 months.</td>
+            </tr>
+            <tr>
+                <td>Priority 3</td>
+                <td>Dental treatment desirable within 12 months</td>
+            </tr>
+            <tr>
+                <td>General Anaesthetic Category 1</td>
+                <td>Dental treatment under General Anaesthetic desirable within 1 month</td>
+            </tr>
+            <tr>
+                <td>General Anaesthetic Category 2</td>
+                <td>Dental treatment under General Anaesthetic desirable within 3 months</td>
+            </tr>
+            <tr>
+                <td>General Anaesthetic Category 3</td>
+                <td>Dental treatment under General Anaesthetic desirable within 12 months</td>
+            </tr>
+        </table>
+
+        <a href='@Url.Action("Index", "Home")' class="btn-submit" style="margin-left:43%;margin-bottom:30px;margin-top:40px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;"> Back </a>
+
+</div>

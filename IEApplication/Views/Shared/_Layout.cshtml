@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Teeth Set Go</title>
+<!--Load CSS files-->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
     <link rel="stylesheet" type="text/css" href="~/Content/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css">
@@ -30,7 +31,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li style="font-size:20px">@Html.ActionLink("Home", "Index", "Home", null, new { @style = "font-size:18px;" })</li>
                     @*<li><a href="#organisations">Insurance</a></li>*@
-                    <li style="font-size:20px"><a href="#courses" style = "font-size:18px;" >Dental Issues</a></li>
+                    <li style="font-size:20px"><a href="@Url.Action("Index", "Home")#courses" style = "font-size:18px;" >Dental Issues</a></li>
                     @*<li><a href="#pricing">Pricing</a></li>
                     <li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
                     <li class="btn-trial"><a href="#footer">Free Trail</a></li>*@
@@ -40,6 +41,7 @@
         </div>
     </nav>
     <!--/ Navigation bar-->
+<!--Render Body-->
     <div
          >
         @RenderBody()
@@ -48,7 +50,6 @@
             <div class="container text-center">
 
 
-                ©2016 Mentor Theme. All rights reserved
                 <div class="credits">
                     <!--
                       All the links in the footer should remain intact.
@@ -56,7 +57,7 @@
                       Licensing information: https://bootstrapmade.com/license/
                       Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor
                     -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+                    <p>Developed by Disco Ninja's</p>
                 </div>
             </div>
         </footer>

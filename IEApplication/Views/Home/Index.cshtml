@@ -1,9 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<!--load javascript files-->
 <script src="~/Content/js/jquery.min.js"></script>
 <script src="~/Content/js/showQuestion.js"></script>
 
+<!--This is the Banner section with the image, website name and logo-->
 <!--Banner-->
 <div class="banner">
     <div class="bg-color">
@@ -16,7 +18,7 @@
                     <div class="intro-para text-center quote">
                         <p class="big-text">Still Waiting For Your Dental Care?</p>
                         <p class="small-text"></p>
-                        <a href="#courses" class="btn get-quote" style="font-size:18px">Select Your Dental Issue</a>
+                        <a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issue</a>
                     </div>
                     <a href="#courses" class="mouse-hover">
                         <div class="mouse"></div>
@@ -27,13 +29,14 @@
     </div>
 </div>
 <!--/ Banner-->
-<!--Courses-->
+<!--This is the section showing 10 dental problems to select with-->
+<!--Dental issues-->
 <section id="courses" class="section-padding">
     <div class="container" style="width:80%">
         <div class="row">
             <div class="header-section text-center">
                 <h2>Are you Suffering from any of these issues?</h2>
-    
+
                 <p></p>
                 <hr class="bottom-line">
             </div>
@@ -43,145 +46,151 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Toothache</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Toothache</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Toothache.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Toothache</h3>
-                        <p>Description for toothache</p>
+                        <p>Pain in or around a tooth.</p>
                     </figcaption>
                     <a href='@Url.Action("EmergencyPage", "Home")'></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Cavities</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Cavities</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Cavities.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Cavities</h3>
-                        <p>Description for Cavities</p>
+                        <p>Damaged outer coating or inner layer of tooth.</p>
                     </figcaption>
                     <a href="#feature" class="notUrgent"></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Chipped Tooth</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Chipped Tooth</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Chippedtooth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Chipped Tooth</h3>
-                        <p>Description</p>
+                        <p>Chipped of tooth enamel</p>
                     </figcaption>
                     <a href='@Url.Action("EmergencyPage", "Home")'></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Knocked Out Tooth</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Knocked Out Tooth</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Knocked out tooth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Knocked Out Tooth</h3>
-                        <p>Description</p>
+                        <p>Broken teeth</p>
                     </figcaption>
                     <a href='@Url.Action("EmergencyPage", "Home")'></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Sensitive to Cold</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Sensitive to Cold</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Sensitivetocold.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Sensitive to Cold</h3>
-                        <p>Description</p>
+                        <p>Hypersensitivity</p>
                     </figcaption>
                     <a href="#feature" class="notUrgent"></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Too Many Teeth</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Too Many Teeth</p>
                 </div>
                 <figure class="imghvr-fold-up">
-                    <img src="~/Content/img/course06.jpg" class="img-responsive" style="height:250px;width:360px">
+                    <img src="~/Content/img/too many teeth.jpg" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Too Many Teeth(Hyperdontia)</h3>
-                        <p>Description</p>
+                        <p>Have extra teeth</p>
                     </figcaption>
                     <a href="#feature" class="notUrgent"></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Gum Problems</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Gum Problems</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Gumproblems.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Gum Problems</h3>
-                        <p>Description</p>
+                        <p>Bleeding gums or pulling away from teeth.</p>
                     </figcaption>
                     <a href='@Url.Action("EmergencyPage", "Home")'></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Gap Between Teeth</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Gap Between Teeth</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Gapbetweenteeth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Gap Between Teeth</h3>
-                        <p>Description</p>
+                        <p>Space between teeth or crowding of teeth.</p>
                     </figcaption>
                     <a href="#feature" class="notUrgent"></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Crooked Teeth</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Crooked Teeth</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/Crookedteeth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Crooked Teeth</h3>
-                        <p>Description</p>
+                        <p>Teeth grow in crooked, overlapping, or twisted</p>
                     </figcaption>
                     <a href="#feature" class="notUrgent"></a>
                 </figure>
             </div>
             <div class="col-md-3 col-sm-6 padleft-right">
                 <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
-                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;">Wisdom Teeth Problems</p>
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Wisdom Teeth Problems</p>
                 </div>
                 <figure class="imghvr-fold-up">
                     <img src="~/Content/img/WisdomTeeth Problems.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Wisdom Teeth Problems</h3>
-                        <p>Description</p>
+                        <p>Hindmost molars in humans which usually appear at about the age of twenty.</p>
                     </figcaption>
                     <a href='@Url.Action("EmergencyPage", "Home")'></a>
                 </figure>
             </div>
+            <div class="col-md-4 col-sm-6 " style="border: 2px solid black;border-radius: 25px;width:300px;height:160px;margin-left:50px;margin-top:80px">
+                <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
+                    <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;"></p>
+                </div>
+                <a href='@Url.Action("EmergencyPage", "Home")'><h3 style="font-size:23px">Require emergency dental care?</h3><img src="~/Content/img/6402-200.png" style="height:30px;width:30px" /></a>
+            </div>
         </div>
     </div>
 </section>
-<!--/ Courses-->
-<!--Feature-->
+<!--/ Dental issues-->
+<!--This section will shown after user choose some of the problems above-->
 <section id="feature" class="section-padding" style="display: none;margin-bottom:40px;">
-    <div class="container" style="margin-bottom:40px;">
-        <div class="row" style="margin-bottom:40px;">
-            <div class="header-section text-center">
+    <div class="container" style="margin-bottom:40px">
+        <div class="row" style="margin-bottom:40px;margin-top:20px">
+            <div class="header-section text-center" style="padding-top:28px" >
                 <h2>Are you in any of these groups?</h2>
-                <p>Priority groups</p>
+                <p>Priority groups for dental treatment</p>
                 <hr class="bottom-line">
             </div>
             <div class="row" style="margin-left:18%;margin-right:15%">
@@ -204,38 +213,39 @@
             </div>
             <div class="row" style="margin-left:18%;margin-right:15%;margin-bottom:40px;">
                 <ul class="nav navbar-nav">
-                    <li class="btn-trial" style="width:470px;"><a href='@Url.Action("GeneralPage", "Home")' style="width:465px;"><img src="~/Content/img/person.PNG" style="height:40px"/> Registered Client of Mental Health/ Disability Service</a></li>
+                    <li class="btn-trial" style="width:470px;"><a href='@Url.Action("GeneralPage", "Home")' style="width:465px;"><img src="~/Content/img/person.PNG" style="height:40px" /> Registered Client of Mental Health/ Disability Service</a></li>
                 </ul>
             </div>
-            <a id="goBackButton" class="btn-submit" style="background-color:white;color:#5FCF80;font-weight:bolder;border-color:#5FCF80;border-width:10px;" href="#courses">Back</a>
+            <a id="goBackButton" class="btn-submit" style="background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;" href="#courses"> Back </a>
         </div>
     </div>
 
 </section>
-<!--/ feature-->
-<!--Organisations-->
+<!--/ Question section-->
+
+<!--Info-graphic-->
 <section id="organisations" class="section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="orga-stru">
-                        <h3>65%</h3>
-                        <p>On waiting list</p>
+                        <h3 style="font-size:22px">83.09%</h3>
+                        <p>patients on waiting list</p>
                         <i class="fa fa-male"></i>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="display:none;">
                     <div class="orga-stru">
-                        <h3>20%</h3>
+                        <h3>83.09%</h3>
                         <p>Treated</p>
                         <i class="fa fa-male"></i>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="orga-stru">
-                        <h3>15%</h3>
-                        <p></p>
+                        <h3 style="font-size:22px">16.91%</h3>
+                        <p>patients treated</p>
                         <i class="fa fa-male"></i>
                     </div>
                 </div>
@@ -244,7 +254,7 @@
                 <div class="detail-info">
                     <hgroup>
                         <h3 class="det-txt"> Is Queensland still suffering from long dental waiting times?</h3>
-                        <h4 class="sm-txt">(Revised and Updated for 2018)</h4>
+                        <h4 class="sm-txt">(Updated from June 2018)</h4>
                     </hgroup>
                     <p class="det-p"></p>
                 </div>
@@ -252,246 +262,3 @@
         </div>
     </div>
 </section>
-<!--/ Organisations-->
-<!--Cta-->
-@*<section id="cta-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-center">Subscribe Now</h2>
-                <p class="cta-2-txt">Sign up for our free weekly software design courses, we’ll send them right to your inbox.</p>
-                <div class="cta-2-form text-center">
-                    <form action="#" method="post" id="workshop-newsletter-form">
-                        <input name="" placeholder="Enter Your Email Address" type="email">
-                        <input class="cta-2-form-submit-btn" value="Subscribe" type="submit">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/ Cta-->
-<!--work-shop-->
-<section id="work-shop" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="header-section text-center">
-                <h2>Upcoming Workshop</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                <hr class="bottom-line">
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-box text-center">
-                    <div class="icon-box">
-                        <i class="fa fa-html5 color-green"></i>
-                    </div>
-                    <div class="icon-text">
-                        <h4 class="ser-text">Mentor HTML5 Workshop</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-box text-center">
-                    <div class="icon-box">
-                        <i class="fa fa-css3 color-green"></i>
-                    </div>
-                    <div class="icon-text">
-                        <h4 class="ser-text">Mentor CSS3 Workshop</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="service-box text-center">
-                    <div class="icon-box">
-                        <i class="fa fa-joomla color-green"></i>
-                    </div>
-                    <div class="icon-text">
-                        <h4 class="ser-text">Mentor Joomla Workshop</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/ work-shop-->
-<!--Faculity member-->
-<section id="faculity-member" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="header-section text-center">
-                <h2>Meet Our Faculty Member</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                <hr class="bottom-line">
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <div class="pm-staff-profile-container">
-                    <div class="pm-staff-profile-image-wrapper text-center">
-                        <div class="pm-staff-profile-image">
-                            <img src="~/Content/img/mentor.jpg" alt="" class="img-thumbnail img-circle" />
-                        </div>
-                    </div>
-                    <div class="pm-staff-profile-details text-center">
-                        <p class="pm-staff-profile-name">Bryan Johnson</p>
-                        <p class="pm-staff-profile-title">Lead Software Engineer</p>
-
-                        <p class="pm-staff-profile-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <div class="pm-staff-profile-container">
-                    <div class="pm-staff-profile-image-wrapper text-center">
-                        <div class="pm-staff-profile-image">
-                            <img src="~/Content/img/mentor.jpg" alt="" class="img-thumbnail img-circle" />
-                        </div>
-                    </div>
-                    <div class="pm-staff-profile-details text-center">
-                        <p class="pm-staff-profile-name">Bryan Johnson</p>
-                        <p class="pm-staff-profile-title">Lead Software Engineer</p>
-
-                        <p class="pm-staff-profile-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <div class="pm-staff-profile-container">
-                    <div class="pm-staff-profile-image-wrapper text-center">
-                        <div class="pm-staff-profile-image">
-                            <img src="~/Content/img/mentor.jpg" alt="" class="img-thumbnail img-circle" />
-                        </div>
-                    </div>
-                    <div class="pm-staff-profile-details text-center">
-                        <p class="pm-staff-profile-name">Bryan Johnson</p>
-                        <p class="pm-staff-profile-title">Lead Software Engineer</p>
-
-                        <p class="pm-staff-profile-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/ Faculity member-->
-<!--Testimonial-->
-<section id="testimonial" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="header-section text-center">
-                <h2 class="white">See What Our Customer Are Saying?</h2>
-                <p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                <hr class="bottom-line bg-white">
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="text-comment">
-                    <p class="text-par">"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem"</p>
-                    <p class="text-name">Abraham Doe - Creative Dırector</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="text-comment">
-                    <p class="text-par">"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem"</p>
-                    <p class="text-name">Abraham Doe - Creative Dırector</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/ Testimonial-->
-<!--Pricing-->
-<section id="pricing" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="header-section text-center">
-                <h2>Our Pricing</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                <hr class="bottom-line">
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="price-table">
-                    <!-- Plan  -->
-                    <div class="pricing-head">
-                        <h4>Monthly Plan</h4>
-                        <span class="fa fa-usd curency"></span> <span class="amount">200</span>
-                    </div>
-
-                    <!-- Plean Detail -->
-                    <div class="price-in mart-15">
-                        <a href="#" class="btn btn-bg green btn-block">PURCHACE</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="price-table">
-                    <!-- Plan  -->
-                    <div class="pricing-head">
-                        <h4>Quarterly Plan</h4>
-                        <span class="fa fa-usd curency"></span> <span class="amount">800</span>
-                    </div>
-
-                    <!-- Plean Detail -->
-                    <div class="price-in mart-15">
-                        <a href="#" class="btn btn-bg yellow btn-block">PURCHACE</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="price-table">
-                    <!-- Plan  -->
-                    <div class="pricing-head">
-                        <h4>Year Plan</h4>
-                        <span class="fa fa-usd curency"></span> <span class="amount">1200</span>
-                    </div>
-
-                    <!-- Plean Detail -->
-                    <div class="price-in mart-15">
-                        <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/ Pricing-->
-<!--Contact-->
-<section id="contact" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="header-section text-center">
-                <h2>Contact Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                <hr class="bottom-line">
-            </div>
-            <div id="sendmessage">Your message has been sent. Thank you!</div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
-                <div class="col-md-6 col-sm-6 col-xs-12 left">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control form" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                        <div class="validation"></div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6 col-xs-12 right">
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                        <div class="validation"></div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12">
-                    <!-- Button -->
-                    <button type="submit" id="submit" name="submit" class="form contact-form-button light-form-button oswald light">SEND EMAIL</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</section>*@
