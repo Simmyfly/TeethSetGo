@@ -1,9 +1,19 @@
 ﻿function initMap() {
+    var location = { lat: -27.998940, lng: 153.33886 };
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: location,
+
+    });
     var addButton = document.getElementById("get_location");
     addButton.onclick = handleSetCenterButtonClicked;
+
+    $.get("@Url.Action("GetAlllocation","Home")", function (data, status) {
+
+    })
 }
 
-
+var map;
 window.onload = initMap;
 
 function getMyLocation() {
@@ -22,18 +32,17 @@ function displayLocation(position) {
     div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
 }
 
-var map;
 var yourPos;
 function showMap(coords) {
     yourPos = googleLatAndLong;
     var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
     var mapOptions = {
-        zoom: 18,
+        zoom: 15,
         center: googleLatAndLong,
     };
-    var mapDiv = document.getElementById("map");
-    map = new google.maps.Map(mapDiv, mapOptions);
-
+    //var mapDiv = document.getElementById("map");
+    //map = new google.maps.Map(mapDiv, mapOptions);
+    map.setOptions(mapOptions);
     addMarker(googleLatAndLong);
 }
 
@@ -54,4 +63,5 @@ function addMarker(latLong) {
 function handleSetCenterButtonClicked(coords) {
     getMyLocation();
     map.setCenter(yourPos);
+    map.setZoom(13);
 }
