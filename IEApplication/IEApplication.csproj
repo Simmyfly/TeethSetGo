@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClinicController.cs" />
     <Compile Include="Controllers\ClinicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -204,6 +205,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Clinic.cs">
+      <DependentUpon>ClinicsModel1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClinicsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,6 +222,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClinicsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClinicsModel1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicsModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClinicsModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicsModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClinicsModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicsModel1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\google_map.cs">
       <DependentUpon>ClinicsModel.tt</DependentUpon>
@@ -238,11 +257,35 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\contactform\contactform.js" />
     <Content Include="Content\contactform\readme.txt" />
+    <Content Include="Content\css\animate_medi.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap_medi.css" />
+    <Content Include="Content\css\css_medi\animate.css" />
+    <Content Include="Content\css\css_medi\bootstrap-datepicker.css" />
+    <Content Include="Content\css\css_medi\bootstrap.css" />
+    <Content Include="Content\css\css_medi\jquery.timepicker.css" />
+    <Content Include="Content\css\css_medi\owl.carousel.min.css" />
+    <Content Include="Content\css\css_medi\style.css" />
+    <Content Include="Content\css\css_medi\_custom.css" />
+    <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\font-awesome_medi.min.css" />
     <Content Include="Content\css\imagehover.min.css" />
+    <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style_css.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\backup.txt" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\flaticon.css" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\flaticon.html" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\css\font-awesome.min.css" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\cheatsheet.html" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\css\ionicons.css" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\css\ionicons.min.css" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.svg" />
     <Content Include="Content\img\6402-200.png" />
     <Content Include="Content\img\bg-banner.jpg" />
     <Content Include="Content\img\bg-banner1.jpg" />
@@ -259,6 +302,18 @@
     <Content Include="Content\img\Crookedteeth.png" />
     <Content Include="Content\img\Gapbetweenteeth.png" />
     <Content Include="Content\img\Gumproblems.png" />
+    <Content Include="Content\img\img_medi\bg_1.jpg" />
+    <Content Include="Content\img\img_medi\doctor_1.jpg" />
+    <Content Include="Content\img\img_medi\doctor_2.jpg" />
+    <Content Include="Content\img\img_medi\doctor_3.jpg" />
+    <Content Include="Content\img\img_medi\doctor_4.jpg" />
+    <Content Include="Content\img\img_medi\img_1.jpg" />
+    <Content Include="Content\img\img_medi\img_thumb_1.jpg" />
+    <Content Include="Content\img\img_medi\img_thumb_2.jpg" />
+    <Content Include="Content\img\img_medi\img_thumb_3.jpg" />
+    <Content Include="Content\img\img_medi\img_thumb_4.jpg" />
+    <Content Include="Content\img\img_medi\slider-1.jpg" />
+    <Content Include="Content\img\img_medi\slider-2.jpg" />
     <Content Include="Content\img\Knocked out tooth.png" />
     <Content Include="Content\img\Logo.png" />
     <Content Include="Content\img\mentor.jpg" />
@@ -274,6 +329,14 @@
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\mapJS.js" />
     <Content Include="Content\js\showQuestion.js" />
+    <Content Include="Content\js_medi\bootstrap-datepicker.js" />
+    <Content Include="Content\js_medi\bootstrap.min.js" />
+    <Content Include="Content\js_medi\jquery-3.2.1.min.js" />
+    <Content Include="Content\js_medi\jquery.timepicker.min.js" />
+    <Content Include="Content\js_medi\jquery.waypoints.min.js" />
+    <Content Include="Content\js_medi\main.js" />
+    <Content Include="Content\js_medi\owl.carousel.min.js" />
+    <Content Include="Content\js_medi\popper.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -287,6 +350,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ClinicsModel.edmx</DependentUpon>
       <LastGenOutput>ClinicsModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ClinicsModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClinicsModel1.edmx</DependentUpon>
+      <LastGenOutput>ClinicsModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ClinicsModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClinicsModel1.edmx</DependentUpon>
+      <LastGenOutput>ClinicsModel1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -305,6 +378,31 @@
     <Content Include="Models\ClinicsModel.edmx.diagram">
       <DependentUpon>ClinicsModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\css\Flaticon.ttf" />
+    <Content Include="Content\css\Flaticon.woff" />
+    <Content Include="Content\img\img_medi\_DS_Store" />
+    <Content Include="Content\css\css_medi\bootstrap.css.map" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\font\_flaticon.scss" />
+    <Content Include="Content\fonts\fonts_medi\flaticon\license\license.pdf" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fonts_medi\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.eot" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.woff" />
+    <Content Include="Content\fonts\fonts_medi\ionicons\_DS_Store" />
+    <Content Include="Content\fonts\fonts_medi\_DS_Store" />
+    <EntityDeploy Include="Models\ClinicsModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClinicsModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ClinicsModel1.edmx.diagram">
+      <DependentUpon>ClinicsModel1.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\teethsetgo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -317,7 +415,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -360,6 +460,12 @@
     <Content Include="Views\Clinics\Details.cshtml" />
     <Content Include="Views\Clinics\Edit.cshtml" />
     <Content Include="Views\Clinics\Index.cshtml" />
+    <Content Include="Views\Home\General_Toothache.cshtml" />
+    <Content Include="Views\Clinic\Create.cshtml" />
+    <Content Include="Views\Clinic\Delete.cshtml" />
+    <Content Include="Views\Clinic\Details.cshtml" />
+    <Content Include="Views\Clinic\Edit.cshtml" />
+    <Content Include="Views\Clinic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

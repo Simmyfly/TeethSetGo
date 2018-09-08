@@ -1,19 +1,47 @@
-﻿function initMap() {
-    var location = { lat: -27.998940, lng: 153.33886 };
-    map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: location,
-
-    });
-    var addButton = document.getElementById("get_location");
+﻿
+    var map;
+    function initMap() {
+        var addButton = document.getElementById("get_location");
     addButton.onclick = handleSetCenterButtonClicked;
+        var location = {lat: -27.469770, lng: 153.025131 };
+        map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+    center: location,
+   });
 
-    $.get("@Url.Action("GetAlllocation","Home")", function (data, status) {
+    var markers = [];
+    var contentString = [];
+    var infowindow = [];
+        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
 
-    })
+        markers[i] = new google.maps.Marker({
+            position: { lat: data[i].Lat, lng: data[i].Long },
+            map: map
+        });
+    contentString[i] = '<div id="content">' + '<div id="siteNotice">'
+                    + '</div>' + '<h4 id="firstHeading">'+ data[i].clinicName +'</h1>' + '<div id="bodyContent">'
+                    + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
+                infowindow[i] = new google.maps.InfoWindow({
+        content: contentString[i]
+});
+var markerValue = markers[i]
+                google.maps.event.addListener(markers[i], 'mouseover', (function (markerValue, i) {
+                    return function () {
+        infowindow[i].open(map, markers[i]);
+    }
+})(markers[i], i));
+                google.maps.event.addListener(markers[i], 'mouseout', (function (markerValue, i) {
+                    return function () {
+        infowindow[i].close();
+    }
+})(markers[i], i));
+
 }
 
-var map;
+})
+}
+
 window.onload = initMap;
 
 function getMyLocation() {
@@ -25,7 +53,7 @@ function getMyLocation() {
 }
 
 function displayLocation(position) {
-    showMap(position.coords);
+        showMap(position.coords);
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     var div = document.getElementById("location");
@@ -34,16 +62,16 @@ function displayLocation(position) {
 
 var yourPos;
 function showMap(coords) {
-    yourPos = googleLatAndLong;
+        yourPos = googleLatAndLong;
     var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
     var mapOptions = {
         zoom: 15,
-        center: googleLatAndLong,
-    };
-    //var mapDiv = document.getElementById("map");
-    //map = new google.maps.Map(mapDiv, mapOptions);
-    map.setOptions(mapOptions);
-    addMarker(googleLatAndLong);
+    center: googleLatAndLong,
+};
+//var mapDiv = document.getElementById("map");
+//map = new google.maps.Map(mapDiv, mapOptions);
+map.setOptions(mapOptions);
+addMarker(googleLatAndLong);
 }
 
 var marker;
@@ -52,16 +80,17 @@ var markerArray = new Array();
 function addMarker(latLong) {
     var markerOptions = {
         position: latLong,
-        map: map
-    };
-    marker = new google.maps.Marker(markerOptions);
+    map: map
+};
+marker = new google.maps.Marker(markerOptions);
 
-    markerArray.push(marker);
+markerArray.push(marker);
 }
 
 // this is my setCenter method function
 function handleSetCenterButtonClicked(coords) {
-    getMyLocation();
+        getMyLocation();
     map.setCenter(yourPos);
     map.setZoom(13);
 }
+

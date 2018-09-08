@@ -10,7 +10,7 @@ namespace IEApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private IEDatabaseEntities context = new IEDatabaseEntities();
+        private TeethSetGoDBEntities context = new TeethSetGoDBEntities();
         public ActionResult Index()
         {
             return View();
@@ -45,8 +45,13 @@ namespace IEApplication.Controllers
         }
         public JsonResult GetAllLocation()
         {
-            var data = context.google_map.ToList();
+            var data = context.Clinics.ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult General_Toothache()
+        {
+            ViewBag.Message = "Toothache Problem (General cases)";
+            return View();
         }
 
     }

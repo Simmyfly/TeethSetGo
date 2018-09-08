@@ -1,0 +1,516 @@
+﻿
+@{
+    ViewBag.Title = "General_Toothache";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+
+    $base-color: #303F9F;
+    $second-color: #3F51B5;
+    $third-color: #FBC02D;
+    $site: #303F9F;
+    $light: #fff;
+
+    body {
+        position: relative;
+        font-family: 'Oswald', sans-serif;
+        background: #303F9F;
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .grid {
+        list-style: none;
+        margin-left: -40px;
+    }
+
+    .gc {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-right: -.25em;
+        min-height: 1px;
+        padding-left: 40px;
+        vertical-align: top;
+    }
+
+    .gc--1-of-3 {
+        width: 33.33333%;
+    }
+
+    .gc--2-of-3 {
+        width: 66.66666%;
+    }
+
+    .naccs {
+        position: relative;
+        max-width: 900px;
+        margin: 100px auto 0;
+    }
+
+        .naccs .menu div {
+            padding: 15px 20px 15px 40px;
+            margin-bottom: 10px;
+            color: #303F9F;
+            background: #3F51B5;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            vertical-align: middle;
+            font-weight: 700;
+            transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+            .naccs .menu div:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .naccs .menu div span.light {
+                height: 10px;
+                width: 10px;
+                position: absolute;
+                top: 24px;
+                left: 15px;
+                background-color: #303F9F;
+                border-radius: 100%;
+                transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+
+            .naccs .menu div.active1 span.light {
+                background-color: #FBC02D;
+                left: 0;
+                height: 100%;
+                width: 3px;
+                top: 0;
+                border-radius: 0;
+            }
+
+            .naccs .menu div.active1 {
+                color: #FBC02D;
+                padding: 15px 20px 15px 20px;
+            }
+
+    ul.nacc {
+        position: relative;
+        height: 0px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+        ul.nacc li {
+            opacity: 0;
+            transform: translateX(50px);
+            position: absolute;
+            list-style: none;
+            transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+            ul.nacc li.active1 {
+                transition-delay: .3s;
+                z-index: 2;
+                opacity: 1;
+                transform: translateX(0px);
+            }
+
+            ul.nacc li p {
+                margin: 0;
+            }
+
+
+    // TAB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ (.)(.)
+    .tab {
+        padding-top: 50px;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        width: 70%;
+        margin: 0 auto;
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.5;
+        font-weight: 300;
+        color: #888;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    li {
+        float: left;
+        line-height: 38px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+    }
+    .tabs {
+        display: table;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        width: 100%;
+    li {
+        float: left;
+        line-height: 38px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;}
+     a {
+        background-color: #eff0f2;
+        border-bottom: 1px solid #fff;
+        color: #888;
+        font-weight: 500;
+        display: block;
+        letter-spacing: 0;
+        outline: none;
+        padding: 0 20px;
+        text-decoration: none;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        border-bottom: 2px solid blue;
+    }
+
+    }
+
+    .tabs_item {
+        display: none;
+        padding: 30px 0;
+        h4
+
+    {
+        font-weight: bold;
+        color: blue;
+        font-size: 20px;
+    }
+
+    img {
+        width: 200px;
+        float: left;
+        margin-right: 30px;
+    }
+
+    &:first-child {
+        display: block;
+    }
+
+    }
+
+    .current a {
+        color: #fff;
+        background: blue;
+    }
+
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        (function ($) {
+            $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+
+            $('.tab ul.tabs li a').click(function (g) {
+                var tab = $(this).closest('.tab'),
+                    index = $(this).closest('li').index();
+
+                tab.find('ul.tabs > li').removeClass('current');
+                $(this).closest('li').addClass('current');
+
+                tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
+                tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
+
+                g.preventDefault();
+            });
+        })(jQuery);
+
+    });
+
+    $(document).on("click", ".naccs .menu div", function () {
+        var numberIndex = $(this).index();
+
+        if (!$(this).is("active1")) {
+            $(".naccs .menu div").removeClass("active1");
+            $(".naccs ul li").removeClass("active1");
+
+            $(this).addClass("active1");
+            $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active1");
+
+            var listItemHeight = $(".naccs ul")
+                .find("li:eq(" + numberIndex + ")")
+                .innerHeight();
+            $(".naccs ul").height(listItemHeight + "px");
+        }
+    });
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap"></script>
+<script>
+    var map;
+    function initMap() {
+        var addButton = document.getElementById("get_location");
+        addButton.onclick = handleSetCenterButtonClicked;
+        var location = { lat: -27.469770, lng: 153.025131 };
+        map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: location,
+       });
+
+        var markers = [];
+        var contentString = [];
+        var infowindow = [];
+        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
+
+                markers[i] = new google.maps.Marker({
+                    position: { lat: data[i].Lat, lng: data[i].Long },
+                    map: map
+                });
+                contentString[i] = '<div id="content">' + '<div id="siteNotice">'
+                    + '</div>' + '<h4 id="firstHeading">'+ data[i].clinicName +'</h1>' + '<div id="bodyContent">'
+                    + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
+                infowindow[i] = new google.maps.InfoWindow({
+                    content: contentString[i]
+                });
+                var markerValue = markers[i]
+                google.maps.event.addListener(markers[i], 'mouseover', (function (markerValue, i) {
+                    return function () {
+                        infowindow[i].open(map, markers[i]);
+                    }
+                })(markers[i], i));
+                google.maps.event.addListener(markers[i], 'mouseout', (function (markerValue, i) {
+                    return function () {
+                        infowindow[i].close();
+                    }
+                })(markers[i], i));
+
+            }
+
+        })
+}
+
+window.onload = initMap;
+
+function getMyLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displayLocation);
+    } else {
+        alert("Oops, no geolocation support");
+    }
+}
+
+function displayLocation(position) {
+    showMap(position.coords);
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var div = document.getElementById("location");
+    div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
+}
+
+var yourPos;
+function showMap(coords) {
+    yourPos = googleLatAndLong;
+    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+    var mapOptions = {
+        zoom: 15,
+        center: googleLatAndLong,
+    };
+    //var mapDiv = document.getElementById("map");
+    //map = new google.maps.Map(mapDiv, mapOptions);
+    map.setOptions(mapOptions);
+    addMarker(googleLatAndLong);
+}
+
+var marker;
+var markerArray = new Array();
+
+function addMarker(latLong) {
+    var markerOptions = {
+        position: latLong,
+        map: map
+    };
+    marker = new google.maps.Marker(markerOptions);
+
+    markerArray.push(marker);
+}
+
+function handleSetCenterButtonClicked(coords) {
+    getMyLocation();
+    map.setCenter(yourPos);
+    map.setZoom(13);
+}
+
+
+</script>
+
+<div style="height:15px;"></div>
+<div class="container" style="margin:100px;margin-left:10%;margin-right:10%;margin-bottom:40px;height:780px;
+    padding: 20px; ">
+    <div class="tab">
+
+        <ul class="tabs">
+            <li><a href="#" style="background-color: #eff0f2;border-bottom: 1px solid #fff;color: #888;font-weight: 500;display: block;letter-spacing: 0;
+        outline: none;padding: 0 20px;text-decoration: none;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;
+        border-bottom: 2px solid blue;">What to do if I have one</a></li>
+            <li><a href="#" style="background-color: #eff0f2;border-bottom: 1px solid #fff;color: #888;font-weight: 500;display: block;letter-spacing: 0;
+        outline: none;padding: 0 20px;text-decoration: none;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;
+        border-bottom: 2px solid blue;">How do I know</a></li>
+            <li><a href="#" style="background-color: #eff0f2;border-bottom: 1px solid #fff;color: #888;font-weight: 500;display: block;letter-spacing: 0;
+        outline: none;padding: 0 20px;text-decoration: none;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;
+        border-bottom: 2px solid blue;"></a></li>
+        </ul> <!-- / tabs -->
+
+        <div class="tab_content">
+
+            <div class="tabs_item">
+                <img src="https://cdn.dribbble.com/users/545884/screenshots/3695553/news.png">
+                <h4>Tab 01 Neque ipsum dolor.</h4>
+                <p>Consectetur adipisicing elit. Neque, repellat facilis totam ab eos distinctio sint atque maiores! Dignissimos, molestiae, rem accusantium iure vitae voluptatum voluptas repudiandae deserunt dolore quis! Quisquam mollitia eius sed.</p>
+            </div> <!-- / tabs_item -->
+
+            <div class="tabs_item">
+                <!-- tab for symptoms-->
+                <div class="naccs">
+                    <div class="grid">
+                        <div class="gc gc--1-of-3">
+                            <div class="menu">
+                                <div class="active1"><span class="light"></span><span style="font-size:20px;">What to do?</span></div>
+                                <div><span class="light"></span><span style="font-size:20px;">How do I know I have one?</span></div>
+                                <div><span class="light"></span><span style="font-size:20px;">Gallery</span></div>
+                                <div><span class="light"></span><span style="font-size:20px;">Signs</span></div>
+                            </div>
+                        </div>
+                        <div class="gc gc--2-of-3">
+                            <ul class="nacc">
+                                <li class="active1">
+                                    <div>
+                                        <p style="font-size:18px">
+                                            Rinse the mouth with warm water to remove food debris<br />
+                                            If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
+                                            Control moderate pain with over-the-counter pain medication<br />
+                                            Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
+                                            Seek dental treatment as soon as possible.<br />
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p>
+                                            A vine (Latin vīnea "grapevine", "vineyard", from vīnum "wine") in the narrowest sense is the grapevine (Vitis), but more generally it can refer to any plant with a growth habit of trailing or scandent (that is, climbing) stems, lianas or runners.
+                                            The word also can refer to such stems or runners themselves, for instance when used in wicker work.[1][2] In the United Kingdom, the term "vine" applies almost exclusively to the grapevine. The term "climber" is used for all climbing plants.[3]
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p>
+                                            Lemonade is any of various sweetened beverages found around the world, all characterized by lemon flavor. Most lemonade varieties can be separated into two distinct types: cloudy and clear; each is known simply as "lemonade" (or a cognate) in countries
+                                            where dominant.[1] Cloudy lemonade, generally found in North America and India, is a traditionally homemade drink made with lemon juice, water, and sweetener such as cane sugar or honey.[2] Found in the United Kingdom, Ireland, South Africa, Australia,
+                                            and New Zealand, clear lemonade is a lemon flavoured carbonated soft drink. Not to be confused with Sprite a lemon-lime flavored, soft drink.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p style="font-size:18px">
+                                            Rinse the mouth with warm water to remove food debris<br />
+                                            If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
+                                            Control moderate pain with over-the-counter pain medication<br />
+                                            Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
+                                            Seek dental treatment as soon as possible.<br />
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*<img src="https://cdn.dribbble.com/users/545884/screenshots/3576036/liberosis_--_10.png">
+        <h4>Tab02 Maiores, suscipit</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, suscipit, eaque asperiores neque numquam nam possimus dolorem ipsa aspernatur reiciendis?</p>*@
+            </div> <!-- / tabs_item -->
+
+            <div class="tabs_item">
+                <img src="https://cdn.dribbble.com/users/545884/screenshots/3557299/mo-t.png">
+                <h4>Tab03</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, excepturi, minima, corporis deserunt quia quae sit officiis labore inventore autem a delectus consequuntur voluptatem modi eligendi similique sed nam vitae.</p>
+            </div> <!-- / tabs_item -->
+
+        </div> <!-- / tab_content -->
+    </div> <!-- / main tab -->
+
+
+    <!-- tab for symptoms-->
+    <div class="naccs">
+        <div class="grid">
+            <div class="gc gc--1-of-3">
+                <div class="menu">
+                    <div class="active1"><span class="light"></span><span style="font-size:20px;">What to do?</span></div>
+                    <div><span class="light"></span><span style="font-size:20px;">How do I know I have one?</span></div>
+                    <div><span class="light"></span><span style="font-size:20px;">Gallery</span></div>
+                    <div><span class="light"></span><span style="font-size:20px;">Signs</span></div>
+                </div>
+            </div>
+            <div class="gc gc--2-of-3">
+                <ul class="nacc">
+                    <li class="active1">
+                        <div>
+                            <p style="font-size:18px">
+                                Rinse the mouth with warm water to remove food debris<br />
+                                If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
+                                Control moderate pain with over-the-counter pain medication<br />
+                                Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
+                                Seek dental treatment as soon as possible.<br />
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>
+                                A vine (Latin vīnea "grapevine", "vineyard", from vīnum "wine") in the narrowest sense is the grapevine (Vitis), but more generally it can refer to any plant with a growth habit of trailing or scandent (that is, climbing) stems, lianas or runners.
+                                The word also can refer to such stems or runners themselves, for instance when used in wicker work.[1][2] In the United Kingdom, the term "vine" applies almost exclusively to the grapevine. The term "climber" is used for all climbing plants.[3]
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>
+                                Lemonade is any of various sweetened beverages found around the world, all characterized by lemon flavor. Most lemonade varieties can be separated into two distinct types: cloudy and clear; each is known simply as "lemonade" (or a cognate) in countries
+                                where dominant.[1] Cloudy lemonade, generally found in North America and India, is a traditionally homemade drink made with lemon juice, water, and sweetener such as cane sugar or honey.[2] Found in the United Kingdom, Ireland, South Africa, Australia,
+                                and New Zealand, clear lemonade is a lemon flavoured carbonated soft drink. Not to be confused with Sprite a lemon-lime flavored, soft drink.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p style="font-size:18px">
+                                Rinse the mouth with warm water to remove food debris<br />
+                                If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
+                                Control moderate pain with over-the-counter pain medication<br />
+                                Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
+                                Seek dental treatment as soon as possible.<br />
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Queensland Dental Clinics</h2>
+    <p style="font-size:18px"> In your case of dental treatment, usually would be treated as priority group and arranged in priority category waiting list.</p>
+    <p style="margin-bottom:20px;font-size:18px">Please select the region you are in to find your nearby dental clinics' contact details.</p>
+    <a href="#" id="get_location">Get your current location</a>
+    <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+    <div id="location"></div>
+    @*<div class='tableauPlaceholder' id='viz1535535319154' style='position: relative;width:60%;height:60%'><noscript><a href='#'><img alt='Dental Clinics in Queensland ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;data_visual_1&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='data_visual_1&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;data_visual_1&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>
+        <script type='text/javascript'>var divElement = document.getElementById('viz1535535319154'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+        <script type='text/javascript'>var divElement = document.getElementById('viz1535533740677'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>*@
+
+    <div height="50px"></div>
+    <a href='@Url.Action("Index", "Home")' class="btn-submit" style="margin-left:43%;margin-bottom:50px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;"> Back </a>
+
+</div>
