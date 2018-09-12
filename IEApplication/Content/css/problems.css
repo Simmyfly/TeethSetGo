@@ -1,0 +1,234 @@
+﻿body {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+
+.grid {
+    list-style: none;
+    margin-left: -40px;
+}
+
+.gc {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 40px;
+    vertical-align: top;
+}
+
+.gc--1-of-3 {
+    width: 33.33333%;
+}
+
+.gc--2-of-3 {
+    width: 66.66666%;
+}
+
+.naccs {
+    position: relative;
+    max-width: 900px;
+    margin: 100px auto 0;
+}
+
+    .naccs .menu div {
+        padding: 15px 20px 15px 40px;
+        margin-bottom: 10px;
+        color: #9fa8e2;
+        background: #3F51B5;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        position: relative;
+        vertical-align: middle;
+        font-weight: 700;
+        transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+        .naccs .menu div:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .naccs .menu div span.light {
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top: 24px;
+            left: 15px;
+            background-color: #303F9F;
+            border-radius: 100%;
+            transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .naccs .menu div.active1 span.light {
+            background-color: #FBC02D;
+            left: 0;
+            height: 100%;
+            width: 3px;
+            top: 0;
+            border-radius: 0;
+        }
+
+        .naccs .menu div.active1 {
+            color: #FBC02D;
+            padding: 15px 20px 15px 20px;
+        }
+
+ul.nacc {
+    position: relative;
+    height: 0px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+    ul.nacc li {
+        opacity: 0;
+        transform: translateX(50px);
+        position: absolute;
+        list-style: none;
+        transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+        ul.nacc li.active1 {
+            transition-delay: .3s;
+            z-index: 2;
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        ul.nacc li p {
+            margin: 0;
+        }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 3px;
+}
+
+td {
+    font-size: 13px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+.topcontainer {
+    width: 100%;
+}
+
+.left-element {
+    display: inline-block;
+    width:85%;
+    left: 0;
+}
+
+.right-element {
+    display: inline-block;
+    position:absolute;
+    width:47%;
+    right: 0;
+}
+
+
+/*css for input field*/
+
+$background: #f5f6fa;
+$text: #9c9c9c;
+$input-bg-color: #fff;
+$input-text-color: #a3a3a3;
+$button-bg-color: #7f8ff4;
+$button-text-color: #fff;
+
+/*root*/
+:root {
+	background: $background;
+	color: $text;
+	font: 1rem "PT Sans", sans-serif;
+}
+
+html,
+body,
+.container1 {
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    &:hover
+
+{
+    color: #7f8ff4;
+}
+
+}
+
+
+.container1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+/*button*/
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+.btn--primary {
+    background: #7f8ff4;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 12px 36px;
+}
+
+    .btn--primary:hover {
+        background-color: lightsteelblue;
+    }
+
+    .btn--primary:active {
+        background: #7f8ff4;
+        box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+    }
+
+
+.btn--inside {
+    margin-left: -96px;
+}
+
+/*form*/
+.form1__field {
+    width: 360px;
+    background: #fff;
+    color: #a3a3a3;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
+}
+

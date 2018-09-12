@@ -1,0 +1,399 @@
+﻿
+@{
+    ViewBag.Title = "Emergency_Toothache";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+<link href="~/Content/css/problems.css" rel="stylesheet" />
+
+
+<script>
+
+    $(document).on("click", ".naccs .menu div", function () {
+        var numberIndex = $(this).index();
+
+        if (!$(this).is("active1")) {
+            $(".naccs .menu div").removeClass("active1");
+            $(".naccs ul li").removeClass("active1");
+
+            $(this).addClass("active1");
+            $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active1");
+
+            var listItemHeight = $(".naccs ul")
+                .find("li:eq(" + numberIndex + ")")
+                .innerHeight();
+            $(".naccs ul").height(listItemHeight + "px");
+        }
+    });
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap&libraries=places&language=en"></script>
+<script>
+    var map;
+    function handleSetCenterButtonClicked(coords) {
+        getMyLocation();
+        map.setCenter(yourPos);
+        map.setZoom(12);
+    }
+    function initMap() {
+        var addButton = document.getElementById("get_location");
+        addButton.onclick = handleSetCenterButtonClicked;
+        //initialize the map
+        var location = { lat: -27.469770, lng: 153.025131 };
+        map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: location,
+        });
+
+        var marker_initial = new google.maps.Marker({
+            postition: location,
+            map:map
+        })
+
+        var restrictOptions = {
+            componentRestrictions: { country: 'au' }
+        };
+
+        //var searchBox = new google.maps.places.SearchBox(document.getElementById('from_places'));
+
+        var markers = [];
+        var contentString = [];
+        var infowindow = [];
+        var budget;
+        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
+
+                markers[i] = new google.maps.Marker({
+                    position: { lat: data[i].Lat, lng: data[i].Long },
+                    map: map
+                });
+                contentString[i] = '<div id="content">' + '<div id="siteNotice">'
+                    + '</div>' + '<h4 id="firstHeading">'+ data[i].clinicName +'</h1>' + '<div id="bodyContent">'
+                    + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
+                infowindow[i] = new google.maps.InfoWindow({
+                    content: contentString[i]
+                });
+                var markerValue = markers[i]
+                google.maps.event.addListener(markers[i], 'mouseover', (function (markerValue, i) {
+                    return function () {
+                        infowindow[i].open(map, markers[i]);
+                    }
+                })(markers[i], i));
+                google.maps.event.addListener(markers[i], 'mouseout', (function (markerValue, i) {
+                    return function () {
+                        infowindow[i].close();
+                    }
+                })(markers[i], i));
+
+            };
+
+            
+            var places;
+            var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'), restrictOptions);
+
+            google.maps.event.addListener(from_places, 'place_changed', function () {
+                var from_place = from_places.getPlace();
+                var from_address = from_place.formatted_address;
+                $('#origin').val(from_address);
+
+            })
+
+            //google.maps.event.addListener(searchBox, 'places_changed', function () {
+            //    //console.log(searchBox.getPlaces());
+            //    places = searchBox.getPlaces();
+
+            //    //bound
+            //    var bounds = new google.maps.LatLngBounds();
+            //    var i, place;
+            //    var contentString_initial = "<div style='color:green;'><strong>You are Here</strong></div>"
+            //    var infowindow_initial = new google.maps.InfoWindow({
+            //        content: contentString_initial
+            //    });
+            //    infowindow_initial.open(map, marker_initial);
+
+            //    for (i = 0; place = places[i]; i++) {
+            //        //console.log(place.geometry.location);
+            //        bounds.extend(place.geometry.location);
+            //        marker_initial.setPosition(place.geometry.location);
+            //    };
+
+            //    map.fitBounds(bounds);
+            //    map.setZoom(10);
+
+            //})
+
+            //calculate distance function
+            $('#distance_form').submit(function (e) {
+                e.preventDefault();
+                calculateDistance();
+            })
+
+            var tbody = document.getElementById('tablebody');
+            function calculateDistance() {
+                var origin = $('#origin').val();
+                var destinations = []; 
+                    destinations[0] = new google.maps.LatLng(data[0].Lat, data[0].Long);
+                    var service = new google.maps.DistanceMatrixService();
+
+                    service.getDistanceMatrix({
+                        origins: [origin],
+                        destinations: [destinations[0]],
+                        travelMode: google.maps.TravelMode.DRIVING,
+                        unitSystem: google.maps.UnitSystem.METRIC,
+                        avoidHighways: false,
+                        avoidTolls: false
+                    }, function (response, status) {
+                        if (status != google.maps.DistanceMatrixStatus.OK) {
+                            $('#result').html(err);
+                        } else {
+                            //var origin = response.originAddresses[0];
+                            var destination = response.destinationAddresses[0];
+                            if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+                                //$('#result').html("Better get on a plane. There are no roads between your location and the destination clinic: " + destination);
+                                var newRow = tbody.insertRow(0);
+                                newRow.innerHTML = "Better get on a plane.There are no roads between your location and the destination clinic ";
+                            } else {
+                                var distance = response.rows[0].elements[0].distance;
+                                var duration = response.rows[0].elements[0].duration;
+                                console.log(response.rows[0].elements[0].distance);
+                                //var distance_in_kilo = distance.value / 1000;
+                                var distance_in_meter = distance.value;
+                                var cost = distance.value * 2;
+                                var duration_text = duration.text;
+                                //var duration_value = duration.value;
+                                //$('#in_kilo').text(distance_in_kilo.toFixed(2));
+                                var newRow = tbody.insertRow(0);
+                                var tcell = newRow.insertCell(0);
+                                tcell.innerHTML = data[0].clinicName;
+                                var tcell2 = newRow.insertCell(1);
+                                tcell2.innerHTML = distance_in_meter;
+                                var tcell3 = newRow.insertCell(2);
+                                tcell3.innerHTML = cost;
+                                var tcell4 = newRow.insertCell(3);
+                                tcell4.innerHTML = duration_text;
+                                var tcell5 = newRow.insertCell(4);
+                                tcell5.innerHTML = destination;
+                                //$('#in_meter').text(distance_in_meter);
+                                //$('#duration_text').text(duration_text);
+                                //$('#from').text(origin);
+                                //$('#to').text(destination);
+                            }
+                        }
+                    });
+                //}
+                //var origin = new google.maps.LatLng(-26.74313, 153.138);
+
+            }
+
+        })
+}
+
+window.onload = initMap;
+
+function getMyLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displayLocation);
+    } else {
+        alert("Oops, no geolocation support");
+    }
+}
+
+function displayLocation(position) {
+    showMap(position.coords);
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var div = document.getElementById("location");
+    div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
+}
+
+var yourPos;
+function showMap(coords) {
+    yourPos = googleLatAndLong;
+    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+    var mapOptions = {
+        zoom: 15,
+        center: googleLatAndLong,
+    };
+    //var mapDiv = document.getElementById("map");
+    //map = new google.maps.Map(mapDiv, mapOptions);
+    map.setOptions(mapOptions);
+    addMarker(googleLatAndLong);
+}
+
+var marker;
+var markerArray = new Array();
+
+function addMarker(latLong) {
+    var markerOptions = {
+        position: latLong,
+        map: map
+    };
+    marker = new google.maps.Marker(markerOptions);
+
+    markerArray.push(marker);
+}
+
+
+
+</script>
+
+<div style="height:15px;"></div>
+<div class="container" style="margin:100px;margin-left:10%;margin-right:10%;margin-bottom:40px;height:780px;
+    padding: 20px; ">
+    <div class="topcontainer" style="display:none;">
+    <div class="left-element">
+        <!-- tab for symptoms-->
+        <div class="naccs">
+            <div class="grid">
+                <div class="gc gc--1-of-3">
+                    <div class="menu">
+                        <div class="active1"><span class="light"></span><span style="font-size:20px;">What to do?</span></div>
+                        <div><span class="light"></span><span style="font-size:20px;">How do I know I have one?</span></div>
+                        <div><span class="light"></span><span style="font-size:20px;">Gallery</span></div>
+                    </div>
+                </div>
+                <div class="gc gc--2-of-3">
+                    <ul class="nacc">
+                        <li class="active1">
+                            <div>
+                                <p style="font-size:18px">
+                                    Rinse the mouth with warm water to remove food debris<br />
+                                    If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
+                                    Control moderate pain with over-the-counter pain medication<br />
+                                    Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
+                                    Seek dental treatment as soon as possible.<br />
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>
+                                    A vine (Latin vīnea "grapevine", "vineyard", from vīnum "wine") in the narrowest sense is the grapevine (Vitis), but more generally it can refer to any plant with a growth habit of trailing or scandent (that is, climbing) stems, lianas or runners.
+                                    The word also can refer to such stems or runners themselves
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>
+                                    Lemonade is any of various sweetened beverages found around the world, all characterized by lemon flavor. Most lemonade varieties can be separated into two distinct types: cloudy and clear; each is known simply as "lemonade" (or a cognate) in countries
+                                    where dominant.lemon-lime flavored, soft drink.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--category section-->
+    <div class="right-element">
+        <section id="feature" class="section-padding" style="margin-bottom:40px;background-color:white">
+            <div class="container">
+                <div class="row" style="margin-bottom:40px;margin-top:20px">
+                    <div class="header-section text-center" style="padding-top:28px">
+                        <h2>Are you in any of these groups?</h2>
+                        <p>Priority groups for dental treatment</p>
+                        <hr class="bottom-line">
+                    </div>
+                    <div class="row" style="margin-left:18%;margin-right:15%">
+                        <ul class="nav navbar-nav">
+                            <li class="btn-trial" style="width:355px;margin-right:5px"><a href='@Url.Action("EmergencyPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
+                            <li class="btn-trial" style="width:355px"><a href='@Url.Action("EmergencyPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Youth (13-17 years)</a></li>
+                        </ul>
+                    </div>
+                    <div class="row" style="margin-left:18%;margin-right:15%">
+                        <ul class="nav navbar-nav">
+                            <li class="btn-trial" style="width:355px;margin-right:5px"><a href='@Url.Action("EmergencyPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
+                            <li class="btn-trial" style="width:355px"><a href='@Url.Action("EmergencyPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Aboriginal</a></li>
+                        </ul>
+                    </div>
+                    <div class="row" style="margin-left:18%;margin-right:15%;">
+                        <ul class="nav navbar-nav">
+                            <li class="btn-trial" style="width:355px"><a href='@Url.Action("GeneralPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Queensland Adult Residence (18+)</a></li>
+                            <li class="btn-trial" style="width:355px"><a href='@Url.Action("GeneralPage", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> International Adult (18+)</a></li>
+                        </ul>
+                    </div>
+                    <div class="row" style="margin-left:18%;margin-right:15%;margin-bottom:40px;">
+                        <ul class="nav navbar-nav">
+                            <li class="btn-trial" style="width:470px;"><a href='@Url.Action("GeneralPage", "Home")' style="width:465px;"><img src="~/Content/img/person.PNG" style="height:40px" /> Registered Client of Mental Health/ Disability Service</a></li>
+                        </ul>
+                    </div>
+                    <a id="goBackButton" class="btn-submit" style="background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;" href="#courses"> Back </a>
+                </div>
+            </div>
+
+        </section>
+      </div>
+    </div>
+    <div class="container" >
+        <h2>Queensland Dental Clinics</h2>
+        <p style="font-size:18px"> In your case of dental treatment, usually would be treated as priority group and arranged in priority category waiting list.</p>
+        <p style="margin-bottom:20px;font-size:18px">Please select the region you are in to find your nearby dental clinics' contact details.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div style="display:none"><a href="#" id="get_location">Get your current location</a></div>
+
+                <!--a form for address input and result-->
+                <form id="distance_form">
+                    <div class="form-group">
+                        <label>Please type your current location: </label>
+                        <input type="text" id="from_places" class="form-control" placeholder="Enter a location(e.g.) and press 'Enter'" />
+                        <input id="origin" type="hidden" name="origin" required />
+                    </div>
+                    <input type="submit" value="See nearby clinics" class="btn btn-primary" />
+                </form>
+
+                <div id="result">
+                    <table style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Dental Clinics</th>
+                                <th>Distance</th>
+                                <th data-type="numeric">Estimated Cost</th>
+                                <th>Duration(by driving)</th>
+                                <th>Adress
+                                <th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablebody">
+                            <tr>
+                                <td>
+                                    Clinic Name :
+                                    <span id="clinic_name"></span>
+                                </td>
+                                <td>
+                                    Distance In Meter :
+                                    <span id="in_meter" class="badge badge-primary badge-pill"></span>
+                                    @*Distance is Kilo:
+                                        <span id='in_kilo' class="badge badge-primary badge-pill"></span>*@
+                                </td>
+                                <td>
+                                    <span id="from"></span>
+                                </td>
+                                <td>
+                                    Duration:
+                                    <span id="duration_text" class="badge badge-primary badge-pill"></span>
+                                </td>
+                                <td>
+                                    TO:
+                                    <span id="to" style="width：100%"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+        <div id="location"></div>
+
+        <div height="50px"></div>
+        <a href='@Url.Action("Index", "Home")' class="btn-submit" style="margin-left:43%;margin-bottom:50px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;"> Back </a>
+       </div>
+    </div>
+
+

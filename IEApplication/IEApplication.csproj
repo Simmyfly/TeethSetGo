@@ -274,6 +274,8 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\problems.css" />
+    <Content Include="Content\css\StyleSheet1.css" />
     <Content Include="Content\css\style_css.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\fonts_medi\flaticon\backup.txt" />
@@ -289,6 +291,7 @@
     <Content Include="Content\img\6402-200.png" />
     <Content Include="Content\img\bg-banner.jpg" />
     <Content Include="Content\img\bg-banner1.jpg" />
+    <Content Include="Content\img\cavities-banner.jpg" />
     <Content Include="Content\img\Cavities.png" />
     <Content Include="Content\img\Chippedtooth.png" />
     <Content Include="Content\img\course01.jpg" />
@@ -327,8 +330,12 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\jquery.easing.min.js" />
     <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery_3.2.1.js" />
+    <Content Include="Content\js\jquery_3.3.1.js" />
+    <Content Include="Content\js\Locksite.js" />
     <Content Include="Content\js\mapJS.js" />
     <Content Include="Content\js\showQuestion.js" />
+    <Content Include="Content\js\Input.js" />
     <Content Include="Content\js_medi\bootstrap-datepicker.js" />
     <Content Include="Content\js_medi\bootstrap.min.js" />
     <Content Include="Content\js_medi\jquery-3.2.1.min.js" />
@@ -424,7 +431,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -466,6 +475,11 @@
     <Content Include="Views\Clinic\Details.cshtml" />
     <Content Include="Views\Clinic\Edit.cshtml" />
     <Content Include="Views\Clinic\Index.cshtml" />
+    <Content Include="Views\Home\Emergency_Toothache.cshtml" />
+    <Content Include="Views\Home\Cavities.cshtml" />
+    <Content Include="Views\Home\Emergency_Cavities.cshtml" />
+    <Content Include="Views\Home\General_Cavities.cshtml" />
+    <Content Include="Views\Home\SensitiveToCold.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

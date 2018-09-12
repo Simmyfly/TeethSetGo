@@ -54,5 +54,31 @@ namespace IEApplication.Controllers
             return View();
         }
 
+        public ActionResult Emergency_Toothache()
+        {
+            ViewBag.Message = "Toothache Problem (Emergency cases)";
+            return View();
+        }
+
+        public ActionResult Cavities()
+        {
+            ViewBag.Message = "Cavities Problem";
+            return View();
+        }
+        public ActionResult Emergency_Cavities()
+        {
+            ViewBag.Message = "Cavities Problem (Emergency cases)";
+            return View();
+        }
+        public ActionResult General_Cavities()
+        {
+            ViewBag.Message = "Cavities Problem (Non-Emergency cases)";
+            return View();
+        }
+        public ActionResult SensitiveToCold()
+        {
+            ViewBag.Message = "SensitiveToCold Problem";
+            return View();
+        }
     }
 }
