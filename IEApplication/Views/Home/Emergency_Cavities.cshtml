@@ -7,6 +7,7 @@
 <script src="~/Content/js/jquery_3.3.1.js"></script>
 <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <link href="~/Content/css/problems.css" rel="stylesheet" />
+<link href="~/Content/css/font.css" rel="stylesheet" />
 <script src="~/Content/js/showQuestion.js"></script>
 
 <!--load script for google map-->
@@ -267,7 +268,7 @@ function addMarker(latLong) {
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
                         <p class="big-text" style="font-size:35px">Cavities</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Cavities are what you get from tooth decay -- damage to the tooth. Tooth decay can affect both the outer coating of a tooth (called enamel) and the inner layer (called dentin).</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Cavities are what you get from tooth decay -- damage to the tooth. Tooth decay can affect both the outer coating of a tooth and the inner layer.</p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
@@ -341,12 +342,12 @@ function addMarker(latLong) {
                     <div role="tabpanel" class="tab-pane active" id="content">
                         <div class="design-process-content" style="padding-right:3%">
                             <!--Pricing-->
-                            <section id="pricing" class="section-padding" style="width:100%">
+                            <section id="pricing" class="section-padding" style="width:100%;margin-bottom:0;background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);">
                                 <div class="container">
                                     <div class="row">
                                         <div class="header-section text-center">
                                             <h2>Cost of Dental Treatment</h2>
-                                            <p>Fees in dental clinic varies in different treatment items that is related to your dental problems.</p>
+                                            <p style="color:#4B4B4C;">Fees in dental clinic varies in different treatment items that is related to your dental problems.</p>
                                             <hr class="bottom-line">
                                             <p style="margin-bottom:25px"><strong>Estimated treatment cost for Cavities is: ___ </strong></p>
                                         </div>
@@ -390,22 +391,30 @@ function addMarker(latLong) {
                             <!--budget section-->
                             <div>
                                 <div class="header-section text-center" style="margin-top:35px;padding-top:20px">
-                                    <h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>
-                                    <p>Enter your budget to check out nearby dental service within your budget</p>
+                                    <div id="fontbody" style="margin-top:0">
+                                    <div class="font1">Get the best</div>
+                                    <div class="font1">
+                                        <span>of us by telling us your budget</span>
+                                    </div>
+                                    </div>
+                                    @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
+                                    <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
                                     <hr class="bottom-line">
                                 </div>
                                 <div class="container1">
                                     <div class="container__item">
                                         <form class="form1">
-                                            <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 200)" style="margin-top:35px;" />
+                                            <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 200)" style="margin-top:28px;" />
                                             <button type="button" id="submitButton"
-                                                    class="btn btn--primary btn--inside uppercase" style="font-size:16px">
+                                                    class="btn btn--primary btn--inside uppercase" style="font-size:18px">
                                                 Submit
                                             </button>
                                         </form>
                                     </div>
 
-                                    <div class="container__item container__item--bottom">
+                                    <div style="margin-top:30px;margin-left:70%">
+                                        <h4 >Do not have a budget in mind?</h4>
+                                        <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
                                     </div>
                                 </div>
 

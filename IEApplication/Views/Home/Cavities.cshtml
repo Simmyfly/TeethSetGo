@@ -54,11 +54,11 @@
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
                         <p class="big-text" style="font-size:35px">Cavities</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Cavities are what you get from tooth decay -- damage to the tooth. Tooth decay can affect both the outer coating of a tooth (called enamel) and the inner layer (called dentin).</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Cavities are what you get from tooth decay -- damage to the tooth. Tooth decay can affect both the outer coating of a tooth and the inner layer.</p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
-                        <div class="mouse"></div>
+                        <div class="mouse" style="display:none;"></div>
                     </a>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane active" id="strategy">
-                        <div class="design-process-content">
+                        <div class="design-process-content" style="padding-top:0">
                             <div class="topcontainer">
                                 <div class="left-element">
                                     <!-- tab for symptoms-->
@@ -132,15 +132,14 @@
                                                     <li class="active1">
                                                         <div>
                                                             <p style="font-size:18px">
-                                                                When foods wi
-                                                                th carbohydrates stays in your mouth, the bacteria, acid, food debris, and your saliva combine to form plaque, which clings to the teeth. The acids in plaque dissolve the enamel, creating holes called cavities.<br />
+                                                                When foods with carbohydrates stays in your mouth, the bacteria, acid, food debris, and your saliva combine to form plaque, which clings to the teeth. The acids in plaque dissolve the enamel, creating holes called cavities.<br />
                                                                 <br />
                                                                 <strong>Symptoms of cavity include:</strong><br />
                                                                 •	Toothache (especially after you eat or drink something sweet, hot, or cold)<br />
                                                                 •	Sensitivity to sweet, hot or cold foods or drinks<br />
                                                                 •	Pain when chewing<br />
-                                                                •	Sometimes you can see pits or holes in your teeth<br />
-
+                                                                •	Sometimes you can see pits or holes in your teeth<br /><br /><br /><br /><br /><br />
+                                                                <br />
 
                                                             </p>
                                                         </div>
@@ -149,22 +148,24 @@
                                                         <div>
                                                             <p>
                                                                 <strong>To Relieve Pain / Discomfort:</strong><br />
-                                                                <p style="font-family:'Times New Roman', Times, serif;">•	Rinse the mouth with warm water to remove food debris<br />
+                                                            <p style="font-family:'Times New Roman', Times, serif;">
+                                                                •	Rinse the mouth with warm water to remove food debris<br />
                                                                 •	If swelling is present, place a cold compress to the outside of the cheek (do not use heat)<br />
                                                                 •	Control moderate pain with over-the-counter pain medication<br />
                                                                 •	Do not place aspirin on the gum or aching tooth. Aspirin can cause the soft tissue to burn<br />
-                                                                •	Seek dental treatment as soon as possible.<br /></p>
-                                                                <br/>
-                                                                <strong>Possible Medical Treatment:</strong>
-                                                                <p style="font-family:'Times New Roman', Times, serif">
-                                                                    Treatment depends on how bad the cavity is. <br />
-                                                                    <span style="color:#3F51B5;">Decay Removal</span><br />
-                                                                    Most often, the dentist removes the decayed portion of your tooth with a drill, fills in the hole with a filling(made of either silver alloy, gold, porcelain or composite resin.<br />
-                                                                    <span style="color:#3F51B5;">Crowns</span>
-                                                                    are used when a tooth is so badly decayed that not much of it remains. <br />
-                                                                    <span style="color:#3F51B5;">Root Canal</span>
-                                                                    You might need a root canal if the root or pulp of your tooth is dead or injured in a way that can't be repaired.
-                                                                </p>
+                                                                •	Seek dental treatment as soon as possible.<br />
+                                                            </p>
+                                                            <br />
+                                                            <strong>Possible Medical Treatment:</strong>
+                                                            <p style="font-family:'Times New Roman', Times, serif">
+                                                                Treatment depends on how bad the cavity is. <br />
+                                                                <span style="color:#3F51B5;">Decay Removal</span><br />
+                                                                Most often, the dentist removes the decayed portion of your tooth with a drill, fills in the hole with a filling(made of either silver alloy, gold, porcelain or composite resin.<br />
+                                                                <span style="color:#3F51B5;">Crowns</span>
+                                                                are used when a tooth is so badly decayed that not much of it remains. <br />
+                                                                <span style="color:#3F51B5;">Root Canal</span>
+                                                                You might need a root canal if the root or pulp of your tooth is dead or injured in a way that can't be repaired.
+                                                            </p>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -181,7 +182,7 @@
                                     </div>
                                 </div>
                                 <!--category section-->
-                                <div class="right-element" width="23%">
+                                <div class="right-element" width="23%" id="right" style="margin-top:0">
                                     <section id="feature" class="section-padding" style="padding-bottom:2px;background-color:white;padding-top:0">
                                         <div>
                                             <div class="row" style="margin-bottom:10px;margin-top:10px">
@@ -192,34 +193,36 @@
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px" ><a href='@Url.Action("General_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("General_Cavities", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_Cavities", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;margin-bottom:40px;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
-                                    <a id="goBackButton" class="btn-submit" style="float:right;margin-right:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
 
 
                                 </div>
+                            </div>
+                            <div class="row">
+                            <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:35px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
                             </div>
                         </div>
                     </div>
@@ -238,7 +241,6 @@
                     <div role="tabpanel" class="tab-pane" id="reporting">
                         <div class="design-process-content">
                             <h3>Reporting</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. </p>
                         </div>
                     </div>
                 </div>

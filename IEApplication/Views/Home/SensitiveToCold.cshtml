@@ -3,7 +3,6 @@
     ViewBag.Title = "Dental Issues - Sensitive To Cold";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script src="~/Content/js/jquery_3.3.1.js"></script>
 <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <link href="~/Content/css/problems.css" rel="stylesheet" />
@@ -54,12 +53,12 @@
                         @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
-                        <p class="big-text" style="font-size:35px">Sensitive to Cold</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;"> If eating ice cream and drinking cold drinks make your teeth hurt, you are probably suffering from cold-sensitive teeth.</p>
+                        <p class="big-text" style="font-size:35px">Sensitive To Cold</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">If eating ice cream and drinking cold drinks make your teeth hurt, you are probably suffering from cold-sensitive teeth.</p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
-                        <div class="mouse"></div>
+                        <div class="mouse" style="display:none;"></div>
                     </a>
                 </div>
             </div>
@@ -115,7 +114,7 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane active" id="strategy">
-                        <div class="design-process-content">
+                        <div class="design-process-content" style="padding-top:0">
                             <div class="topcontainer">
                                 <div class="left-element">
                                     <!-- tab for symptoms-->
@@ -127,6 +126,7 @@
                                                     <div><span class="light"></span><span style="font-size:20px;">What to do?</span></div>
                                                     @*<div><span class="light"></span><span style="font-size:20px;">Gallery</span></div>*@
                                                 </div>
+                                                <div height="150px"></div>
                                             </div>
                                             <div class="gc gc--2-of-3">
                                                 <ul class="nacc">
@@ -137,15 +137,14 @@
                                                                 <br />
                                                                 <strong>Symptoms of teeth sensitivity include:</strong><br />
                                                                 •	Discomfort after eating or drinking something cold. This pain can occur suddenly, and the degree of sensitivity can be mild, moderate, or severe.<br />
-                                                                •	Have pain while brushing or flossing<br/>
-
+                                                                •	Have pain while brushing or flossing<br /><br /><br /><br />
 
                                                             </p>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div>
-                                                                <strong>To Relieve Pain / Discomfort:</strong><br />
+                                                            <strong>To Relieve Pain / Discomfort:</strong><br />
                                                             <p style="font-family:'Times New Roman', Times, serif;">
                                                                 •	Avoid Cold and Acidic Foods.<br />
                                                                 •	Use a Soft Toothbrush<br />
@@ -159,10 +158,10 @@
                                                                 <br />
                                                                 <span style="color:#3F51B5;">Fluoride gel</span><br />
                                                                 An in-office technique which strengthens tooth enamel and reduces the transmission of sensations.<br />
-                                                                <span style="color:#3F51B5;">Crowns</span>
-                                                                are used when a tooth is so badly decayed that not much of it remains. <br />
-                                                                <span style="color:#3F51B5;">Root Canal</span>
-                                                                You might need a root canal if the root or pulp of your tooth is dead or injured in a way that can't be repaired.
+                                                                <span style="color:#3F51B5;">A crown, inlay or bonding</span>
+                                                                may be used to correct a flaw or decay that results in sensitivity. <br />
+                                                                <span style="color:#3F51B5;">Surgical gum graft</span>
+                                                                If gum tissue has been lost from the root, this will protect the root and reduce sensitivity.<br />
                                                             </p>
 
                                                         </div>
@@ -180,7 +179,7 @@
                                     </div>
                                 </div>
                                 <!--category section-->
-                                <div class="right-element" width="23%">
+                                <div class="right-element" width="23%" id="right" style="margin-top:0">
                                     <section id="feature" class="section-padding" style="padding-bottom:2px;background-color:white;padding-top:0">
                                         <div>
                                             <div class="row" style="margin-bottom:10px;margin-top:10px">
@@ -191,34 +190,36 @@
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("General_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("General_Cavities", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_SensitiveToCold", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;margin-bottom:40px;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:70%;margin-left:15px"><a href='@Url.Action("Emergency_Cavities", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
-                                    <a id="goBackButton" class="btn-submit" style="float:right;margin-right:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
 
 
                                 </div>
+                            </div>
+                            <div class="row">
+                                <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:35px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
                             </div>
                         </div>
                     </div>
@@ -245,8 +246,6 @@
         </div>
     </div>
 </section>
-
-
 
 
 

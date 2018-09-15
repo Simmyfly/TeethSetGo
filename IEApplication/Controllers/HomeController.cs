@@ -36,6 +36,12 @@ namespace IEApplication.Controllers
 
             return View();
         }
+        public ActionResult AllClinics()
+        {
+            ViewBag.Message = "Dental Clinics in Queensland";
+
+            return View();
+        }
 
         public ActionResult GeneralPage()
         {
@@ -80,5 +86,47 @@ namespace IEApplication.Controllers
             ViewBag.Message = "SensitiveToCold Problem";
             return View();
         }
+        public ActionResult Emergency_SensitiveToCold()
+        {
+            ViewBag.Message = "Sensitive to Cold Problem (Emergency cases)";
+            return View();
+        }
+        public ActionResult General_SensitiveToCold()
+        {
+            ViewBag.Message = "Sensitive to Cold Problem (Non-Emergency cases)";
+            return View();
+        }
+        public ActionResult TooManyTeeth()
+        {
+            ViewBag.Message = "Too Many Teeth Problem";
+            return View();
+        }
+        public ActionResult Emergency_TooManyTeeth()
+        {
+            ViewBag.Message = "Too Many Teeth Problem (Emergency cases)";
+            return View();
+        }
+        public ActionResult General_TooManyTeeth()
+        {
+            ViewBag.Message = "Too Many Teeth Problem (Non-Emergency cases)";
+            return View();
+        }
+       
+        public ActionResult GapBetweenTeeth()
+        {
+            ViewBag.Message = "Gap Between Teeth Problem";
+            return View();
+        }
+        public ActionResult Emergency_GapBetweenTeeth()
+        {
+            ViewBag.Message = "Gap Between Teeth Problem (Emergency cases)";
+            return View();
+        }
+        public ActionResult General_GapBetweenTeeth()
+        {
+            ViewBag.Message = "Gap Between Teeth Problem (Non-Emergency cases)";
+            return View();
+        }
+
     }
 }

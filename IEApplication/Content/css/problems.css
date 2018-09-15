@@ -1,7 +1,6 @@
 ﻿body {
     position: relative;
     font-family: 'Oswald', sans-serif;
-    font-size: 20px;
 }
 
 .grid {
@@ -102,7 +101,7 @@ ul.nacc {
             margin: 0;
         }
 
-table {
+/*table {
     border-collapse: collapse;
     width: 100%;
 }
@@ -123,21 +122,21 @@ tr:nth-child(even) {
 th {
     background-color: #4CAF50;
     color: white;
-}
+}*/
 .topcontainer {
     width: 100%;
 }
 
 .left-element {
     display: inline-block;
-    width:85%;
+    width:88%;
     left: 0;
 }
 
 .right-element {
     display: inline-block;
     position:absolute;
-    width:47%;
+    width:41%;
     right: 0;
 }
 
@@ -230,5 +229,21 @@ a {
     border: 0;
     outline: 0;
     padding: 22px 18px;
+}
+
+/*css for div*/
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+#right {
+    animation: 1.2s ease-out 0s 1 slideInFromLeft;
+    background: url('../img/BACKGROUND-unsplash.jpg');
+    padding: 10px;
 }
 

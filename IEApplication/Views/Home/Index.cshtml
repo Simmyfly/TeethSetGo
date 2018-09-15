@@ -2,12 +2,16 @@
     ViewBag.Title = "Home";
 }
 <!--load javascript files-->
-<script src="~/Content/js/jquery.min.js"></script>
+@*<script src="~/Content/js/jquery.min.js"></script>*@
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+@*<script>
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "../Content/js/Locksite.js";
 
-<script>
+    document.getElementsByTagName('head')[0].appendChild(script);
 
-
-</script>
+</script>*@
 
     <!--This is the Banner section with the image, website name and logo-->
     <!--Banner-->
@@ -23,8 +27,8 @@
                             <p class="big-text">Still Waiting For Your Dental Care?</p>
                             <p class="small-text"></p>
                             <a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issue</a>
-                            <a href="#courses" class="mouse-hover">
-                                <div class="mouse"></div>
+                            <a href="#courses" class="mouse-hover" style="display:none;">
+                                <div class="mouse" style="display:none;"></div>
                             </a>
                         </div>
                     </div>
@@ -123,7 +127,7 @@
                             <h3>Too Many Teeth(Hyperdontia)</h3>
                             <p>Have extra teeth</p>
                         </figcaption>
-                        <a href="#feature" class="notUrgent"></a>
+                        <a href="@Url.Action("TooManyTeeth", "Home")" class="notUrgent"></a>
                     </figure>
                 </div>
                 <div class="col-md-3 col-sm-6 padleft-right">
@@ -149,7 +153,7 @@
                             <h3>Gap Between Teeth</h3>
                             <p>Space between teeth or crowding of teeth.</p>
                         </figcaption>
-                        <a href="#feature" class="notUrgent"></a>
+                        <a href="@Url.Action("GapBetweenTeeth", "Home")" class="notUrgent"></a>
                     </figure>
                 </div>
                 <div class="col-md-3 col-sm-6 padleft-right">
@@ -182,7 +186,7 @@
                     <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
                         <p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;"></p>
                     </div>
-                    <a href='@Url.Action("EmergencyPage", "Home")'><h3 style="font-size:23px">Require emergency dental care?</h3><img src="~/Content/img/6402-200.png" style="height:30px;width:30px" /></a>
+                    @*<a href='@Url.Action("AllClinics", "Home")'><h3 style="font-size:23px">Require emergency dental care?</h3><img src="~/Content/img/6402-200.png" style="height:30px;width:30px" /></a>*@
                 </div>
             </div>
         </div>

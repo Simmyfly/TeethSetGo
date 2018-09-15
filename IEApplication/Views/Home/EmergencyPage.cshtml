@@ -1,124 +1,437 @@
 ﻿
 @{
-    ViewBag.Title = "Dental Clinics";
+    ViewBag.Title = "Dental Issues - Gap Between Teeth";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap"></script>
+
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/boostrap.min.css"></script>*@
+<script src="~/Content/js/jquery.dataTables.min.js"></script>
+@*<script src="http://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>*@
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
+<link href="~/Content/css/problems.css" rel="stylesheet" />
+<link href="~/Content/css/font.css" rel="stylesheet" />
+
+@*<script>
+        $(document).ready(function () {
+        $('#submitButton').click(function () {
+
+            //document.getElementById('content').removeClass("tab - pane active");
+            //document.getElementById('ClinicsMap').addClass("tab-pane active");
+            
+
+        });
+        $(document).on('click', '#goBack', function () {
+            document.getElementById('content').style.display = 'inline';
+            document.getElementById('ClinicsMap').style.display = 'none';
+        });
+        });
+    </script>*@
+
+<!--load script for google map-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap&libraries=places&language=en"></script>
 <script>
+    var budget;
+    $(document).ready(function () {
+        $('#submitButton').click(function () {
+            var budget_input = document.getElementById('input').value;
+            if (!budget_input) {
+                //alert("no input for budget.");
+                document.getElementById('warning').style.display = 'block';
+            } else {
+                budget = parseFloat(budget_input);
+                document.getElementById('warning').style.display = 'none';
+            }
+            console.log(budget);
+        });
+     });
+
     var map;
     function initMap() {
-        var addButton = document.getElementById("get_location");
-        addButton.onclick = handleSetCenterButtonClicked;
+
+        //initialize the map
         var location = { lat: -27.469770, lng: 153.025131 };
         map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: location,
-       });
+        });
+
+        var marker_initial = new google.maps.Marker({
+            postition: location,
+            map:map
+        })
+
+        var restrictOptions = {
+            componentRestrictions: { country: 'au' }
+        };
+
+        var searchBox = new google.maps.places.SearchBox(document.getElementById('from_places'));
 
         var markers = [];
         var contentString = [];
         var infowindow = [];
-        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
-            for (var i = 0; i < data.length; i++) {
+        var image = '@Url.Content("~/Content/img/rsz_1marker-clipart-green.png")';
 
-                markers[i] = new google.maps.Marker({
+        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        markers[i] = new google.maps.Marker({
                     position: { lat: data[i].Lat, lng: data[i].Long },
                     map: map
-                });
-                contentString[i] = '<div id="content">' + '<div id="siteNotice">'
-                    + '</div>' + '<h4 id="firstHeading">'+ data[i].clinicName +'</h1>' + '<div id="bodyContent">'
-                    + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
-                infowindow[i] = new google.maps.InfoWindow({
+                        });
+                    
+                    contentString[i] = '<div id="content">' + '<div id="siteNotice">'
+                        + '</div>' + '<h4 id="firstHeading">' + data[i].clinicName + '</h1>' + '<div id="bodyContent">'
+                        + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
+                    infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                var markerValue = markers[i]
+                    var markerValue = markers[i]
                 google.maps.event.addListener(markers[i], 'mouseover', (function (markerValue, i) {
                     return function () {
-                        infowindow[i].open(map, markers[i]);
-                    }
-                })(markers[i], i));
+                    infowindow[i].open(map, markers[i]);
+                }
+            })(markers[i], i));
                 google.maps.event.addListener(markers[i], 'mouseout', (function (markerValue, i) {
-                    return function () {
-                        infowindow[i].close();
-                    }
-                })(markers[i], i));
+                return function () {
+                    infowindow[i].close();
+                }
+            })(markers[i], i));
 
+            };
+
+            //console.log(data);
+
+            var places;
+            var newData;
+            var filtered_data;
+            //var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'), restrictOptions);
+
+            //google.maps.event.addListener(from_places, 'place_changed', function () {
+            //    var from_place = from_places.getPlace();
+            //    var from_address = from_place.formatted_address;
+            //    $('#origin').val(from_address);
+
+            //})
+
+
+            google.maps.event.addListener(searchBox, 'places_changed', function () {
+                console.log(searchBox.getPlaces());
+                places = searchBox.getPlaces();
+
+                //bound
+                var bounds = new google.maps.LatLngBounds();
+                var i, place;
+                var contentString_initial = "<div style='color:green;'><strong>You are Here</strong></div>"
+                var infowindow_initial = new google.maps.InfoWindow({
+                    content: contentString_initial
+                });
+            infowindow_initial.open(map, marker_initial);
+
+                for (i = 0; place = places[i]; i++) {
+                //console.log(place.geometry.location);
+                bounds.extend(place.geometry.location);
+                marker_initial.setPosition(place.geometry.location);
+            };
+            //console.log(places[0].geometry.location);
+
+            //initialize markers
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i].icon) {
+                        markers[i].setIcon();
+                    }                    
+                }
+
+            map.fitBounds(bounds);
+            map.setZoom(11);
+
+            var latitude1 = places[0].geometry.location.lat();
+            var longitude1 = places[0].geometry.location.lng();
+            //distance_v = getDistanceFromLatLonInKm(latitude1, longitude1, data[2].Lat, data[2].Long) * 1.22;
+            //console.log(distance_v);
+            newData = addDistance(data, latitude1, longitude1);
+            filtered_data = filterByBudget(newData, budget);
+                //console.log(filtered_data);
+                $('#myTable').DataTable({
+                data: filtered_data,
+                    destroy: true,
+                    empty: true,
+                    columns: [
+                        { 'data': 'clinicName' },
+                        { 'data': 'distance' },
+                        {
+                            'data': 'totalCost',
+                            'render': function (totalcost) {
+                                return "$" + totalcost;
+                            }
+                        },
+                        { 'data': 'Lat' },
+                        { 'data': 'Long'}
+                    ],
+                    'order': [[2, 'asc']]
+                });
+
+            //change the marker for filtered_data
+                changeMarker(filtered_data);
+            })
+
+            function changeMarker(dataset) {
+
+                for (var i = 0; i < markers.length; i++) {
+                    current_marker = markers[i];
+                    var lat_marker = current_marker.getPosition().lat();
+                    var lng_marker = current_marker.getPosition().lng();
+                    dataset.forEach(function (d) {
+
+                        if (parseFloat(d.Lat) == parseFloat(lat_marker) || parseFloat(d.Long) == parseFloat(lng_marker)) {
+                            current_marker.setIcon(image);
+                            console.log(current_marker);
+                        }
+                    });
+
+                };
             }
+            
+
+            function addDistance(dataset, lat1, long1) {
+                //the total amount of each site
+                dataset.forEach(function (d) {
+                    var dis_number = getDistanceFromLatLonInKm(lat1, long1, d.Lat, d.Long) * 1.22;
+                    d["distance"] = dis_number.toFixed(2);
+                    var cos_number = d.distance * 0.1458;//initialize
+                    d["totalCost"] = cos_number.toFixed(2);
+
+                });
+                return dataset;
+            };
+
+            function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+                var dLon = deg2rad(lon2 - lon1);
+                var a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
+                    ;
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c; // Distance in km
+                return d;
+            }
+
+            function deg2rad(deg) {
+                return deg * (Math.PI / 180)
+            }
+
+            function filterByBudget(dataset, bud) {
+                var filtered = [];
+                dataset.forEach(function (d) {
+                    if (parseFloat(d.totalCost) <= bud) {
+                        filtered.push(d);
+                    }
+                });
+                console.log(filtered);
+                return filtered;
+            }
+            //calculate distance function
+            //$('#distance_form').submit(function (e) {
+            //    e.preventDefault();
+            //    calculateDistance();
+            //})
+
+            //function calculateDistance() {
+            //    var distance_v;
+            //    //var origin = $('#origin').val();
+            //    var results = [];
+            //    var latitude1 = places[0].geometry.location.lat();
+            //    var longitude1 = places[0].geometry.location.lng();
+            //    console.log(latitude1);
+            //    var origin = new google.maps.LatLng(latitude1, longitude1)
+            //    var destinations = [];
+            //        destinations[0] = new google.maps.LatLng(data[0].Lat, data[0].Long);
+            //        var service = new google.maps.DistanceMatrixService();
+
+            //        service.getDistanceMatrix({
+            //            origins: [origin],
+            //            destinations: [destinations[0]],
+            //            travelMode: google.maps.TravelMode.DRIVING,
+            //            unitSystem: google.maps.UnitSystem.METRIC,
+            //            avoidHighways: false,
+            //            avoidTolls: false
+            //        }, function (response, status) {
+            //            if (status != google.maps.DistanceMatrixStatus.OK) {
+            //                $('#result').html(err);
+            //            } else {
+            //                //var origin = response.originAddresses[0];
+            //                var destination = response.destinationAddresses[0];
+            //                if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+            //                    //$('#result').html("Better get on a plane. There are no roads between your location and the destination clinic: " + destination);
+            //                    var noroads = "noRoads";
+            //                    distance_v = noroads;
+            //                } else {
+            //                    var distance = response.rows[0].elements[0].distance;
+            //                    var duration = response.rows[0].elements[0].duration;
+            //                    console.log(response.rows[0].elements[0].distance);
+            //                    var distance_in_kilo = distance.value / 1000;
+            //                    var distance_in_meter = distance.value;
+            //                    var cost = distance.value * 2;
+            //                    var duration_text = duration.text;
+            //                    //var duration_value = duration.value;
+            //                    //$('#in_kilo').text(distance_in_kilo.toFixed(2));
+
+            //                    //$('#in_meter').text(distance_in_meter);
+            //                    //$('#duration_text').text(duration_text);
+            //                    //$('#from').text(origin);
+            //                    //$('#to').text(destination);
+
+            //                    distance_v = distance_in_kilo;
+
+            //                }
+            //                console.log(distance_v);
+            //            }
+
+
+            //        });
+            //    return distance_v;
+            //}
 
         })
 }
 
-window.onload = initMap;
-
-function getMyLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(displayLocation);
-    } else {
-        alert("Oops, no geolocation support");
-    }
-}
-
-function displayLocation(position) {
-    showMap(position.coords);
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    var div = document.getElementById("location");
-    div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
-}
-
-var yourPos;
-function showMap(coords) {
-    yourPos = googleLatAndLong;
-    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
-    var mapOptions = {
-        zoom: 15,
-        center: googleLatAndLong,
-    };
-    //var mapDiv = document.getElementById("map");
-    //map = new google.maps.Map(mapDiv, mapOptions);
-    map.setOptions(mapOptions);
-    addMarker(googleLatAndLong);
-}
-
-var marker;
-var markerArray = new Array();
-
-function addMarker(latLong) {
-    var markerOptions = {
-        position: latLong,
-        map: map
-    };
-    marker = new google.maps.Marker(markerOptions);
-
-    markerArray.push(marker);
-}
-
-// this is my setCenter method function
-function handleSetCenterButtonClicked(coords) {
-    getMyLocation();
-    map.setCenter(yourPos);
-    map.setZoom(13);
-}
 
 
 </script>
 
-<div style="height:15px;"></div>
-<div class="container" style="margin:100px;margin-left:10%;margin-right:10%;width:80%;height:780px;border-radius: 25px;
-    border: 2px solid #5fcf80;
-    padding: 20px; ">
-    <h2>Queensland Dental Clinics</h2>
-    <p style="font-size:18px"> In your case of dental treatment, usually would be treated as priority group and arranged in priority category waiting list.</p>
-    <p style="margin-bottom:20px;font-size:18px">Please select the region you are in to find your nearby dental clinics' contact details.</p>
-    <a href="#" id="get_location">Get your current location</a>
-    <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
-    <div id="location"></div>
-    @*<div class='tableauPlaceholder' id='viz1535535319154' style='position: relative;width:60%;height:60%'><noscript><a href='#'><img alt='Dental Clinics in Queensland ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;data_visual_1&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='data_visual_1&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;data_visual_1&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>
-        <script type='text/javascript'>var divElement = document.getElementById('viz1535535319154'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
-        <script type='text/javascript'>var divElement = document.getElementById('viz1535533740677'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>*@
 
-    <div height="50px"></div>
-    <a href='@Url.Action("Index", "Home")' class="btn-submit" style="margin-left:43%;margin-bottom:30px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;"> Back </a>
 
+
+<div class="banner" style="background: url('../Content/img/cavities-banner.jpg') no-repeat center top;min-height:400px;">
+    <div class="bg-color" style="min-height:400px;">
+        <div class="container">
+            <div class="row">
+                <div class="banner-text text-center">
+                    <div class="text-border" style="border:0px">
+                        @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
+                    </div>
+                    <div class="intro-para text-center quote" style="margin-top:0">
+                        <p class="big-text" style="font-size:35px">Gap Between Teeth</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">A diastema is a space or gap between two teeth. It appears most often between the two upper front teeth. </p>
+                        @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
+                    </div>
+                    <a href="#courses" class="mouse-hover" style="display:none;">
+                        <div class="mouse" style="display:none;"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<section class="design-process-section" id="process-tab">
+
+    <!--/ Pricing-->
+    <!--budget section-->
+    <div>
+        <div class="header-section text-center" style="margin-top:35px;padding-top:20px">
+            <div id="fontbody" style="margin-top:0">
+                <div class="font1">Get the best</div>
+                <div class="font1">
+                    <span>of us by telling us your budget</span>
+                </div>
+            </div>
+            @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
+            <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
+            <hr class="bottom-line">
+        </div>
+        <div class="container1">
+            <div class="container__item">
+                <form class="form1">
+                    <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 200)" style="margin-top:28px;" />
+                    <button type="button" id="submitButton"
+                            class="btn btn--primary btn--inside uppercase" style="font-size:18px">
+                        Submit
+                    </button>
+                    <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
+                </form>
+            </div>
+
+            <div style="margin-top:25px;margin-left:70%">
+                <h4>Do not have a budget in mind?</h4>
+                <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="ClinicsMap" style="padding-right:0;width:100%">
+        <div class="design-process-content" style="padding:0;width:100%">
+            <div class="container" style="width:100%;margin-right:5px;">
+                <h2>Queensland Dental Clinics</h2>
+                <p style="font-size:18px"> In your case of dental treatment, usually would be treated as priority group and arranged in priority category waiting list.</p>
+                <p style="margin-bottom:20px;font-size:18px">Please select the region you are in to find your nearby dental clinics' contact details.</p>
+
+                <div style="display: inline-block;width:45%;left: 0;">
+
+                    <div class="row">
+                        <div class="col-md-11" width="100%">
+                            <div style="display:none"><a href="#" id="get_location">Get your current location</a></div>
+
+                            <!--a form for address input and result-->
+                            @*<form id="distance_form">*@
+                            <div class="form-group">
+                                <label>Please enter your current location: </label>
+                                <input type="text" id="from_places" class="form-control" placeholder="location or address(e.g.Sunshine Coast Airport)" style="width:320px" />
+                                <input id="origin" type="hidden" name="origin" required />
+                            </div>
+                            @*<input type="submit" value="See nearby clinics" class="btn btn-primary" />*@
+                            @*</form>*@
+
+                            <div id="result">
+                                <table id="myTable" style="width:100%" class="cell-border compact stripe hover order-column">
+                                    <thead>
+                                        <tr>
+                                            <th>Clinic Name</th>
+                                            <th>Distance</th>
+                                            <th>Total Cost</th>
+                                            <th>Lat<th>
+                                            <th>Long<th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablebody"></tbody>
+                                </table>
+
+
+                            </div>
+                            <a id="goBack" class="btn-submit" style="margin-top:500px;float:left;margin-left:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
+                        </div>
+                    </div>
+                </div>
+                <!--section for map-->
+                <div style="display: inline-block;position:absolute;width:55%;right: 0;">
+                    <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+                    <div id="location"></div>
+
+                    <div height="30px"></div>
+                </div>
+
+                <a id="goBack" class="btn-submit" style="margin-bottom:0;float:right;margin-right:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
