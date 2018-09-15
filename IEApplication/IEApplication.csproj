@@ -376,6 +376,8 @@
       <DependentUpon>ClinicsModel1.edmx</DependentUpon>
       <LastGenOutput>ClinicsModel1.cs</LastGenOutput>
     </Content>
+    <Content Include="resources\details_close.png" />
+    <Content Include="resources\details_open.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
