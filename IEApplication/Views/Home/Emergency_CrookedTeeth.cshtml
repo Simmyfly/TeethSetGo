@@ -1,6 +1,7 @@
 ﻿
+
 @{
-    ViewBag.Title = "Dental Issues - Cavities";
+    ViewBag.Title = "Dental Issues - Crooked Teeth";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -363,7 +364,7 @@
                 dataset.forEach(function (d) {
                     var dis_number = getDistanceFromLatLonInKm(lat1, long1, d.Lat, d.Long) * 1.22;
                     d["distance"] = dis_number.toFixed(2);
-                    var cos_number = d.distance * 0.1458 + 266.98;//initialize
+                    var cos_number = d.distance * 0.1458 + 6250;//initialize
                     d["totalCost"] = cos_number.toFixed(2);
 
                 });
@@ -512,8 +513,8 @@
                         @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
-                        <p class="big-text" style="font-size:35px">Sensitive To Cold</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">If eating ice cream and drinking cold drinks make your teeth hurt, you are probably suffering from cold-sensitive teeth.</p>
+                        <p class="big-text" style="font-size:35px">Crooked Teeth</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Some people's mouths are too small for their teeth, which crowds the teeth and causes them to shift.</p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
@@ -539,13 +540,13 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href='@Url.Action("SensitiveToCold", "Home")'>
+                        <a href='@Url.Action("CrookedTeeth", "Home")'>
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                             <p>Problem Details</p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="@Url.Action("SensitiveToCold", "Home")#feature">
+                        <a href="@Url.Action("CrookedTeeth", "Home")#feature">
                             <i class="fa fa-qrcode" aria-hidden="true"></i>
                             <p>Category Selection</p>
                         </a>
@@ -591,7 +592,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="header-section text-center">
-                                            <h2 style="margin-bottom:28px">Cost of Dental Treatment</h2>
+                                            <h2 style="margin-bottom:28px;margin-top:28px">Cost of Dental Treatment</h2>
                                             <p style="color:#4B4B4C;width:75%;margin-left:10%;margin-bottom:30px">This price may be subjective to change based on the severity of dental problem and the treatment suggested by the doctor.</p>
                                             <hr class="bottom-line">
                                             <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Too Many Teeth problem is: </strong></p>
@@ -601,8 +602,8 @@
                                             <div class="price-table">
                                                 <!-- Plan  -->
                                                 <div class="pricing-head">
-                                                    <h4>Removal of Tooth Fragment</h4>
-                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">266.98</span>
+                                                    <h4>Brace (Orthodontics)</h4>
+                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:25px">4700~8000</span>
                                                 </div>
                                                 <!-- Plean Detail -->
                                                 @*<div class="price-in mart-15">
@@ -753,6 +754,8 @@
         </div>
     </div>
 </section>
+
+
 
 
 

@@ -1,6 +1,7 @@
 ﻿
+
 @{
-    ViewBag.Title = "Dental Issues - Cavities";
+    ViewBag.Title = "Dental Issues - Gap Between Teeth";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -40,7 +41,7 @@
     var budget;
     $(document).ready(function () {
         $('#submitButton').click(function () {
-           
+
 
                 document.getElementById('content').style.display = 'none';
                 //document.getElementById('content').removeClass("tab - pane active");
@@ -49,7 +50,7 @@
                 $('#priceTab').removeClass();
                 document.getElementById('clinicsTab').style.color = '#57b87b';
                 document.getElementById('goBack').style.display = 'block';
-            
+
         });
         $(document).on('click', '#goBack', function () {
             $('#priceTab').addClass('active');
@@ -115,8 +116,8 @@
                         @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
-                        <p class="big-text" style="font-size:35px">Cavities</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Cavities are what you get from tooth decay -- damage to the tooth. Tooth decay can affect both the outer coating of a tooth and the inner layer.</p>
+                        <p class="big-text" style="font-size:35px">Gap Between Teeth</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">A diastema is a space or gap between two teeth. It appears most often between the two upper front teeth. </p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
@@ -142,13 +143,13 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href='@Url.Action("Cavities", "Home")'>
+                        <a href='@Url.Action("GapBetweenTeeth", "Home")'>
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                             <p>Problem Details</p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="@Url.Action("Cavities", "Home")#feature">
+                        <a href="@Url.Action("GapBetweenTeeth", "Home")#feature">
                             <i class="fa fa-qrcode" aria-hidden="true"></i>
                             <p>Category Selection</p>
                         </a>
@@ -197,15 +198,15 @@
                                             <h2>Cost of Dental Treatment</h2>
                                             <p style="color:#4B4B4C;">Fees in dental clinic varies in different treatment items that is related to your dental problems.</p>
                                             <hr class="bottom-line">
-                                            <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Cavities is: </strong></p>
+                                            <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Gap Between Teeth is: </strong></p>
                                         </div>
 
                                         <div class="col-md-3 col-sm-3" style="margin-left:40%">
                                             <div class="price-table">
                                                 <!-- Plan  -->
                                                 <div class="pricing-head">
-                                                    <h4>Teeth Fillings</h4>
-                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">166~321</span>
+                                                    <h4>Veneers Direct / Indirect</h4>
+                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">341~1155</span>
                                                 </div>
                                                 <!-- Plean Detail -->
                                                 @*<div class="price-in mart-15">
@@ -234,18 +235,18 @@
                                     <div class="container__item">
                                         @*<form class="form1">
                                             <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 200)" style="margin-top:28px;" />*@
-                                            <button type="button" id="submitButton"
-                                                    class="btn btn--primary btn--inside uppercase" style="font-size:16px;padding:7px;margin-left:3%;margin-top:30px">
-                                                Check for Dental Clinics within your budget >
-                                            </button>
-                                            @*<div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
-                                        </form>*@
+                                        <button type="button" id="submitButton"
+                                                class="btn btn--primary btn--inside uppercase" style="font-size:16px;padding:7px;margin-left:3%;margin-top:30px">
+                                            Check for Dental Clinics within your budget >
+                                        </button>
+                                        @*<div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
+                                            </form>*@
                                     </div>
 
                                     @*<div style="margin-top:30px;margin-left:70%">
-                                        <h4>Do not have a budget in mind?</h4>
-                                        <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
-                                    </div>*@
+                                            <h4>Do not have a budget in mind?</h4>
+                                            <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                                        </div>*@
                                 </div>
 
                             </div>
@@ -263,17 +264,17 @@
                                     <p style="margin-bottom:20px;font-size:18px">Find out your nearby public dental clinic within budget with least waiting list by entering your location below:</p>
                                     <hr class="bottom-line">
                                 </div>
-                                
+
 
                                 <!--section for map-->
                                 <div style="position:absolute;width:100%;right: 0;">
                                     <div class="form-group" style="width:100%;margin-top:20px;margin-bottom:25px">
                                         @*<label style="font-family:'Agency FB';font-size:22px">Please enter your current location: </label>
-            <input type="text" id="from_places" class="form-control" style="width:65%" placeholder="location or address(e.g.Sunshine Coast Airport)" />
-            <input id="origin" type="hidden" name="origin" required />*@
+                                            <input type="text" id="from_places" class="form-control" style="width:65%" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                            <input id="origin" type="hidden" name="origin" required />*@
                                     </div>
 
-                                    <iframe src="https://simmyfly.shinyapps.io/cavities/" style="width: 100%;
+                                    <iframe src="https://leopalmieri.shinyapps.io/gapbetweenteeth/" style="width: 100%;
         height:830px;"></iframe>
                                     <div id="location"></div>
 
@@ -294,6 +295,8 @@
         </div>
     </div>
 </section>
+
+
 
 
 

@@ -5,23 +5,76 @@
 }
 
 <script src="~/Content/js/jquery_3.3.1.js"></script>
+@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/boostrap.min.css"></script>*@
+<script src="~/Content/js/jquery.dataTables.min.js"></script>
+@*<script src="http://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>*@
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <link href="~/Content/css/problems.css" rel="stylesheet" />
 <link href="~/Content/css/font.css" rel="stylesheet" />
-<script src="~/Content/js/showQuestion.js"></script>
+@*<script src="~/Content/js/showQuestion.js"></script>*@
+<!--load css-->
+<style>
+    td.details-control {
+        background: url('../resources/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
 
+    tr.shown td.details-control {
+        background: url('../resources/details_close.png') no-repeat center center;
+    }
+
+    img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+        max-width: none !important;
+        max-height: none !important;
+    }
+
+    p {
+        font-size: 18px;
+    }
+</style>
 <!--load script for google map-->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap&libraries=places&language=en"></script>
 <script>
+    var budget;
+    $(document).ready(function () {
+        $('#submitButton').click(function () {
+            var budget_input = document.getElementById('input').value;
+            if (!budget_input) {
+                //alert("no input for budget.");
+                document.getElementById('warning').style.display = 'block';
+
+            } else {
+                budget = parseFloat(budget_input);
+                document.getElementById('warning').style.display = 'none';
+                document.getElementById('content').style.display = 'none';
+                //document.getElementById('content').removeClass("tab - pane active");
+                //document.getElementById('ClinicsMap').addClass("tab-pane active");
+                document.getElementById('ClinicsMap').style.display = 'inline';
+                $('#priceTab').removeClass();
+                document.getElementById('clinicsTab').style.color = '#57b87b';
+                document.getElementById('goBack').style.display = 'block';
+            }
+            console.log(budget);
+        });
+        $(document).on('click', '#goBack', function () {
+            $('#priceTab').addClass('active');
+            document.getElementById('content').style.display = 'inline';
+            document.getElementById('ClinicsMap').style.display = 'none';
+        });
+        $(document).on('click', '#priceTab', function () {
+            $('#priceTab').addClass('active');
+            document.getElementById('content').style.display = 'inline';
+            document.getElementById('ClinicsMap').style.display = 'none';
+        });
+
+    });
+
+
     var map;
-    function handleSetCenterButtonClicked(coords) {
-        getMyLocation();
-        map.setCenter(yourPos);
-        map.setZoom(12);
-    }
     function initMap() {
-        var addButton = document.getElementById("get_location");
-        addButton.onclick = handleSetCenterButtonClicked;
+
         //initialize the map
         var location = { lat: -27.469770, lng: 153.025131 };
         map = new google.maps.Map(document.getElementById("map"), {
@@ -43,48 +96,64 @@
         var markers = [];
         var contentString = [];
         var infowindow = [];
-        var budget;
-        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
-            for (var i = 0; i < data.length; i++) {
+        var image = '@Url.Content("~/Content/img/rsz_1marker-clipart-green.png")';
+        var icon1 = {
+            url: '@Url.Content("~/Content/img/beachflag.png")',
 
-                markers[i] = new google.maps.Marker({
+            size: new google.maps.Size(35, 54),
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(0, 32)
+        };
+        var icon_person = '@Url.Content("~/Content/img/newPerson.png")';
+
+        $.get("@Url.Action("GetAllLocation","Home")", function (data, status) {
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        markers[i] = new google.maps.Marker({
                     position: { lat: data[i].Lat, lng: data[i].Long },
                     map: map
-                });
-                contentString[i] = '<div id="content">' + '<div id="siteNotice">'
-                    + '</div>' + '<h4 id="firstHeading">'+ data[i].clinicName +'</h1>' + '<div id="bodyContent">'
-                    + '<p>is a public dental clinic. Please contact <strong>' + data[i].contact + '</strong> for appointments or enquiry.</p></div></div>';
-                infowindow[i] = new google.maps.InfoWindow({
+                        });
+
+                    contentString[i] = '<div id="content">' + '<div id="siteNotice">'
+                        + '</div>' + '<h4 id="firstHeading">' + data[i].clinicName + '</h1>' + '<div id="bodyContent">'
+                        + '<p>is a public dental clinic in ' + data[i].Region + '. <br />Please contact <strong>' + data[i].contact + '</strong><br /> for appointments or enquiry.</p></div></div>';
+                    infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                var markerValue = markers[i]
+                    var markerValue = markers[i]
                 google.maps.event.addListener(markers[i], 'mouseover', (function (markerValue, i) {
                     return function () {
-                        infowindow[i].open(map, markers[i]);
-                    }
-                })(markers[i], i));
+                    infowindow[i].open(map, markers[i]);
+                }
+            })(markers[i], i));
                 google.maps.event.addListener(markers[i], 'mouseout', (function (markerValue, i) {
-                    return function () {
-                        infowindow[i].close();
-                    }
-                })(markers[i], i));
+                return function () {
+                    infowindow[i].close();
+                }
+            })(markers[i], i));
 
             };
 
+            //console.log(data);
 
             var places;
-            var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'), restrictOptions);
+            var newData;
+            var filtered_data;
+            //var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'), restrictOptions);
 
             //google.maps.event.addListener(from_places, 'place_changed', function () {
             //    var from_place = from_places.getPlace();
             //    var from_address = from_place.formatted_address;
             //    $('#origin').val(from_address);
 
-
             //})
 
+
             google.maps.event.addListener(searchBox, 'places_changed', function () {
-                //console.log(searchBox.getPlaces());
+                console.log(searchBox.getPlaces());
                 places = searchBox.getPlaces();
 
                 //bound
@@ -94,128 +163,304 @@
                 var infowindow_initial = new google.maps.InfoWindow({
                     content: contentString_initial
                 });
-                infowindow_initial.open(map, marker_initial);
+            infowindow_initial.open(map, marker_initial);
 
                 for (i = 0; place = places[i]; i++) {
-                    //console.log(place.geometry.location);
-                    bounds.extend(place.geometry.location);
+                //console.log(place.geometry.location);
+                bounds.extend(place.geometry.location);
                     marker_initial.setPosition(place.geometry.location);
-                };
+                    marker_initial.setIcon(icon_person);
+            };
+            //console.log(places[0].geometry.location);
 
-                map.fitBounds(bounds);
-                map.setZoom(11);
+            //initialize markers
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i].icon) {
+                        markers[i].setIcon();
+                    }
+                }
 
-            })
+            map.fitBounds(bounds);
+            map.setZoom(11);
 
-            //calculate distance function
-            $('#distance_form').submit(function (e) {
-                e.preventDefault();
-                calculateDistance();
-            })
+            var latitude1 = places[0].geometry.location.lat();
+            var longitude1 = places[0].geometry.location.lng();
+            //distance_v = getDistanceFromLatLonInKm(latitude1, longitude1, data[2].Lat, data[2].Long) * 1.22;
+            //console.log(distance_v);
+            newData = addDistance(data, latitude1, longitude1);
+                filtered_data = filterByBudget(newData, budget);
+                if (filtered_data.length < 1) {
+                    document.getElementById('noClinics').style.display = 'block';
+                }
 
-            var tbody = document.getElementById('tablebody');
-            function calculateDistance() {
-                var origin = $('#origin').val();
-                var destinations = [];
-                    destinations[0] = new google.maps.LatLng(data[0].Lat, data[0].Long);
-                    var service = new google.maps.DistanceMatrixService();
+                //console.log(filtered_data);
+                var table = $('#myTable').DataTable({
+                data: filtered_data,
+                    destroy: true,
+                    empty: true,
+                    language: {
+                        searchPlaceholder: "Search by Clinic Name"
+                    },
+                    columns: [
+                        {
+                            "className": 'details-control',
+                            "orderable": false,
+                            "data": null,
+                            "defaultContent": ''
+                        },
+                        { 'data': 'clinicName' },
+                        {
+                            'data': 'distance',
+                            'render': function (dist) {
+                                return dist + "  km";
+                            },
+                            'searchable': false,
+                            'sortable': false
+                        },
+                        {
+                            'data': 'totalCost',
+                            'render': function (totalcost) {
+                                return "$" + totalcost;
+                            },
+                            'searchable': false
+                        },
+                        {
+                            'data': 'Lat',
+                            'visible': false
+                        },
+                        {
+                            'data': 'Long',
+                            'visible': false
+                        }
+                    ],
+                    'order': [[3, 'asc']]
 
-                    service.getDistanceMatrix({
-                        origins: [origin],
-                        destinations: [destinations[0]],
-                        travelMode: google.maps.TravelMode.DRIVING,
-                        unitSystem: google.maps.UnitSystem.METRIC,
-                        avoidHighways: false,
-                        avoidTolls: false
-                    }, function (response, status) {
-                        if (status != google.maps.DistanceMatrixStatus.OK) {
-                            $('#result').html(err);
-                        } else {
-                            //var origin = response.originAddresses[0];
-                            var destination = response.destinationAddresses[0];
-                            if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
-                                //$('#result').html("Better get on a plane. There are no roads between your location and the destination clinic: " + destination);
-                                var newRow = tbody.insertRow(0);
-                                newRow.innerHTML = "Better get on a plane.There are no roads between your location and the destination clinic ";
-                            } else {
-                                var distance = response.rows[0].elements[0].distance;
-                                var duration = response.rows[0].elements[0].duration;
-                                console.log(response.rows[0].elements[0].distance);
-                                //var distance_in_kilo = distance.value / 1000;
-                                var distance_in_meter = distance.value;
-                                var cost = distance.value * 2;
-                                var duration_text = duration.text;
-                                //var duration_value = duration.value;
-                                //$('#in_kilo').text(distance_in_kilo.toFixed(2));
-                                var newRow = tbody.insertRow(0);
-                                var tcell = newRow.insertCell(0);
-                                tcell.innerHTML = data[0].clinicName;
-                                var tcell2 = newRow.insertCell(1);
-                                tcell2.innerHTML = distance_in_meter;
-                                var tcell3 = newRow.insertCell(2);
-                                tcell3.innerHTML = cost;
-                                var tcell4 = newRow.insertCell(3);
-                                tcell4.innerHTML = duration_text;
-                                var tcell5 = newRow.insertCell(4);
-                                tcell5.innerHTML = destination;
-                                //$('#in_meter').text(distance_in_meter);
-                                //$('#duration_text').text(duration_text);
-                                //$('#from').text(origin);
-                                //$('#to').text(destination);
-                            }
+                });
+
+                $('#myTable tbody').on('click', 'td.details-control', function () {
+                    var tr = $(this).closest('tr');
+                    var row = table.row(tr);
+                    var c_name = tr.children(":nth-child(2)").text();
+                    var markerLat;
+                    var markerLong;
+                    var clinicN;
+                    var contactN;
+                    data.forEach(function (d) {
+                        if (d.clinicName.trim() == c_name.trim()) {
+                            markerLat = d.Lat;
+                            markerLong = d.Long;
+                            clinicN = d.clinicName;
+                            contactN = d.contact;
+                            region = d.Region;
                         }
                     });
-                //}
-                //var origin = new google.maps.LatLng(-26.74313, 153.138);
+                    if (row.child.isShown()) {
+                        row.child.hide();
+                        tr.removeClass('shown');
 
+                        markers.forEach(function (m) {
+                            var mlat = m.getPosition().lat();
+                            var mlng = m.getPosition().lng();
+                            if (mlat == markerLat || mlng == markerLong) {
+                                m.setIcon(image);
+                            }
+                        });
+
+                    } else {
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                        //console.log(tr.children(":nth-child(2)").text());
+                        markers.forEach(function (m) {
+                            var mlat = m.getPosition().lat();
+                            var mlng = m.getPosition().lng();
+                            if (mlat == markerLat || mlng == markerLong) {
+                                m.setIcon(icon1);
+                                var content_String = '<div id="content">' + '<div id="siteNotice">'
+                                    + '</div>' + '<h4 id="firstHeading">' + clinicN + '</h1>' + '<div id="bodyContent">'
+                                    + '<p>is a public dental clinic in ' + region + '. <br />Please contact <strong>' + contactN + '</strong><br /> for appointments or enquiry.</p></div></div>';
+                                var info_window = new google.maps.InfoWindow({
+                                    content: content_String
+                                });
+                                info_window.open(map, m);
+                            }
+                        });
+                    }
+                });
+
+                //$('#myTable tbody').on('click', 'tr', function () {
+                //    var c_name = $(this).children(":nth-child(2)").text();
+
+                //    var markerLat;
+                //    var markerLong;
+                //    var clinicN;
+                //    var contactN;
+                //    data.forEach(function (d) {
+                //        if (d.clinicName.trim() == c_name.trim()) {
+                //            markerLat = d.Lat;
+                //            markerLong = d.Long;
+                //            clinicN = d.clinicName;
+                //            contactN = d.contact;
+                //        }
+                //    });
+                //    //console.log(markerLat);
+                //    markers.forEach(function (m) {
+                //        var mlat = m.getPosition().lat();
+                //        var mlng = m.getPosition().lng();
+                //        if (mlat == markerLat || mlng == markerLong) {
+                //            m.setIcon(icon1);
+                //            var content_String = '<div id="content">' + '<div id="siteNotice">'
+                //                + '</div>' + '<h4 id="firstHeading">' + clinicN + '</h1>' + '<div id="bodyContent">'
+                //                + '<p>is a public dental clinic. <br />Please contact <strong>' + contactN + '</strong> for appointments or enquiry.</p></div></div>';
+                //            var info_window = new google.maps.InfoWindow({
+                //                content: content_String
+                //            });
+                //            info_window.open(map, m);
+                //        }
+                //    });
+
+                //});
+
+                function format(d) {
+                    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                        '<tr>' +
+                        '<td>Contact Number:</td>' +
+                        '<td>' + d.contact + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<td>Region:</td>' +
+                        '<td>' + d.Region + '</td>' +
+                        '</tr>' +
+                        //'<tr>' +
+                        //'<td>Extra info:</td>' +
+                        //'<td>And any further details here (images etc)...</td>' +
+                        //'</tr>' +
+                        '</table>';
+                }
+            //change the marker for filtered_data
+                changeMarker(filtered_data);
+            })
+
+            function changeMarker(dataset) {
+
+                for (var i = 0; i < markers.length; i++) {
+                    current_marker = markers[i];
+                    var lat_marker = current_marker.getPosition().lat();
+                    var lng_marker = current_marker.getPosition().lng();
+                    dataset.forEach(function (d) {
+
+                        if (parseFloat(d.Lat) == parseFloat(lat_marker) || parseFloat(d.Long) == parseFloat(lng_marker)) {
+                            current_marker.setIcon(image);
+                            console.log(current_marker);
+                        }
+                    });
+
+                };
             }
 
+
+            function addDistance(dataset, lat1, long1) {
+                //the total amount of each site
+                dataset.forEach(function (d) {
+                    var dis_number = getDistanceFromLatLonInKm(lat1, long1, d.Lat, d.Long) * 1.22;
+                    d["distance"] = dis_number.toFixed(2);
+                    var cos_number = d.distance * 0.1458 + 678;//initialize
+                    d["totalCost"] = cos_number.toFixed(2);
+
+                });
+                return dataset;
+            };
+
+            function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+                var dLon = deg2rad(lon2 - lon1);
+                var a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
+                    ;
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c; // Distance in km
+                return d;
+            }
+
+            function deg2rad(deg) {
+                return deg * (Math.PI / 180)
+            }
+
+            function filterByBudget(dataset, bud) {
+                var filtered = [];
+                dataset.forEach(function (d) {
+                    if (parseFloat(d.totalCost) <= bud) {
+                        filtered.push(d);
+                    }
+                });
+                console.log(filtered);
+                return filtered;
+            }
+            //calculate distance function
+            //$('#distance_form').submit(function (e) {
+            //    e.preventDefault();
+            //    calculateDistance();
+            //})
+
+            //function calculateDistance() {
+            //    var distance_v;
+            //    //var origin = $('#origin').val();
+            //    var results = [];
+            //    var latitude1 = places[0].geometry.location.lat();
+            //    var longitude1 = places[0].geometry.location.lng();
+            //    console.log(latitude1);
+            //    var origin = new google.maps.LatLng(latitude1, longitude1)
+            //    var destinations = [];
+            //        destinations[0] = new google.maps.LatLng(data[0].Lat, data[0].Long);
+            //        var service = new google.maps.DistanceMatrixService();
+
+            //        service.getDistanceMatrix({
+            //            origins: [origin],
+            //            destinations: [destinations[0]],
+            //            travelMode: google.maps.TravelMode.DRIVING,
+            //            unitSystem: google.maps.UnitSystem.METRIC,
+            //            avoidHighways: false,
+            //            avoidTolls: false
+            //        }, function (response, status) {
+            //            if (status != google.maps.DistanceMatrixStatus.OK) {
+            //                $('#result').html(err);
+            //            } else {
+            //                //var origin = response.originAddresses[0];
+            //                var destination = response.destinationAddresses[0];
+            //                if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+            //                    //$('#result').html("Better get on a plane. There are no roads between your location and the destination clinic: " + destination);
+            //                    var noroads = "noRoads";
+            //                    distance_v = noroads;
+            //                } else {
+            //                    var distance = response.rows[0].elements[0].distance;
+            //                    var duration = response.rows[0].elements[0].duration;
+            //                    console.log(response.rows[0].elements[0].distance);
+            //                    var distance_in_kilo = distance.value / 1000;
+            //                    var distance_in_meter = distance.value;
+            //                    var cost = distance.value * 2;
+            //                    var duration_text = duration.text;
+            //                    //var duration_value = duration.value;
+            //                    //$('#in_kilo').text(distance_in_kilo.toFixed(2));
+
+            //                    //$('#in_meter').text(distance_in_meter);
+            //                    //$('#duration_text').text(duration_text);
+            //                    //$('#from').text(origin);
+            //                    //$('#to').text(destination);
+
+            //                    distance_v = distance_in_kilo;
+
+            //                }
+            //                console.log(distance_v);
+            //            }
+
+
+            //        });
+            //    return distance_v;
+            //}
+
         })
-}
-
-window.onload = initMap;
-
-function getMyLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(displayLocation);
-    } else {
-        alert("Oops, no geolocation support");
-    }
-}
-
-function displayLocation(position) {
-    showMap(position.coords);
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    var div = document.getElementById("location");
-    div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
-}
-
-var yourPos;
-function showMap(coords) {
-    yourPos = googleLatAndLong;
-    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
-    var mapOptions = {
-        zoom: 15,
-        center: googleLatAndLong,
-    };
-    //var mapDiv = document.getElementById("map");
-    //map = new google.maps.Map(mapDiv, mapOptions);
-    map.setOptions(mapOptions);
-    addMarker(googleLatAndLong);
-}
-
-var marker;
-var markerArray = new Array();
-
-function addMarker(latLong) {
-    var markerOptions = {
-        position: latLong,
-        map: map
-    };
-    marker = new google.maps.Marker(markerOptions);
-
-    markerArray.push(marker);
 }
 </script>
 
@@ -239,11 +484,11 @@ function addMarker(latLong) {
 <!--render scripts for information tab-->
 <script>
 
-        $(document).on("click", ".naccs .menu div", function () {
-            var numberIndex = $(this).index();
+    $(document).on("click", ".naccs .menu div", function () {
+        var numberIndex = $(this).index();
 
-            if (!$(this).is("active1")) {
-                $(".naccs .menu div").removeClass("active1");
+        if (!$(this).is("active1")) {
+            $(".naccs .menu div").removeClass("active1");
             $(".naccs ul li").removeClass("active1");
 
             $(this).addClass("active1");
@@ -254,7 +499,7 @@ function addMarker(latLong) {
                 .innerHeight();
             $(".naccs ul").height(listItemHeight + "px");
         }
-});
+    });
 
 </script>
 
@@ -300,13 +545,13 @@ function addMarker(latLong) {
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="@Url.Action("GapBeweenTeeth", "Home")#feature">
+                        <a href="@Url.Action("GapBetweenTeeth", "Home")#feature">
                             <i class="fa fa-qrcode" aria-hidden="true"></i>
                             <p>Category Selection</p>
                         </a>
                     </li>
                     <li role="presentation" class="active" id="priceTab">
-                        <a href="#content" aria-controls="content" role="tab" data-toggle="tab">
+                        <a href="#content">
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <p>Price and Budget</p>
                         </a>
@@ -342,23 +587,27 @@ function addMarker(latLong) {
                     <div role="tabpanel" class="tab-pane active" id="content">
                         <div class="design-process-content" style="padding-right:3%">
                             <!--Pricing-->
-                            <section id="pricing" class="section-padding" style="width:100%;margin:0;background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);">
+                            <section id="pricing" class="section-padding" style="width:100%;margin-bottom:0;padding-top:5px;background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);">
                                 <div class="container">
                                     <div class="row">
                                         <div class="header-section text-center">
-                                            <h2>Cost of Dental Treatment</h2>
-                                            <p style="color:#4B4B4C;width:85%;margin-left:5%">Fees in dental clinic varies in different treatment items that is related to your dental problems.</p>
+                                            <h2 style="margin-bottom:28px;margin-top:28px">Cost of Dental Treatment</h2>
+                                            <p style="color:#4B4B4C;width:75%;margin-left:10%;margin-bottom:30px">This price may be subjective to change based on the severity of dental problem and the treatment suggested by the doctor.</p>
                                             <hr class="bottom-line">
-                                            <p style="margin-bottom:25px"><strong>Estimated treatment cost is: </strong></p>
+                                            <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Too Many Teeth problem is: </strong></p>
                                         </div>
-                                        <div class="col-md-3 col-sm-3" style="margin-left:35%">
+
+                                        <div class="col-md-3 col-sm-3" style="margin-left:34%">
                                             <div class="price-table">
                                                 <!-- Plan  -->
                                                 <div class="pricing-head">
-                                                    <h4>Braces</h4>
-                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">70~85</span>
+                                                    <h4>Veneers Direct / Indirect</h4>
+                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">341~1155</span>
                                                 </div>
-
+                                                <!-- Plean Detail -->
+                                                @*<div class="price-in mart-15">
+                          <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
+                        </div>*@
                                             </div>
                                         </div>
                                     </div>
@@ -367,11 +616,11 @@ function addMarker(latLong) {
                             <!--/ Pricing-->
                             <!--budget section-->
                             <div>
-                                <div class="header-section text-center" style="margin-top:35px;padding-top:20px">
+                                <div class="header-section text-center" style="padding-top:20px">
                                     <div id="fontbody" style="margin-top:0">
-                                        <div class="font1">Get the best</div>
+                                        <div class="font1">Get the best of us</div>
                                         <div class="font1">
-                                            <span>of us by telling us your budget</span>
+                                            <span>by telling us your budget</span>
                                         </div>
                                     </div>
                                     @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
@@ -381,11 +630,12 @@ function addMarker(latLong) {
                                 <div class="container1">
                                     <div class="container__item">
                                         <form class="form1">
-                                            <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 200)" style="margin-top:28px;" />
+                                            <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="margin-top:28px;" />
                                             <button type="button" id="submitButton"
                                                     class="btn btn--primary btn--inside uppercase" style="font-size:18px">
                                                 Submit
                                             </button>
+                                            <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
                                         </form>
                                     </div>
 
@@ -398,97 +648,111 @@ function addMarker(latLong) {
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="ClinicsMap" style="display:none">
-                        <div class="design-process-content" style="padding-right:0;width:1230px">
-                            <div class="container" style="width:100%;margin-right:5px;">
-                                <h2>Queensland Dental Clinics</h2>
-                                <p style="font-size:18px"> In your case of dental treatment, usually would be treated as priority group and arranged in priority category waiting list.</p>
-                                <p style="margin-bottom:20px;font-size:18px">Please select the region you are in to find your nearby dental clinics' contact details.</p>
+                    <div role="tabpanel" class="tab-pane" id="ClinicsMap" style="padding-right:0;width:100%">
+                        <div class="design-process-content" style="padding-right:0;padding-left:0;padding-top:0;width:100%;height:1030px">
+                            <div class="container" style="width:100%;margin-right:5px;margin-top:0;padding:0;">
+                                <div class="header-section text-center" style="background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);margin-top:0;padding-bottom:25px">
+                                    <h2>
+                                        <br />
+                                        Queensland Dental Clinics
+                                    </h2>
 
+                                    <p style="margin-bottom:20px;font-size:18px;">Find out your nearby public dental clinic within budget by entering your location below:</p>
+                                    <hr class="bottom-line">
+                                    <div class="form-group" style="width:100%;margin-top:25px;margin-bottom:23px;">
+                                        <label style="font-family:'Agency FB';font-size:25px">Please enter your current location: </label>
+                                        <input type="text" id="from_places" class="form-control" style="width:65%;margin-left:20%;" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                        <input id="origin" type="hidden" name="origin" required />
+                                    </div>
+                                </div>
                                 <div style="display: inline-block;width:45%;left: 0;">
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-10" width="100%" style="margin-right:2px">
                                             <div style="display:none"><a href="#" id="get_location">Get your current location</a></div>
 
                                             <!--a form for address input and result-->
-                                            <form id="distance_form">
-                                                <div class="form-group">
-                                                    <label>Please enter your current location: </label>
-                                                    <input type="text" id="from_places" class="form-control" placeholder="location or address(e.g.Sunshine Coast Airport)" style="width:320px" />
-                                                    <input id="origin" type="hidden" name="origin" required />
-                                                </div>
-                                                <input type="submit" value="See nearby clinics" class="btn btn-primary" />
-                                            </form>
+                                            @*<form id="distance_form">*@
 
-                                            <div id="result" style="display:none;">
-                                                <table style="width:100%">
+                                            @*<input type="submit" value="See nearby clinics" class="btn btn-primary" />*@
+                                            @*</form>*@
+
+                                            <div id="result" style="margin-top:25px">
+                                                <div class="text-center" style="font-size:18px;background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%)">Clinics Wihin your Budget:</div>
+                                                <table id="myTable" style="width:100%" class="cell-border compact stripe hover order-column">
                                                     <thead>
                                                         <tr>
-                                                            <th>Dental Clinics</th>
+                                                            <th></th>
+                                                            <th>Clinic Name</th>
                                                             <th>Distance</th>
-                                                            <th data-type="numeric">Estimated Cost</th>
-                                                            <th>Duration(by driving)</th>
-                                                            <th>Adress
-                                                            <th>
+                                                            <th>Total Cost</th>
+                                                            <th style="color:white">Lat</th>
+                                                            <th style="color:white">Long</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tablebody">
-                                                        <tr>
-                                                            <td>
-                                                                Clinic Name :
-                                                                <span id="clinic_name"></span>
-                                                            </td>
-                                                            <td>
-                                                                Distance In Meter :
-                                                                <span id="in_meter" class="badge badge-primary badge-pill"></span>
-                                                                @*Distance is Kilo:
-                                                                    <span id='in_kilo' class="badge badge-primary badge-pill"></span>*@
-                                                            </td>
-                                                            <td>
-                                                                <span id="from"></span>
-                                                            </td>
-                                                            <td>
-                                                                Duration:
-                                                                <span id="duration_text" class="badge badge-primary badge-pill"></span>
-                                                            </td>
-                                                            <td>
-                                                                TO:
-                                                                <span id="to" style="width：100%"></span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                    <tbody id="tablebody"></tbody>
                                                 </table>
+                                                <div class="text-center" style="display:none;font-size:23px;color:#5FCF80" id="noClinics">
+                                                    There are no public dental clinics within your budget.
 
+                                                </div>
 
                                             </div>
-                                            <a id="goBack" class="btn-submit" style="margin-top:500px;float:left;margin-left:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
                                         </div>
+
                                     </div>
+
+
                                 </div>
                                 <!--section for map-->
-                                <div style="display: inline-block;position:absolute;width:65%;right: 0;">
+                                <div style="display: inline-block;position:absolute;width:61%;right: 0;">
+
                                     <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+                                    <div style="margin-bottom:20px">
+                                        <strong style="font-size:19px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Legend:</strong>
+                                        <table style="width:100%">
+                                            <tr style="width:80%">
+                                                <td>
+                                                    <img src="~/Content/img/newPerson.png" style="width:25px;height:40px" />
+                                                    Your current location
+                                                </td>
+                                                <td>
+                                                    <img src="~/Content/img/rsz_1marker-clipart-green.png" style="width:25px;height:40px" />
+                                                    Dental Clinics within budget
+                                                </td>
+                                            </tr>
+                                            <tr style="width:80%">
+
+                                                <td>
+                                                    <img src="~/Content/img/beachflag.png" style="width:25px;height:40px" />
+                                                    Current Selected Clinic
+                                                </td>
+                                                <td>
+                                                    <img src="~/Content/img/marker_default.jpg" style="width:25px;height:40px" />
+                                                    Dental Clinics exceeding budget
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                     <div id="location"></div>
 
                                     <div height="30px"></div>
                                 </div>
 
-                                <a id="goBack" class="btn-submit" style="margin-bottom:0;float:right;margin-right:10%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
+
                             </div>
 
-
+                        </div>
+                        <div class="header-section text-center">
+                            <a id="goBack" class="btn-submit" style="display:none;margin-top:20px;margin-bottom:20px;float:left;margin-left:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
-
-
-
-
 
 
 

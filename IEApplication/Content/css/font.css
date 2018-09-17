@@ -4,7 +4,7 @@
     color: #555;
     font-family:'Agency FB';
     font-weight: 300;
-    font-size: 38px;
+    font-size: 40px;
     padding-top:25px;
     height: 120px;
     overflow: hidden;
@@ -32,7 +32,7 @@
     }
 
         .font1:last-of-type span {
-            margin-left: -390px;
+            margin-left: -380px;
             animation: slidein 7s infinite;
         }
 
@@ -84,7 +84,7 @@
     }
 
     30% {
-        width: 390px;
+        width: 380px;
     }
 
     80% {
@@ -93,7 +93,7 @@
 
     100% {
         opacity: 0;
-        width: 390px;
+        width: 380px;
     }
 }
 

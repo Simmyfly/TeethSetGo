@@ -1,17 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "Dental Issues - Gap Between Teeth";
+    ViewBag.Title = "Dental Issues - Crooked Teeth";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Content/js/jquery_3.3.1.js"></script>
 <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <link href="~/Content/css/problems.css" rel="stylesheet" />
+
 <style>
     p {
         font-size: 20px;
     }
 </style>
-
 <script>
     // script for tab steps
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -58,8 +58,8 @@
                         @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
                     </div>
                     <div class="intro-para text-center quote" style="margin-top:0">
-                        <p class="big-text" style="font-size:35px">Gap Between Teeth</p>
-                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">A diastema is a space or gap between two teeth. It appears most often between the two upper front teeth. </p>
+                        <p class="big-text" style="font-size:35px">Crooked Teeth</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Some people's mouths are too small for their teeth, which crowds the teeth and causes them to shift.</p>
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
@@ -122,9 +122,7 @@
                         <div class="design-process-content" style="padding-top:0">
                             <div class="topcontainer">
                                 <div class="left-element">
-                                    <div class="header-section text-center" style="color: #717f86;">
-                                    </div>
-                                    <!-- tab for symptoms and treatment-->
+                                    <!-- tab for symptoms-->
                                     <div class="naccs">
                                         <div class="grid">
                                             <div class="gc gc--1-of-3">
@@ -139,13 +137,13 @@
                                                     <li class="active1">
                                                         <div>
                                                             <p style="font-size:18px">
+                                                                While you can see for yourself if teeth are crooked, your dentist can determine if the problem warrants treatment. Your dentist will look for the following signs:<br />
                                                                 <br />
-                                                                <strong>Symptoms of Gap Between Teeth:</strong><br /><br />
-                                                                A diastema that occurs because of a mismatch between the teeth and the jaw does not have symptoms.<br /> <br/>
-                                                                
-                                                                However, spaces caused by a tongue thrust habit or periodontal disease will tend to expand or grow with time. <br />
-                                                                <br />
-                                                                The teeth may become loose, and discomfort or pain may occur, particularly during biting or chewing.
+                                                                <strong>Your dentist will look for the following symptoms:</strong><br /><br />
+                                                                •	Abnormal alignment of teeth<br /><br />
+                                                                •	Abnormal appearance of the face<br /><br />
+                                                                •	Difficulty or discomfort when chewing or biting<br /><br />
+                                                                •	Speech difficulties, including a lisp<br /><br /><br /><br /><br /><br />
                                                                 <br />
 
                                                             </p>
@@ -154,25 +152,30 @@
                                                     <li>
                                                         <div>
                                                             <p>
+                                                                
                                                             <br />
                                                             <strong>Possible Medical Treatment:</strong>
                                                             <p style="font-family:'Times New Roman', Times, serif">
+                                                                Most people are aware of the most basic level of teeth straightening i.e. metal braces.
+                                                                The following are some effective methods of teeth straightening that people may consider:
+                                                                <br /><br />
+                                                                <span style="color:#3F51B5;">Invisalign Clear Aligners</span><br />
+                                                                These can be described as a set of custom designed trays and are normally manufactured specifically for patients. Not nearly as effective as the orthodontic braces.<br />
                                                                 <br />
-                                                                <span style="color:#3F51B5;">Braces</span><br />
-                                                                Braces move the teeth together. Often, no matter where the diastema is, you must wear a full set of braces — on both your upper and lower teeth. <br />
-                                                                <br />
-                                                                <span style="color:#3F51B5;">Crowns,venners or bonding</span><br />
-                                                                If your lateral incisors are too small, your dentist may suggest widening them using crowns, veneers or bonding. <br />
-                                                                <br />
-                                                                <span style="color:#3F51B5;">Extensive dental repair</span><br />
-                                                                If you have a space because you are missing teeth, you might need more extensive dental repair. This might include dental implants, a bridge or a partial denture.
+                                                                <span style="color:#3F51B5;">Cosmetic Contouring</span><br />
+                                                                The position, length and shape of the bothersome teeth are altered by a dentist on a single visit. 
+                                                                <br /><br />
+                                                                <span style="color:#3F51B5;">Metal Braces</span><br /> 
+                                                                This is the most popular method of teeth straightening. Ligature elastic, arch wire, bonding material and brackets work in unison to exert effective pressure on the teeth and this is normally in a specific direction.
                                                             </p>
                                                             </p>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div>
-                                                            
+                                                            <p>
+                                                                Lemonade is any of various sweetened
+                                                            </p>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -190,31 +193,30 @@
                                                         Category Selection
                                                     </div>
                                                     <h2>Are you in any of these groups?</h2>
-
                                                     <p style="margin-left:30px;margin-right:30px">Please choose your priority groups to see the treatment price and clinics information.</p>
                                                     <hr class="bottom-line">
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Children (0-12 years)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Youth (13-17 years)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
-                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
+                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_GapBetweenTeeth", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Queensland Adult Residence (18+)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("General_CrookedTeeth", "Home")' style="margin-left:10px"><img src="~/Content/img/person.PNG" style="height:35px" /> International Adult (18+)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;margin-bottom:40px;">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_GapBetweenTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_CrookedTeeth", "Home")'><img src="~/Content/img/person.PNG" style="height:36px" /> Registered Client of Mental Health/ Disability Service</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -224,10 +226,12 @@
 
                                 </div>
                             </div>
-                            <!--go back button-->
-                            <div class="row">
-                                <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:35px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
-                            </div>
+                            @*<div class="row">
+                                    <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:35px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
+                                </div>*@
+                        </div>
+                        <div class="header-section text-center">
+                            <a id="goBack" class="btn-submit" style="margin-top:20px;margin-bottom:20px;float:left;margin-left:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Problems</a>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="optimization">
@@ -245,7 +249,6 @@
                     <div role="tabpanel" class="tab-pane" id="reporting">
                         <div class="design-process-content">
                             <h3>Reporting</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. </p>
                         </div>
                     </div>
                 </div>

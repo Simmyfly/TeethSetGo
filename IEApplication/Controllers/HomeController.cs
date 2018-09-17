@@ -54,6 +54,11 @@ namespace IEApplication.Controllers
             var data = context.Clinics.ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Toothache()
+        {
+            ViewBag.Message = "Toothache Problem";
+            return View();
+        }
         public ActionResult General_Toothache()
         {
             ViewBag.Message = "Toothache Problem (General cases)";
@@ -125,6 +130,61 @@ namespace IEApplication.Controllers
         public ActionResult General_GapBetweenTeeth()
         {
             ViewBag.Message = "Gap Between Teeth Problem (Non-Emergency cases)";
+            return View();
+        }
+        public ActionResult ChippedTooth()
+        {
+            ViewBag.Message = "Chipped Tooth Problem";
+            return View();
+        }
+        public ActionResult Emergency_ChippedTooth()
+        {
+            ViewBag.Message = "Chipped Tooth Problem (Emergency cases)";
+            return View();
+        }
+        public ActionResult KnockedOutTooth()
+        {
+            ViewBag.Message = "Knocked Out Tooth Problem";
+            return View();
+        }
+        public ActionResult Emergency_KnockedOutTooth()
+        {
+            ViewBag.Message = "Knocked Out Tooth Problem";
+            return View();
+        }
+        public ActionResult GumProblem()
+        {
+            ViewBag.Message = "Gum Problem";
+            return View();
+        }
+        public ActionResult Emergency_GumProblem()
+        {
+            ViewBag.Message = "Gum Problem (Emergency Cases)";
+            return View();
+        }
+        public ActionResult WisdomTeethProblem()
+        {
+            ViewBag.Message = "Wisdom Teeth Problem";
+            return View();
+        }
+        public ActionResult Emergency_WisdomTeethProblem()
+        {
+            ViewBag.Message = "Wisdom Teeth Problem(Emergency Cases)";
+            return View();
+        }
+        public ActionResult CrookedTeeth()
+        {
+            ViewBag.Message = "Crooked Teeth Problem";
+            return View();
+        }
+        public ActionResult Emergency_CrookedTeeth()
+        {
+            ViewBag.Message = "Crooked Teeth Problem(Emergency Cases)";
+            return View();
+        }
+        public ActionResult General_CrookedTeeth()
+        {
+            ViewBag.Message = "Crooked Teeth Problem(General Cases)";
             return View();
         }
 

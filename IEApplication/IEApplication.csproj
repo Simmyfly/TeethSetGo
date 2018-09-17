@@ -295,6 +295,7 @@
     <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.svg" />
     <Content Include="Content\img\6402-200.png" />
     <Content Include="Content\img\BACKGROUND-unsplash.jpg" />
+    <Content Include="Content\img\beachflag.png" />
     <Content Include="Content\img\bg-banner.jpg" />
     <Content Include="Content\img\bg-banner1.jpg" />
     <Content Include="Content\img\cavities-banner.jpg" />
@@ -325,7 +326,9 @@
     <Content Include="Content\img\img_medi\slider-2.jpg" />
     <Content Include="Content\img\Knocked out tooth.png" />
     <Content Include="Content\img\Logo.png" />
+    <Content Include="Content\img\marker_default.jpg" />
     <Content Include="Content\img\mentor.jpg" />
+    <Content Include="Content\img\newPerson.png" />
     <Content Include="Content\img\person.PNG" />
     <Content Include="Content\img\rsz_1marker-clipart-green.png" />
     <Content Include="Content\img\Sensitivetocold.png" />
@@ -498,6 +501,19 @@
     <Content Include="Views\Home\General_TooManyTeeth.cshtml" />
     <Content Include="Views\Home\GapBetweenTeeth.cshtml" />
     <Content Include="Views\Home\Emergency_GapBetweenTeeth.cshtml" />
+    <Content Include="Views\Home\Toothache.cshtml" />
+    <Content Include="Views\Home\ChippedTooth.cshtml" />
+    <Content Include="Views\Home\Emergency_ChippedTooth.cshtml" />
+    <Content Include="Views\Home\KnockedOutTooth.cshtml" />
+    <Content Include="Views\Home\Emergency_KnockedOutTooth.cshtml" />
+    <Content Include="Views\Home\GumProblem.cshtml" />
+    <Content Include="Views\Home\Emergency_GumProblem.cshtml" />
+    <Content Include="Views\Home\WisdomTeethProblem.cshtml" />
+    <Content Include="Views\Home\Emergency_WisdomTeethProblem.cshtml" />
+    <Content Include="Views\Home\General_GapBetweenTeeth.cshtml" />
+    <Content Include="Views\Home\CrookedTeeth.cshtml" />
+    <Content Include="Views\Home\Emergency_CrookedTeeth.cshtml" />
+    <Content Include="Views\Home\General_CrookedTeeth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
