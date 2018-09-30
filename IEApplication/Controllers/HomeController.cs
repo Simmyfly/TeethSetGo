@@ -30,6 +30,27 @@ namespace IEApplication.Controllers
             return View();
         }
 
+        public ActionResult Prevention()
+        {
+            ViewBag.Message = "Prevention";
+
+            return View();
+        }
+
+        public ActionResult Quiz()
+        {
+            ViewBag.Message = "Prevention - Quiz for dental knowledge";
+
+            return View();
+        }
+
+        public ActionResult Hotels()
+        {
+            ViewBag.Message = "Hotels nearby hospitals";
+
+            return View();
+        }
+
         public ActionResult EmergencyPage()
         {
             ViewBag.Message = "Map showing nearest dental clinics.";

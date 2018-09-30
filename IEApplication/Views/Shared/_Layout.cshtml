@@ -17,7 +17,7 @@
 </head>
 <body>
     <!--Navigation bar-->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:white;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -34,7 +34,8 @@
                     <li style="font-size:20px">@Html.ActionLink("Home", "Index", "Home", null, new { @style = "font-size:18px;" })</li>
                     @*<li><a href="#organisations">Insurance</a></li>*@
                     <li style="font-size:20px"><a href="@Url.Action("Index", "Home")#courses" style = "font-size:18px;" >Dental Issues</a></li>
-                    @*<li><a href="#pricing">Pricing</a></li>
+                    <li style="font-size:20px"><a href="@Url.Action("Hotels", "Home")" style="font-size:18px;">Accomodation</a></li>                
+    @*
                     <li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
                     <li class="btn-trial"><a href="#footer">Free Trail</a></li>*@
                 </ul>

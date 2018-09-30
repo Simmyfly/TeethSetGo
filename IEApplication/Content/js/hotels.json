@@ -1,0 +1,842 @@
+[
+  {
+    "Clinic1": "KAWANA DENTAL CLINIC",
+    "Postcode": "QLD 4575",
+    "Hotel": "Kawana Waters Hotel",
+    "Address": "136 Pt Cartwright Drive",
+    "Price": 100,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "KAWANA DENTAL CLINIC",
+    "Postcode": "QLD 4575",
+    "Hotel": "Direct Hotels - Breeze",
+    "Address": "1 Hibbertia St, Mountain Creek",
+    "Price": 160,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "KAWANA DENTAL CLINIC",
+    "Postcode": "QLD 4575",
+    "Hotel": "Oceanic Drive 99",
+    "Address": "99 Oceanic Drive",
+    "Price": 280,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CALOUNDRA DENTAL CLINIC",
+    "Postcode": "QLD 4551",
+    "Hotel": "Caloundra Motel",
+    "Address": "32 Bowman Road",
+    "Price": 99,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CALOUNDRA DENTAL CLINIC",
+    "Postcode": "QLD 4551",
+    "Hotel": "Anchorage Motor Inn",
+    "Address": "18 Bowman Road",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CALOUNDRA DENTAL CLINIC",
+    "Postcode": "QLD 4551",
+    "Hotel": "Golden Beach Motor Inn",
+    "Address": "Golden Beach, 3 Baldwin St, Caloundra",
+    "Price": 99,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GYMPIE DENTAL CLINIC",
+    "Postcode": "QLD 4570",
+    "Hotel": "Lagoon Pocket Bed & Breakfast",
+    "Address": "57 Lagoon Pocket Road, Lagoon Pocket",
+    "Price": 155,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GYMPIE DENTAL CLINIC",
+    "Postcode": "QLD 4570",
+    "Hotel": "Great Eastern Motor Inn Gympie",
+    "Address": "27-29 Geordie Road",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GYMPIE DENTAL CLINIC",
+    "Postcode": "QLD 4570",
+    "Hotel": "Fox Glenn Motor Inn",
+    "Address": "30 Nicholls Road",
+    "Price": 99,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NAMBOUR DENTAL CLINIC",
+    "Postcode": "QLD 4560",
+    "Hotel": "Hospital Grove Apartments",
+    "Address": "29 Hospital Road",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NAMBOUR DENTAL CLINIC",
+    "Postcode": "QLD 4560",
+    "Hotel": "Hotel Beach House Nambour",
+    "Address": "35 Currie Street",
+    "Price": 85,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NAMBOUR DENTAL CLINIC",
+    "Postcode": "QLD 4560",
+    "Hotel": "Nambour Central Motel",
+    "Address": "26 Coronation Ave Nambour",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NOOSA DENTAL CLINIC",
+    "Postcode": "QLD 4567",
+    "Hotel": "Chez Noosa Resort Motel",
+    "Address": "263 Edwards Street",
+    "Price": 110,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NOOSA DENTAL CLINIC",
+    "Postcode": "QLD 4567",
+    "Hotel": "Noosa Flashpackers",
+    "Address": "102 Pacific Avenue",
+    "Price": 40,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "NOOSA DENTAL CLINIC",
+    "Postcode": "QLD 4567",
+    "Hotel": "Sunshine Vista",
+    "Address": "45 Duke Street",
+    "Price": 159,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "REDCLIFFE DENTAL CLINIC",
+    "Postcode": "QLD 4020",
+    "Hotel": "Johnstone's on Oxley Bed & Breakfast",
+    "Address": "585 Oxley Avenue, Scarborough",
+    "Price": 95,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "REDCLIFFE DENTAL CLINIC",
+    "Postcode": "QLD 4020",
+    "Hotel": "Ainslie Manor Bed and Breakfast",
+    "Address": "42 Steven Street",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "REDCLIFFE DENTAL CLINIC",
+    "Postcode": "QLD 4020",
+    "Hotel": "Proximity Waterfront Apartments",
+    "Address": "185 Redcliffe Parade",
+    "Price": 160,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CABOOLTURE DENTAL CLINIC",
+    "Postcode": "QLD 4510",
+    "Hotel": "Best Western Caboolture Central Motor Inn",
+    "Address": "11 Lower King Street",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CABOOLTURE DENTAL CLINIC",
+    "Postcode": "QLD 4510",
+    "Hotel": "Best Western Caboolture Gateway Motel",
+    "Address": "64 Lower King Street",
+    "Price": 130,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CABOOLTURE DENTAL CLINIC",
+    "Postcode": "QLD 4510",
+    "Hotel": "Caboolture Riverlakes Boutique Motel",
+    "Address": "14 Morayfield Road",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PALM BEACH DENTAL CLINIC",
+    "Postcode": "QLD 4221",
+    "Hotel": "Bay of Palms",
+    "Address": "12 Coolgardie Street, Elanora",
+    "Price": 72,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PALM BEACH DENTAL CLINIC",
+    "Postcode": "QLD 4221",
+    "Hotel": "Palm Beach Hotel",
+    "Address": "1118 Gold Coast Highway",
+    "Price": 76,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PALM BEACH DENTAL CLINIC",
+    "Postcode": "QLD 4221",
+    "Hotel": "Beach Palms Holiday Apartments",
+    "Address": "1111 Gold Coast Highway, Palm Beach",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROBINA DENTAL CLINIC",
+    "Postcode": "QLD 4226",
+    "Hotel": "Paradisio Bed & Breakfast",
+    "Address": "3 Trimaran Pl, Clear Island Waters",
+    "Price": 110,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROBINA DENTAL CLINIC",
+    "Postcode": "QLD 4226",
+    "Hotel": "Cottage on the Lake",
+    "Address": "13 Tourangeau Crescent",
+    "Price": 68,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROBINA DENTAL CLINIC",
+    "Postcode": "QLD 4226",
+    "Hotel": "The Village B&B",
+    "Address": "65 Railway Street",
+    "Price": 143,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BOWEN DENTAL CLINIC",
+    "Postcode": "QLD 4805",
+    "Hotel": "Elliot River Retreat",
+    "Address": "344 Wally Sproule Road, Guthalungra",
+    "Price": 130,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BOWEN DENTAL CLINIC",
+    "Postcode": "QLD 4805",
+    "Hotel": "Ocean View Motel Bowen",
+    "Address": "18317 Bruce Highway, Gordon Beach",
+    "Price": 99,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BOWEN DENTAL CLINIC",
+    "Postcode": "QLD 4805",
+    "Hotel": "Castle Motor Lodge",
+    "Address": "6 Don Street",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "MT ISA DENTAL CLINIC",
+    "Postcode": "QLD 4825",
+    "Hotel": "no hotels nearby",
+    "Address": "",
+    "Price": "",
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INGHAM DENTAL CLINIC",
+    "Postcode": "QLD 4850",
+    "Hotel": "Herbert Valley Motel",
+    "Address": "37 Townsville Road",
+    "Price": 103,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INGHAM DENTAL CLINIC",
+    "Postcode": "QLD 4850",
+    "Hotel": "Tropixx Motel & Restaurant",
+    "Address": "45 Cooper Street",
+    "Price": 112,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INGHAM DENTAL CLINIC",
+    "Postcode": "QLD 4850",
+    "Hotel": "Villa Veron BnB",
+    "Address": "34 Townsville Road",
+    "Price": 90,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CLONCURRY DENTAL",
+    "Postcode": "QLD 4824",
+    "Hotel": "no hotels nearby",
+    "Address": "",
+    "Price": "",
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CHARTERS TOWERS DENTAL CL",
+    "Postcode": "QLD 4820",
+    "Hotel": "Charters Towers Tourist Park",
+    "Address": "37 Mt Leyshon Road",
+    "Price": 99,
+    "Clinic2": "MAREEBA DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "CHARTERS TOWERS DENTAL CL",
+    "Postcode": "QLD 4820",
+    "Hotel": "Country Road Motel",
+    "Address": "6 Mt Leyshon Road",
+    "Price": 120,
+    "Clinic2": "MAREEBA DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "CHARTERS TOWERS DENTAL CL",
+    "Postcode": "QLD 4820",
+    "Hotel": "Charters Towers Motel",
+    "Address": "95 Hackett Terrace",
+    "Price": 99,
+    "Clinic2": "MAREEBA DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "MOSSMAN DENTAL CLINIC",
+    "Postcode": "QLD 4873",
+    "Hotel": "Daintree Village Bed and Breakfast",
+    "Address": "8 Stewart Creek Road",
+    "Price": 160,
+    "Clinic2": "SMITHFIELD DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "MOSSMAN DENTAL CLINIC",
+    "Postcode": "QLD 4873",
+    "Hotel": "Red Mill House in Daintree",
+    "Address": "11 Stewart Street",
+    "Price": 180,
+    "Clinic2": "SMITHFIELD DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "MOSSMAN DENTAL CLINIC",
+    "Postcode": "QLD 4873",
+    "Hotel": "Daintree Village Hideaway",
+    "Address": "17 Stewart Street",
+    "Price": 205,
+    "Clinic2": "SMITHFIELD DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "MOSSMAN DENTAL CLINIC",
+    "Postcode": "QLD 4873",
+    "Hotel": "Daintree Valley Haven",
+    "Address": "766 Stewart Creek Road",
+    "Price": 185,
+    "Clinic2": "SMITHFIELD DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "ATHERTON DENTAL CLINIC",
+    "Postcode": "QLD 4883",
+    "Hotel": "BIG4 Atherton Woodlands Tourist Park",
+    "Address": "141 Herberton Road",
+    "Price": 130,
+    "Clinic2": "TULLY DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "ATHERTON DENTAL CLINIC",
+    "Postcode": "QLD 4883",
+    "Hotel": "Atherton Hallorans Leisure Park Resort",
+    "Address": "152 Robert Street",
+    "Price": 115,
+    "Clinic2": "TULLY DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "ATHERTON DENTAL CLINIC",
+    "Postcode": "QLD 4883",
+    "Hotel": "Atherton Hotel",
+    "Address": "90 Main Street",
+    "Price": 106,
+    "Clinic2": "TULLY DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "INNISFAIL DENTAL CLINIC",
+    "Postcode": "QLD 4860",
+    "Hotel": "Babinda Quarters",
+    "Address": "30 Knowles Street",
+    "Price": 45,
+    "Clinic2": "EDMONTON DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "CAIRNS NTH DENTAL CLINIC",
+    "Postcode": "QLD 4810",
+    "Hotel": "Oaks M On Palmer",
+    "Address": "81 Palmer Street",
+    "Price": 119,
+    "Clinic2": "TOWNSVILLE DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "CAIRNS NTH DENTAL CLINIC",
+    "Postcode": "QLD 4810",
+    "Hotel": "Allure Hotel & Apartments",
+    "Address": "68 McIlwraith Street",
+    "Price": 101,
+    "Clinic2": "TOWNSVILLE DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "CAIRNS NTH DENTAL CLINIC",
+    "Postcode": "QLD 4810",
+    "Hotel": "Park Regis Anchorage",
+    "Address": "51 Palmer Street",
+    "Price": 103,
+    "Clinic2": "TOWNSVILLE DENTAL CLINIC"
+  },
+  {
+    "Clinic1": "ROCKHAMPTON DENTAL CLINIC",
+    "Postcode": "QLD 4701",
+    "Hotel": "True Blue Motor Inn",
+    "Address": "1012 Yaamba Road",
+    "Price": 116,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROCKHAMPTON DENTAL CLINIC",
+    "Postcode": "QLD 4701",
+    "Hotel": "Casa Nostra Motel",
+    "Address": "1016 Yaamba Road",
+    "Price": 149,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROCKHAMPTON DENTAL CLINIC",
+    "Postcode": "QLD 4701",
+    "Hotel": "Korte's Resort",
+    "Address": "984 Yaamba Rd",
+    "Price": 136,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GLADSTONE DENTAL CLINIC BRANCH 1",
+    "Postcode": "QLD 4870",
+    "Hotel": "Cairns Coconut Holiday Resort",
+    "Address": "23-51 Anderson Road",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GLADSTONE DENTAL CLINIC BRANCH 1",
+    "Postcode": "QLD 4870",
+    "Hotel": "Whiterock Leisure Park",
+    "Address": "Skull Rd, White Rock",
+    "Price": 45,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GLADSTONE DENTAL CLINIC BRANCH 1",
+    "Postcode": "QLD 4870",
+    "Hotel": "Cairns New Chalon",
+    "Address": "702 Bruce Highway, Woree",
+    "Price": 71,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GLADSTONE DENTAL CLINIC BRANCH 2",
+    "Postcode": "QLD 4680",
+    "Hotel": "Beach n Reef Motel",
+    "Address": "55-59 Wyndham Avenue",
+    "Price": 95,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BILOELA DENTAL CLINIC",
+    "Postcode": "QLD 4715",
+    "Hotel": "Biloela Countryman Motel",
+    "Address": "75-83 Burnett Highway",
+    "Price": 110,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BILOELA DENTAL CLINIC",
+    "Postcode": "QLD 4715",
+    "Hotel": "Apollo Motel Biloela",
+    "Address": "36 gladstone road",
+    "Price": 122,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BILOELA DENTAL CLINIC",
+    "Postcode": "QLD 4715",
+    "Hotel": "Biloela Centre Motel",
+    "Address": "52-54 Grevillea Street",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "MUNDUBBERA DENTAL CLINIC",
+    "Postcode": "QLD 4626",
+    "Hotel": "no hotels nearby",
+    "Address": "",
+    "Price": "",
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "GATTON DENTAL CLINIC",
+    "Postcode": "QLD 4343",
+    "Hotel": "Fordsdale Farmstay",
+    "Address": "171 Wagners Rd",
+    "Price": 182,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "WARWICK DENTAL CLINIC",
+    "Postcode": "QLD 4370",
+    "Hotel": "Pitstop Lodge Guesthouse B&B",
+    "Address": "53 Canning Street",
+    "Price": 100,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "WARWICK DENTAL CLINIC",
+    "Postcode": "QLD 4370",
+    "Hotel": "Abbey of the Roses",
+    "Address": "8 Locke St",
+    "Price": 198,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "WARWICK DENTAL CLINIC",
+    "Postcode": "QLD 4370",
+    "Hotel": "Golden Harvest Motel",
+    "Address": "71-73 Wood St",
+    "Price": 95,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DALBY DENTAL CLINIC",
+    "Postcode": "QLD 4405",
+    "Hotel": "Motel Myall",
+    "Address": "79-81 Drayton Street",
+    "Price": 120,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DALBY DENTAL CLINIC",
+    "Postcode": "QLD 4405",
+    "Hotel": "Kobbers Motor Inn",
+    "Address": "37a Nicholson Street",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DALBY DENTAL CLINIC",
+    "Postcode": "QLD 4405",
+    "Hotel": "Bunya Vista Jacaranda Way",
+    "Address": "56 Bunya Street",
+    "Price": 175,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CHARLEVILLE DENTAL CLINIC",
+    "Postcode": "QLD 4470",
+    "Hotel": "Charleville Waltzing Matilda Motor Inn",
+    "Address": "125 Alfred Street",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CUNNAMULLA DENTAL CLINIC",
+    "Postcode": "QLD 4490",
+    "Hotel": "Warrego Hotel Motel Cunnamulla",
+    "Address": "9 Louise Street",
+    "Price": 130,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CUNNAMULLA DENTAL CLINIC",
+    "Postcode": "QLD 4490",
+    "Hotel": "Billabong Hotel",
+    "Address": "5 Murray St, Cunnamulla",
+    "Price": 101,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "CUNNAMULLA DENTAL CLINIC",
+    "Postcode": "QLD 4490",
+    "Hotel": "Club Boutique Hotel Cunnamulla",
+    "Address": "15 Louise & Cnr Stockyard Streets",
+    "Price": 110,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ROMA HOSPITAL DENTAL CLIN",
+    "Postcode": "QLD 4455",
+    "Hotel": "Pick A Box Motel",
+    "Address": "74 Albert Street",
+    "Price": 140,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ESK DENTAL CLINIC",
+    "Postcode": "QLD 4312",
+    "Hotel": "Weltevreden Domes Retreat",
+    "Address": "161 Glen Esk South Road",
+    "Price": 185,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ESK DENTAL CLINIC",
+    "Postcode": "QLD 4312",
+    "Hotel": "Exchange Hotel Toogoolawah",
+    "Address": "11 Cressbrook Street",
+    "Price": 35,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BOONAH DENTAL CLINIC",
+    "Postcode": "QLD 4310",
+    "Hotel": "Spring Creek Mountain Cafe & Cottages",
+    "Address": "1503 Spring Creek Road",
+    "Price": 230,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "BOONAH DENTAL CLINIC",
+    "Postcode": "QLD 4310",
+    "Hotel": "Killarney View Cabins and Caravan Park",
+    "Address": "55 O'Maras Road",
+    "Price": 135,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "LAIDLEY DENTAL CLINIC",
+    "Postcode": "QLD 4341",
+    "Hotel": "Spicers Hidden Vale",
+    "Address": "617 Mount Mort Road",
+    "Price": 329,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "COLLINGWOOD PARK DENTAL C",
+    "Postcode": "QLD 4301",
+    "Hotel": "B&B Home in the Country",
+    "Address": "10 Phillip Crescent",
+    "Price": 40,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "COLLINGWOOD PARK DENTAL C",
+    "Postcode": "QLD 4301",
+    "Hotel": "Springfield Lakes Hotel",
+    "Address": "7/1 Springfield Blvd",
+    "Price": 195,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "COLLINGWOOD PARK DENTAL C",
+    "Postcode": "QLD 4301",
+    "Hotel": "Ipswich Country Motel",
+    "Address": "250 Southstation Rd",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "IPSWICH DENTAL CLINIC",
+    "Postcode": "QLD 4305",
+    "Hotel": "Ipswich Country Motel",
+    "Address": "250 Southstation Rd",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "IPSWICH DENTAL CLINIC",
+    "Postcode": "QLD 4305",
+    "Hotel": "Ipswich City Motel",
+    "Address": "86 Warwick Road",
+    "Price": 95,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "IPSWICH DENTAL CLINIC",
+    "Postcode": "QLD 4305",
+    "Hotel": "Quest Ipswich Serviced Apartments",
+    "Address": "57-63 Warwick Road",
+    "Price": 155,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "STAFFORD DENTAL CLINIC",
+    "Postcode": "QLD 4053",
+    "Hotel": "Everton Park Hotel",
+    "Address": "101 Flockton Street, Everton Park",
+    "Price": 130,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "STAFFORD DENTAL CLINIC",
+    "Postcode": "QLD 4053",
+    "Hotel": "Brook Hotel",
+    "Address": "167 Osbourne Road",
+    "Price": 105,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "STAFFORD DENTAL CLINIC",
+    "Postcode": "QLD 4053",
+    "Hotel": "Chermside West House",
+    "Address": "30 Pacific Street, Chermside West",
+    "Price": 128,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INDOOROOPILLY DENTAL",
+    "Postcode": "QLD 4068",
+    "Hotel": "Forest Lodge Apartments",
+    "Address": "140 Central Avenue",
+    "Price": 113,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INDOOROOPILLY DENTAL",
+    "Postcode": "QLD 4068",
+    "Hotel": "Benson Court Motel",
+    "Address": "61 Benson Street",
+    "Price": 129,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INDOOROOPILLY DENTAL",
+    "Postcode": "QLD 4068",
+    "Hotel": "Jephson Hotel & Apartments",
+    "Address": "63 Jephson St, Toowong",
+    "Price": 152,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PINE RIVERS DENTAL CLINIC",
+    "Postcode": "QLD 4500",
+    "Hotel": "Bald Hills Motel",
+    "Address": "1969 Gympie Road",
+    "Price": 105,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PINE RIVERS DENTAL CLINIC",
+    "Postcode": "QLD 4500",
+    "Hotel": "Kallangur Motel",
+    "Address": "1517 Anzac Ave Kallangur",
+    "Price": 118,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "PINE RIVERS DENTAL CLINIC",
+    "Postcode": "QLD 4500",
+    "Hotel": "Aspley Carsel Motor Inn",
+    "Address": "1549 Gympie Road",
+    "Price": 140,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "SANDGATE DENTAL CLINIC",
+    "Postcode": "QLD 4017",
+    "Hotel": "Colonial Village",
+    "Address": "351 Beams Road",
+    "Price": 113,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "SANDGATE DENTAL CLINIC",
+    "Postcode": "QLD 4017",
+    "Hotel": "Beachhouse Bed and Breakfast",
+    "Address": "20 Thompson Crescent",
+    "Price": 110,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "SANDGATE DENTAL CLINIC",
+    "Postcode": "QLD 4017",
+    "Hotel": "Waltzing Matilda Motel",
+    "Address": "109 Margate Parade",
+    "Price": 95,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "MT MORGAN DENTAL CLINIC",
+    "Postcode": "QLD 4714",
+    "Hotel": "LillyPilly Resort Apartments",
+    "Address": "58 LillyPilly Ave",
+    "Price": 180,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DIRRANBANDI DENTAL CLINIC",
+    "Postcode": "QLD 4486",
+    "Hotel": "Jacaranda Country Motel",
+    "Address": "78-80 Grey Street",
+    "Price": 140,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DIRRANBANDI DENTAL CLINIC",
+    "Postcode": "QLD 4486",
+    "Hotel": "Merino Motor Inn",
+    "Address": "78 Victoria St",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "DIRRANBANDI DENTAL CLINIC",
+    "Postcode": "QLD 4486",
+    "Hotel": "Riverland Motor Inn",
+    "Address": "72 Victoria Street",
+    "Price": 155,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INJUNE DENTAL CLINIC",
+    "Postcode": "QLD 4454",
+    "Hotel": "Injune Motel",
+    "Address": "60 Hutton Street",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "INJUNE DENTAL CLINIC",
+    "Postcode": "QLD 4454",
+    "Hotel": "Best Western Injune Motor Inn",
+    "Address": "12-16 Hutton Street",
+    "Price": 132,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "MUNGINDI DENTAL CLINIC",
+    "Postcode": "QLD 2406",
+    "Hotel": "no hotels nearby",
+    "Address": "",
+    "Price": "",
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ST GEORGE DENTAL CLINIC",
+    "Postcode": "QLD 4487",
+    "Hotel": "Merino Motor Inn",
+    "Address": "78 Victoria St",
+    "Price": 125,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ST GEORGE DENTAL CLINIC",
+    "Postcode": "QLD 4487",
+    "Hotel": "Riverland Motor Inn",
+    "Address": "72 Victoria Street",
+    "Price": 155,
+    "Clinic2": ""
+  },
+  {
+    "Clinic1": "ST GEORGE DENTAL CLINIC",
+    "Postcode": "QLD 4487",
+    "Hotel": "Pelican Rest Tourist Park",
+    "Address": "12022 Carnarvon Highway",
+    "Price": 115,
+    "Clinic2": ""
+  }
+]

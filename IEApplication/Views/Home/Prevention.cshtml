@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Prevention";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
+<link href="~/Content/css/problems.css" rel="stylesheet" />
+<link href="~/Content/css/font.css" rel="stylesheet" />
+
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+<script>
+    var budget;
+    $(document).ready(function () {
+        $('#toInfo').click(function () {
+
+
+            document.getElementById('choice').style.display = 'none';
+            document.getElementById('Info').style.display = 'inline';
+
+        });
+        
+
+    });
+
+
+</script>
+
+<div class="banner" style="background: url('../Content/img/hotel_banner.jpg') no-repeat center top;min-height:375px">
+    <div class="bg-color" style="min-height:375px;opacity:0.87;">
+        <div class="container">
+            <div class="row">
+                <div class="banner-text text-center">
+                    <div class="text-border" style="border:0px;height:0;margin-top:112px">
+                        @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
+                    </div>
+                    <div class="intro-para text-center quote" style="margin-top:0">
+                        <p class="big-text" style="font-size:36px">Dental Problem Prevention</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:19px;">To prevent having dental issues, regular care are essential to improve the condition of your teeth and gums and useful in preventing any serious dental problem happening from start.</p>
+                        @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
+                    </div>
+                    <a href="#courses" class="mouse-hover" style="display:none;">
+                        <div class="mouse" style="display:none;"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="width:75%;margin-top:60px;margin-bottom:100px">
+    <div class="row" id="choice" style="padding-left:13%;padding-right:5%">
+        <div class="col-md-6 col-sm-6 padleft-right">
+            <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
+                @*<p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Infographics for Oral Health Tips</p>*@
+            </div>
+            <figure class="imghvr-fold-up" style="padding-left:0px;padding-right:0px">
+                <img src="~/Content/img/photo-advice.jpg" class="img-responsive" style="height:250px;width:360px">
+                <h3 style="margin:0px;font-family: Open Sans, sans-serif;font-weight: 500;background-color:white;width:100%;padding-top:22px;padding-bottom:15px">Infographics of Oral Health Tips</h3>
+                <figcaption>
+                    <h3>Infographics of Oral Health Tips</h3>
+                    <p style="font-size:18px">Avoiding having dental issues by following some simple tips and advices for regular daily dental care.</p>
+                </figcaption>
+                <a href='#Info' id="toInfo"></a>
+            </figure>
+        </div>
+        <div class="col-md-6 col-sm-6 padleft-right">
+            <div class="pm-staff-profile-details text-center" style="margin-bottom:0px;padding-bottom:5px;">
+                @*<p class="pm-staff-profile-name" style="margin-bottom:0px;padding-bottom:5px;font-size:18px;">Infographics for Oral Health Tips</p>*@
+            </div>
+            <figure class="imghvr-fold-up" style="padding-left:0px;padding-right:0px">
+                <img src="~/Content/img/quiz.jpg" class="img-responsive" style="height:250px;width:360px">
+                <h3 style="margin:0px;font-family: Open Sans, sans-serif;font-weight: 500;background-color:white;width:100%;padding-top:22px;padding-bottom:15px;padding-left:15%">Dental Health Quizzes</h3>
+                <figcaption>
+                    <h3>Dental health Quizs</h3>
+                    <p>Test your dental knowledge (for different age group) to find out whether you are holding misconcepts in regular dental care</p>
+                </figcaption>
+                <a href='@Url.Action("Quiz", "Home")'></a>
+            </figure>
+        </div>
+
+
+    </div>
+    <div id="Info" style="display:none">
+        <img src="~/Content/img/Infographic.png" style="width:90%;margin-left:3%" />
+        <div class="header-section text-center" style="margin-top:45px">
+            <button type="button" id="toQuiz" onclick="location.href='@Url.Action("Quiz", "Home")'"
+                    class="btn btn--primary btn--inside uppercase" style="font-size:18px;font-weight:500">
+                Take a quiz to test your knowledge >
+            </button>
+        </div>
+    </div>
+</div>
