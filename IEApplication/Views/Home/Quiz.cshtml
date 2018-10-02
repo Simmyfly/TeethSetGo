@@ -3,12 +3,167 @@
     ViewBag.Title = "Quiz for dental knowledge";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+<link href="~/Content/css/quiz.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        $('#home').click(function () {
+            document.getElementById('quizzes').style.display = 'inline';
+            $('#home1').addClass('active');
+            document.getElementById('sensitive').style.display = 'none';
+            $('#sensi1').removeClass('active');
+            document.getElementById('kids').style.display = 'none';
+            $('#kidTab1').removeClass('active');
+            document.getElementById('adults40').style.display = 'none';
+            $('#adultsTab1').removeClass('active');
+            document.getElementById('adults50').style.display = 'none';
+            $('#50Tab1').removeClass('active');
+            document.getElementById('adults60').style.display = 'none';
+            $('#60Tab1').removeClass('active');
+        });
+        $('#sensi').click(function () {
+            document.getElementById('sensitive').style.display = 'inline';
+            $('#sensi1').addClass('active');
+            document.getElementById('quizzes').style.display = 'none';
+            $('#home1').removeClass('active');
+            document.getElementById('kids').style.display = 'none';
+            $('#kidTab1').removeClass('active');
+            document.getElementById('adults40').style.display = 'none';
+            $('#adultsTab1').removeClass('active');
+            document.getElementById('adults50').style.display = 'none';
+            $('#50Tab1').removeClass('active');
+            document.getElementById('adults60').style.display = 'none';
+            $('#60Tab1').removeClass('active');
+        });
+
+        $('#kidTab').click(function () {
+            document.getElementById('kids').style.display = 'inline';
+            $('#kidTab1').addClass('active');
+            document.getElementById('quizzes').style.display = 'none';
+            $('#home1').removeClass('active');
+            document.getElementById('sensitive').style.display = 'none';
+            $('#sensi1').removeClass('active');
+            document.getElementById('adults40').style.display = 'none';
+            $('#adultsTab1').removeClass('active');
+            document.getElementById('adults50').style.display = 'none';
+            $('#50Tab1').removeClass('active');
+            document.getElementById('adults60').style.display = 'none';
+            $('#60Tab1').removeClass('active');
+        });
+
+        $('#adultsTab').click(function () {
+            document.getElementById('adults40').style.display = 'inline';
+            $('#adultsTab1').addClass('active');
+            document.getElementById('quizzes').style.display = 'none';
+            $('#home1').removeClass('active');
+
+            document.getElementById('sensitive').style.display = 'none';
+            $('#sensi1').removeClass('active');
+
+            document.getElementById('kids').style.display = 'none';
+            $('#kidTab1').removeClass('active');
+
+            document.getElementById('adults50').style.display = 'none';
+            $('#50Tab1').removeClass('active');
+
+            document.getElementById('adults60').style.display = 'none';
+            $('#60Tab1').removeClass('active');
+
+        });
+
+        $('#50Tab').click(function () {
+            document.getElementById('adults50').style.display = 'inline';
+            $('#50Tab1').addClass('active');
+            document.getElementById('quizzes').style.display = 'none';
+            $('#home1').removeClass('active');
+
+            document.getElementById('sensitive').style.display = 'none';
+            $('#sensi1').removeClass('active');
+
+            document.getElementById('kids').style.display = 'none';
+            $('#kidTab1').removeClass('active');
+
+            document.getElementById('adults40').style.display = 'none';
+            $('#adultsTab1').removeClass('active');
+
+            document.getElementById('adults60').style.display = 'none';
+            $('#60Tab1').removeClass('active');
+        });
+
+        $('#60Tab').click(function () {
+            document.getElementById('adults60').style.display = 'inline';
+            $('#60Tab1').addClass('active');
+            document.getElementById('quizzes').style.display = 'none';
+            $('#home1').removeClass('active');
+
+            document.getElementById('sensitive').style.display = 'none';
+            $('#sensi1').removeClass('active');
+
+            document.getElementById('kids').style.display = 'none';
+            $('#kidTab1').removeClass('active');
+
+            document.getElementById('adults40').style.display = 'none';
+            $('#adultsTab1').removeClass('active');
+
+            document.getElementById('adults50').style.display = 'none';
+            $('#50Tab1').removeClass('active');
+        });
+
+    });
+
+
+</script>
+
 
 <h2>Start a quiz for testing your dental knowledge!</h2>
-
-<div class="container">
+<aside class="sidebar">
+    <nav class="nav1">
+        <ul>
+            <li class="active" id="home1"><a href="#" id="home">Quizzes Home</a></li>
+            <li id="kidTab1"><a href="#" id="kidTab">Kids oral health</a></li>
+            <li id="adultsTab1"><a href="#" id="adultsTab">Adults under 40</a></li>
+            <li id="50Tab1"><a href="#" id="50Tab">Adults(40 - 60) </a></li>
+            <li id="60Tab1"><a href="#" id="60Tab">Adults over 60 </a></li>
+            <li id="sensi1"><a href="#" id="sensi">Quiz for Sensitive Teeth</a></li>
+        </ul>
+    </nav>
+</aside>
+<div id="quizzes" style="margin-right:0;height:500px;">
+    <div class="text-center" style="margin-top:260px;margin-bottom:200px">
+        <p style="font-size:23px;width:47%;margin-left:29%">
+            Welcome! <br />
+            <br />
+            There might be misconceptions about oral health knowledge that you probably had or still have at one point or another.<br/>
+            <br/>
+            Here are some quiz for fun facts and tips about your oral health.<br />
+            <br />
+            <img src="~/Content/img/2000px-Purple_arrow.png" style="width:38px;height:38px" />  Start by choosing one of the categories in the Quiz Menu.
+        </p>
+        </div>
+</div>
+<div id="sensitive" style="margin-right:10%;margin-left:25%;width:55%;display:none;">
 
     <!--quiz for sensitive teeth-->
-    <iframe name='proprofs' id='proprofs' width='70%' height='650' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=mji5mtu2oayp8r&id=2291319&ew=530'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=mji5mtu2oayp8r' target='_blank' title='Test your knowledge about tooth sensitivity by ProProfs'>Test your knowledge about tooth sensitivity by ProProfs</a></div>
+    <iframe name='proprofs' id='proprofs' width='60%' height='980' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=mji5mtu2oayp8r&id=2291319&ew=530'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=mji5mtu2oayp8r' target='_blank' title='Test your knowledge about tooth sensitivity by ProProfs'>Test your knowledge about tooth sensitivity by ProProfs</a></div>
     <!--end quiz for sensitive teeth-->
+</div>
+
+<div id="kids" style="margin-right:10%;margin-left:25%;width:55%;display:none;">
+    <!--quiz for kid-->
+    <iframe name='proprofs' id='proprofs' width='60%' height='980' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=quiz-teen-dental-healthem&id=2292158&ew=630'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=quiz-teen-dental-healthem' target='_blank' title='Quiz: Dental Health for Kid by ProProfs'>Quiz: Dental Health for Kid by ProProfs</a></div>    <!--end quiz for sensitive teeth-->
+</div>
+
+<div id="adults40" style="margin-right:10%;margin-left:25%;width:55%;display:none;">
+    <!--quiz for under 40-->
+    <iframe name='proprofs' id='proprofs' width='60%' height='980' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-under-407a&id=2292226&ew=630'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-under-407a' target='_blank' title='ProProfs - Quiz: Dental Health of Adults Under 40'>ProProfs - Quiz: Dental Health of Adults Under 40</a></div>
+</div>
+
+<div id="adults50" style="margin-right:10%;margin-left:25%;width:55%;display:none;">
+    <!--quiz for 40-60-->
+    <iframe name='proprofs' id='proprofs' width='60%' height='980' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-40-60ja&id=2292268&ew=630'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-40-60ja' target='_blank' title='ProProfs Quiz- Quiz: Dental Health of Adults (40 - 60)'>ProProfs Quiz- Quiz: Dental Health of Adults (40 - 60)</a></div>
+</div>
+
+<div id="adults60" style="margin-right:10%;margin-left:25%;width:55%;display:none;">
+    <!--quiz for 40-60-->
+    <iframe name='proprofs' id='proprofs' width='60%' height='980' frameborder=0 marginwidth=0 marginheight=0 src='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-over-60cc&id=2292414&ew=630'></iframe><div style='font-size:10px; font-family:Arial, Helvetica, sans-serif; color:#000;text-align:left;'><a href='https://www.proprofs.com/quiz-school/story.php?title=quiz-dental-health-of-adults-over-60cc' target='_blank' title='ProProfs Quiz- Quiz: Dental Health of Adults Over 60'>ProProfs Quiz- Quiz: Dental Health of Adults Over 60</a></div>
 </div>

@@ -54,6 +54,7 @@
                 $('#priceTab').removeClass();
                 document.getElementById('clinicsTab').style.color = '#57b87b';
                 document.getElementById('goBack').style.display = 'block';
+                document.getElementById('toHotel').style.display = 'inline-block';
             }
             console.log(budget);
         });
@@ -153,6 +154,8 @@
 
             google.maps.event.addListener(searchBox, 'places_changed', function () {
                 console.log(searchBox.getPlaces());
+                document.getElementById('map').style.display = 'block';
+
                 places = searchBox.getPlaces();
 
                 //bound
@@ -597,7 +600,7 @@
                                             <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Cavities is: </strong></p>
                                         </div>
 
-                                        <div class="col-md-3 col-sm-3" style="margin-left:40%">
+                                        <div class="col-md-3 col-sm-3" style="margin-left:36%">
                                             <div class="price-table">
                                                 <!-- Plan  -->
                                                 <div class="pricing-head">
@@ -618,9 +621,9 @@
                             <div>
                                 <div class="header-section text-center" style="margin-top:35px;padding-top:20px">
                                     <div id="fontbody" style="margin-top:0">
-                                        <div class="font1">Get the best</div>
+                                        <div class="font1">&ensp; Get the best of us</div>
                                         <div class="font1">
-                                            <span>of us by telling us your budget</span>
+                                            <span>by telling us your budget  &ensp; &ensp; </span>
                                         </div>
                                     </div>
                                     @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
@@ -657,7 +660,10 @@
                                         Queensland Dental Clinics
                                     </h2>
 
-                                    <p style="margin-bottom:20px;font-size:18px;">Find out your nearby public dental clinic within budget by entering your location below:</p>
+                                    <p style="margin-bottom:20px;font-size:18px;">
+                                        Find out your nearby public dental clinic within budget by entering your location below.<br />
+                                        'Total Cost' includes the dental treatment cost shown above and the transport cost by driving. <br />locate the clinic in the map by clicking on the "+" button.
+                                    </p>
                                     <hr class="bottom-line">
                                     <div class="form-group" style="width:100%;margin-top:25px;margin-bottom:23px;">
                                         <label style="font-family:'Agency FB';font-size:25px">Please enter your current location: </label>
@@ -707,7 +713,7 @@
                                 <!--section for map-->
                                 <div style="display: inline-block;position:absolute;width:61%;right: 0;">
                                     
-                                    <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+                                    <div id="map" style="display:none;height:600px;width:100%;margin:0;padding:0"></div>
                                     <div style="margin-bottom:20px">
                                         <strong style="font-size:19px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Legend:</strong>
                                         <table style="width:100%">
@@ -744,7 +750,8 @@
 
                         </div>
                         <div class="header-section text-center">
-                            <a id="goBack" class="btn-submit" style="display:none;margin-top:20px;margin-bottom:20px;float:left;margin-left:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
+                            <a id="goBack" class="btn-submit" style="display:none;margin-top:30px;margin-bottom:20px;float:left;margin-left:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Previous </a>
+                            <a id="toHotel" class="btn-submit" style="display:none;margin-top:35px;margin-bottom:20px;float:right;margin-right:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href='@Url.Action("Hotels", "Home")'> Find Accomodations nearby clinics </a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Statistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/js/jquery_3.3.1.js"></script>
+<link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
+
+
+
+<!--Header Banner-->
+<div class="banner" style="background: url('../Content/img/stats.jpg') no-repeat center top;min-height:380px;">
+    <div class="bg-color" style="min-height:380px;opacity:0.90;">
+        <div class="container">
+            <div class="row">
+                <div class="banner-text text-center">
+                    <div class="text-border" style="border:0px;height:0;margin-top:112px">
+                        @*<h2 class="text-dec" style="padding-top:0px;padding-bottom:0px"><img src="~/Content/img/Logo.png" width="138px" height="70px" style="margin-top:0px;"></h2>*@
+                    </div>
+                    <div class="intro-para text-center quote" style="margin-top:0">
+                        <p class="big-text" style="font-size:36px">Statistics</p>
+                        <p class="small-text" style="width:60%;margin-left:20%;font-size:19px;">Some charts and graphs to show different statistics and trends in dental services across Australia</p>
+                        @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
+                    </div>
+                    <a href="#courses" class="mouse-hover" style="display:none;">
+                        <div class="mouse" style="display:none;"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Info-graphic-->
+<section id="organisations" class="section-padding" style="height:410px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="orga-stru">
+                        <h3 style="font-size:22px">83.09%</h3>
+                        <p>patients on waiting list</p>
+                        <i class="fa fa-male"></i>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="display:none;">
+                    <div class="orga-stru">
+                        <h3>83.09%</h3>
+                        <p>Treated</p>
+                        <i class="fa fa-male"></i>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="orga-stru">
+                        <h3 style="font-size:22px">16.91%</h3>
+                        <p>patients treated</p>
+                        <i class="fa fa-male"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-info">
+                    <hgroup>
+                        <h3 class="det-txt"> Is Queensland still suffering from long dental waiting times?</h3>
+                        <h4 class="sm-txt">(Updated from June 2018)</h4>
+                    </hgroup>
+                    <p class="det-p"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container" style="width:85%;margin-left:20%">
+    @*<h2>Queensland Dental Service</h2>*@
+    <div class="modal-header" style="background-color:#312450;width:70%;height:60px;margin-top:60px;"><h2 style="margin-top:0px;color:white;">Queensland - Long Waiting Time</h2></div>
+    <div class="text-center" style="margin-right:15%;margin-bottom:40px;width:70%">
+        <h3 style="margin-top:50px"> The average dental waiting time across different states of Australia </h3>
+        <p style="font-size:18px"> More than 20 months of dental Waiting time in Queensland.</p>
+    </div>
+    <div class='tableauPlaceholder' id='viz1538289748965' style='position: relative;height:600px'>
+        <noscript>
+            <a href='https:&#47;&#47;public.tableau.com&#47;profile&#47;ugandar&#47;s1'>
+                <img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sh&#47;sheet1_95&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+            </a>
+        </noscript><object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='sheet1_95&#47;Dashboard1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sh&#47;sheet1_95&#47;Dashboard1&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='filter' value='publish=yes' />
+        </object>
+    </div>
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1538289748965');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.minWidth = '420px';
+        vizElement.style.maxWidth = '1050px';
+        vizElement.style.width = '100%';
+        vizElement.style.minHeight = '587px';
+        vizElement.style.maxHeight = '887px';
+        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+    <!--Graph 2-->
+    <div class="modal-header" style="background-color:#312450;width:57%;height:60px;position:absolute;margin-top:-320px"><h2 style="margin-top:0px;color:white;">Queensland - Less Dental Practioners</h2></div>
+    <div class="text-center" style="margin-right:10%;margin-bottom:40px;width:70%;margin-top:-200px">
+        <h3>The distribution of different dental practitioners across different regions in Australia </h3>
+        <p style="font-size:18px"> Comparisons of number of practitioners in different specialties between regions. </p>
+    </div>
+    <div class='tableauPlaceholder' id='viz1538290338950' style='position: relative'><noscript><a href='#'><img alt='Dashboard 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;part3_76&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='part3_76&#47;Dashboard3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;part3_76&#47;Dashboard3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>
+
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1538290338950');
+        var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.minWidth = '420px'; vizElement.style.maxWidth = '1050px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '587px'; vizElement.style.maxHeight = '687px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+
+    <!--Graph 3-->
+    <div class="modal-header" style="background-color:#312450;width:57%;height:60px;position:absolute;margin-top:-280px"><h2 style="margin-top:0px;color:white;">Australia - Increasing expenditure</h2></div>
+    <div class="text-center" style="margin-right:10%;margin-bottom:40px;width:70%;margin-top:-180px">
+        <h3>Dental health expenditure distribution per person. </h3>
+        <p style="font-size:18px">Government's spending and individual expenditure on dental in Australia.</p>
+    </div>
+    <div class='tableauPlaceholder' id='viz1538348638570' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sh&#47;sheet8_5&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='sheet8_5&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sh&#47;sheet8_5&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>
+    <script type='text/javascript'>var divElement = document.getElementById('viz1538348638570'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.minWidth = '420px'; vizElement.style.maxWidth = '1150px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '587px'; vizElement.style.maxHeight = '987px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+</div>

@@ -278,6 +278,7 @@
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\quiz.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\problems.css" />
     <Content Include="Content\css\StyleSheet1.css" />
@@ -294,6 +295,7 @@
     <Content Include="Content\fonts\fonts_medi\ionicons\css\ionicons.css" />
     <Content Include="Content\fonts\fonts_medi\ionicons\css\ionicons.min.css" />
     <Content Include="Content\fonts\fonts_medi\ionicons\fonts\ionicons.svg" />
+    <Content Include="Content\img\2000px-Purple_arrow.png" />
     <Content Include="Content\img\6402-200.png" />
     <Content Include="Content\img\BACKGROUND-unsplash.jpg" />
     <Content Include="Content\img\beachflag.png" />
@@ -337,6 +339,8 @@
     <Content Include="Content\img\quiz.jpg" />
     <Content Include="Content\img\rsz_1marker-clipart-green.png" />
     <Content Include="Content\img\Sensitivetocold.png" />
+    <Content Include="Content\img\stats.jpg" />
+    <Content Include="Content\img\sugar.jpg" />
     <Content Include="Content\img\too many teeth.jpg" />
     <Content Include="Content\img\Toothache.png" />
     <Content Include="Content\img\Toothache2.png" />
@@ -524,6 +528,7 @@
     <Content Include="Views\Home\Quiz.cshtml" />
     <Content Include="Views\Home\Hotels.cshtml" />
     <Content Include="Views\Home\Prevention.cshtml" />
+    <Content Include="Views\Home\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

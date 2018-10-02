@@ -51,6 +51,13 @@ namespace IEApplication.Controllers
             return View();
         }
 
+        public ActionResult Statistics()
+        {
+            ViewBag.Message = "Statistic about Queensland Dental Service";
+
+            return View();
+        }
+
         public ActionResult EmergencyPage()
         {
             ViewBag.Message = "Map showing nearest dental clinics.";
