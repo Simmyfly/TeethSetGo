@@ -269,7 +269,9 @@
     <Content Include="Content\css\css_medi\jquery.timepicker.css" />
     <Content Include="Content\css\css_medi\owl.carousel.min.css" />
     <Content Include="Content\css\css_medi\style.css" />
+    <Content Include="Content\css\css_medi\style1.css" />
     <Content Include="Content\css\css_medi\_custom.css" />
+    <Content Include="Content\css\FixedHeader.css" />
     <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\font-awesome_medi.min.css" />
@@ -335,8 +337,10 @@
     <Content Include="Content\img\mentor.jpg" />
     <Content Include="Content\img\newPerson.png" />
     <Content Include="Content\img\person.PNG" />
+    <Content Include="Content\img\pexels-photo1.jpeg" />
     <Content Include="Content\img\photo-advice.jpg" />
     <Content Include="Content\img\quiz.jpg" />
+    <Content Include="Content\img\rawpixel-teeth.jpg" />
     <Content Include="Content\img\rsz_1marker-clipart-green.png" />
     <Content Include="Content\img\Sensitivetocold.png" />
     <Content Include="Content\img\stats.jpg" />
