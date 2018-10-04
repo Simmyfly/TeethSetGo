@@ -271,6 +271,7 @@
     <Content Include="Content\css\css_medi\style.css" />
     <Content Include="Content\css\css_medi\style1.css" />
     <Content Include="Content\css\css_medi\_custom.css" />
+    <Content Include="Content\css\dropdown.css" />
     <Content Include="Content\css\FixedHeader.css" />
     <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -316,7 +317,7 @@
     <Content Include="Content\img\course08.jpg" />
     <Content Include="Content\img\Crookedteeth.png" />
     <Content Include="Content\img\Gapbetweenteeth.png" />
-    <Content Include="Content\img\Gumproblems.png" />
+    <Content Include="Content\img\GumProblem.jpg" />
     <Content Include="Content\img\hotel_banner.jpg" />
     <Content Include="Content\img\img_medi\bg_1.jpg" />
     <Content Include="Content\img\img_medi\doctor_1.jpg" />
@@ -342,6 +343,8 @@
     <Content Include="Content\img\quiz.jpg" />
     <Content Include="Content\img\rawpixel-teeth.jpg" />
     <Content Include="Content\img\rsz_1marker-clipart-green.png" />
+    <Content Include="Content\img\scrolldown.png" />
+    <Content Include="Content\img\scrolldown1.png" />
     <Content Include="Content\img\Sensitivetocold.png" />
     <Content Include="Content\img\stats.jpg" />
     <Content Include="Content\img\sugar.jpg" />

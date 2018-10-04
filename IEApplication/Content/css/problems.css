@@ -129,14 +129,14 @@ th {
 
 .left-element {
     display: inline-block;
-    width:88%;
+    width:90%;
     left: 0;
 }
 
 .right-element {
     display: inline-block;
     position:absolute;
-    width:41%;
+    width:38%;
     right: 0;
 }
 

@@ -2,13 +2,6 @@
     $('#submit').click(function () {
         $.getJSON("../Content/js/hotels.json", function (data) {
             var table = document.getElementById("hotelTable");
-            //var old_tbody = table.getElementsByTagName("tbody");
-            //console.log(old_tbody);
-
-            //var new_tbody = document.createElement('tbody');
-            ////populate_with_new_rows(new_tbody);
-            //console.log(old_tbody.parentNode);
-            //table.replaceChild(new_tbody, old_tbody);
 
             for (var i = table.rows.length - 1; i > 0; i--) {
                 table.deleteRow(i);

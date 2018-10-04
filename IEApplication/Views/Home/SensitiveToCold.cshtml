@@ -77,7 +77,7 @@
             <div class="col-xs-12" width="100%">
                 <!-- design process steps-->
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:790px" role="tablist">
+                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:790px;" role="tablist">
                     <li role="presentation">
                         <a href='@Url.Action("Index", "Home")#courses'>
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -96,7 +96,7 @@
                             <p>Category Selection</p>
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="display:none">
                         <a>
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <p>Price and Budget</p>
@@ -105,7 +105,7 @@
                     <li role="presentation">
                         <a>
                             <i class="fa fa-send-o" aria-hidden="true"></i>
-                            <p>Find Dental Clinics</p>
+                            <p>Price and Clinics</p>
                         </a>
                     </li>
                 </ul>
@@ -119,7 +119,7 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane active" id="strategy">
-                        <div class="design-process-content" style="padding-top:0">
+                        <div class="design-process-content" style="padding-top:0;padding-left:0px">
                             <div class="topcontainer">
                                 <div class="left-element">
                                     <!-- tab for symptoms-->
@@ -141,7 +141,9 @@
                                                                 Cold-sensitive teeth occur when the nerves within the tooth are exposed due to receding gums or worn tooth enamel. <br />
                                                                 <br />
                                                                 <strong style="font-size:20px">Symptoms of teeth sensitivity include:</strong><br />
+                                                                <br/>
                                                                 •	Discomfort after eating or drinking something cold. This pain can occur suddenly, and the degree of sensitivity can be mild, moderate, or severe.<br />
+                                                                <br />
                                                                 •	Have pain while brushing or flossing<br /><br /><br /><br />
 
                                                             </p>
@@ -161,11 +163,13 @@
                                                             <strong style="font-size:20px">Possible Medical Treatment:</strong>
                                                             <p style="font-family:'Times New Roman', Times, serif">
                                                                 <br />
-                                                                <span style="color:#3F51B5;">Fluoride gel</span><br />
+                                                                •	<span style="color:#3F51B5;">Fluoride gel</span><br />
                                                                 An in-office technique which strengthens tooth enamel and reduces the transmission of sensations.<br />
-                                                                <span style="color:#3F51B5;">A crown, inlay or bonding</span>
+                                                                <br/>
+                                                                •	<span style="color:#3F51B5;">A crown, inlay or bonding</span>
                                                                 may be used to correct a flaw or decay that results in sensitivity. <br />
-                                                                <span style="color:#3F51B5;">Surgical gum graft</span>
+                                                                <br />
+                                                                •	<span style="color:#3F51B5;">Surgical gum graft</span>
                                                                 If gum tissue has been lost from the root, this will protect the root and reduce sensitivity.<br />
                                                             </p>
 
@@ -189,11 +193,15 @@
                                         <div>
                                             <div class="row" style="margin-bottom:10px;margin-top:10px">
                                                 <div class="header-section text-center" style="padding-top:28px;width:90%;float:right;padding-right:3px">
-                                                   <div style="font-size:22px">
-                                                    Category Selection
-                                                </div>
+                                                    <div style="font-size:22px;width:90%;margin-left:5%;">
+                                                        <span style="color:#4B4B4C">Category Selection<br /></span>
+                                                        <p style="margin-left:13px;margin-right:13px;font-size:18px;margin-top:18px">
+                                                            Please select your category to know if you belong to a priority group or not.
+                                                            <br />Priority groups will be given immediate attention in waiting list.<br />
+                                                        </p>
+
+                                                    </div>
                                                     <h2>Are you in any of these groups?</h2>
-                                                    <p style="margin-left:30px;margin-right:30px">Please choose your priority groups to see the treatment price and clinics information.</p>
                                                     <hr class="bottom-line">
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
@@ -204,8 +212,8 @@
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%">
                                                     <ul class="nav navbar-nav">
-                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees</a></li>
-                                                        <li class="btn-trial" style="width:90%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:40px" /> Refugees (All ages)</a></li>
+                                                        <li class="btn-trial" style="width:80%;margin-left:15px"><a href='@Url.Action("Emergency_SensitiveToCold", "Home")'><img src="~/Content/img/person.PNG" style="height:35px" /> Aboriginal (All ages)</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="row" style="margin-left:18%;margin-right:15%;">
@@ -226,9 +234,10 @@
 
                                 </div>
                             </div>
-                            <div class="row">
-                                <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:35px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
-                            </div>
+
+                        </div>
+                        <div class="header-section text-center">
+                            <a id="goBack" class="btn btn--primary btn--inside uppercase" style="margin-top:30px;margin-bottom:20px;float:left;margin-left:2%;font-weight:bolder;font-size:16px;display:block" href='@Url.Action("Index","Home")#courses'> < Previous </a>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="optimization">

@@ -39,52 +39,32 @@
 <script>
     var budget;
     var budget_input;
+    var previousValue = $("#from_places").val();
     $(document).ready(function () {
-        $('#submitButton').click(function () {
-            budget_input = document.getElementById('input').value;
-            if (!budget_input) {
-                //alert("no input for budget.");
-                document.getElementById('warning').style.display = 'block';
-
-            } else {
-                budget = parseFloat(budget_input);
-                document.getElementById('warning').style.display = 'none';
-                document.getElementById('content').style.display = 'none';
-                //document.getElementById('content').removeClass("tab - pane active");
-                //document.getElementById('ClinicsMap').addClass("tab-pane active");
-                document.getElementById('ClinicsMap').style.display = 'inline';
-                $('#priceTab').removeClass();
-                document.getElementById('clinicsTab').style.color = '#57b87b';
-                
-                document.getElementById('toHotel').style.display = 'inline-block';
-            }
-            console.log(budget);
-        });
-        var input_places = document.getElementById("from_places");
-
-        // Execute a function when the user releases a key on the keyboard
-        input_places.addEventListener("keyup", function (event) {
-            event.preventDefault();
-            if (event.keyCode === 13 && !budget_input) {
-                // Trigger the button element with a click
-                document.getElementById('warning').style.display = 'block';
+        $("#from_places").keyup(function (event) {
+            var currentValue = $(this).val();
+            if (event.keyCode === 13) {
+                //previousValue = currentValue;
+                $("#submitButton").click();
             }
         });
+        $('a[href^="#"]').on('click', function (event) {
+
+            var target = $(this.getAttribute('href'));
+
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            }
+
+        });
         
-        //$(document).on('click', '#goBack', function () {
-        //    $('#priceTab').addClass('active');
-        //    document.getElementById('content').style.display = 'inline';
-        //    document.getElementById('ClinicsMap').style.display = 'none';
-        //});
-        //$(document).on('click', '#priceTab', function () {
-        //    $('#priceTab').addClass('active');
-        //    document.getElementById('content').style.display = 'inline';
-        //    document.getElementById('ClinicsMap').style.display = 'none';
-        //});
-        
-    });
+        });
 
 
+    var placesValue;
     var map;
     function initMap() {
 
@@ -164,13 +144,47 @@
 
             //})
 
+            
+            $('#submitButton').click(function() {
+            //google.maps.event.addListener(searchBox, 'places_changed', function () 
+                budget_input = document.getElementById('input').value;
+                placesValue = document.getElementById('from_places').value;
 
-            google.maps.event.addListener(searchBox, 'places_changed', function () {
-                console.log(searchBox.getPlaces());
-                document.getElementById('map').style.display = 'block';
+                if (!budget_input || !placesValue) {
+                    //alert("no input for budget.");
+                    document.getElementById('warning').style.display = 'block';
+
+                } else {
+                    budget = parseFloat(budget_input);
+                    document.getElementById('warning').style.display = 'none';
+                    //document.getElementById('content').style.display = 'none';
+                    //document.getElementById('content').removeClass("tab - pane active");
+                    //document.getElementById('ClinicsMap').addClass("tab-pane active");
+                    document.getElementById('ClinicsMap').style.display = 'inline';
+                    //$('#priceTab').removeClass();
+                    //document.getElementById('clinicsTab').style.color = '#57b87b';
+
+                    //document.getElementById('toHotel').style.display = 'inline-block';
+                
+                console.log(budget);
+
+                //delete all existing rows in table
+                var tablelist = document.getElementById("myTable");
+                console.log(tablelist.rows.length);
+                for (var i = tablelist.rows.length - 1; i > 0; i--) {
+                    tablelist.deleteRow(i);
+                }
+                console.log(tablelist.rows.length);
 
                 places = searchBox.getPlaces();
+                  if (typeof places != 'undefined') {
+                        document.getElementById('map').style.display = 'block';
+                }
+                
 
+                places = searchBox.getPlaces();
+                    console.log(places.length);
+        
                 //bound
                 var bounds = new google.maps.LatLngBounds();
                 var i, place;
@@ -209,6 +223,7 @@
                 } else {
                     document.getElementById('noClinics').style.display = 'none';
                 }
+
 
                 //console.log(filtered_data);
                 var table = $('#myTable').DataTable({
@@ -257,7 +272,9 @@
                 $('#myTable tbody').on('click', 'td.details-control', function () {
                     var tr = $(this).closest('tr');
                     var row = table.row(tr);
+                    console.log(tr);
                     var c_name = tr.children(":nth-child(2)").text();
+                    console.log(c_name);
                     var markerLat;
                     var markerLong;
                     var clinicN;
@@ -284,6 +301,7 @@
                         });
                         
                     } else {
+                        //console.log(row.data());
                         row.child(format(row.data())).show();
                         tr.addClass('shown');
                         //console.log(tr.children(":nth-child(2)").text());
@@ -355,6 +373,7 @@
                 }
             //change the marker for filtered_data
                 changeMarker(filtered_data);
+            }
             })
 
             function changeMarker(dataset) {
@@ -367,7 +386,7 @@
 
                         if (parseFloat(d.Lat) == parseFloat(lat_marker) || parseFloat(d.Long) == parseFloat(lng_marker)) {
                             current_marker.setIcon(image);
-                            console.log(current_marker);
+                            //console.log(current_marker);
                         }
                     });
 
@@ -670,8 +689,15 @@
                         <div class="design-process-content" style="padding-right:0;padding-left:0;padding-top:0;padding-bottom:20%;width:100%;height:120%">
                             <div class="container" style="width:100%;margin-right:5px;margin-top:0;padding:0;">
                                 <div class="header-section" style="margin-top:0px;padding-top:0px">
+                                    <div class="text-center" style="margin-top:50px;margin-bottom:30px">
+                                        <h3>
+                                            You are a priority case, you will be put into the next available timeslot.<br /><br/>
+                                            Scroll down to view the price and hospitals near you.
+                                        </h3>
+                                        <a href="#hero1" id="top"><img style="height:45px;width:83px;margin-bottom:40px;margin-top:30px;" src="~/Content/img/scrolldown1.png" /></a>
+                                    </div>
                                     <div id="hero1" class="hero" style="margin-left:0;margin-top:0px;">
-                                        <div class="inner" style="padding-bottom:30px">
+                                        <div class="inner" style="padding-bottom:30px;padding-top:23px">
 
                                             <div class="left-element" style="width:47%;margin-left:15%;margin-top:45px">
                                                 <div class="header-section text-center">
@@ -684,7 +710,7 @@
                                             </div>
 
                                             <div class="right-element" style="margin-left:38%;padding-right:0px;margin-top:45px">
-                                                <div class="col-md-3 col-sm-3" style="margin-top:1%;width:70%">
+                                                <div class="col-md-3 col-sm-3" style="margin-top:3%;width:70%">
                                                     <div class="price-table" style="height:3%;box-shadow: -5px 0 5px -5px #333;border: 1px solid #ccc;width:80%">
                                                         <!-- Plan  -->
                                                         <div class="pricing-head">
@@ -700,36 +726,32 @@
                                             </div>
                                         </div>
                                 </div>
-
-                                    <div id="fontbody" style="margin-top:3%">
+                                    <div id="budgetlocation"></div>
+                                    <div id="fontbody" style="margin-top:2%">
                                         <div class="font1">&ensp; Get the best of us</div>
                                         <div class="font1">
-                                            <span>by telling us your budget  &ensp; &ensp; </span>
+                                            <span>by telling us your budget and location </span>
                                         </div>
                                     </div>
                                     @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
-                                    <p class="text-center" style="margin-top:2px">Enter your budget to check out nearby dental service within your budget</p>
-                                    <hr class="bottom-line">
+                                    <p class="text-center" style="margin-top:2px;margin-bottom:20px">Find out nearby dental services within your budget by entering your budget and location below.</p>
+                                    <a href="#hero2" id="top" style="margin-left:47%;margin-top:26px;"><img style="height:45px;width:83px;margin-bottom:55px" src="~/Content/img/scrolldown1.png" /></a>
+                                    @*<button class="btn btn--primary btn--inside uppercase" id="scroll" onclick="location.href='#hero2'">Scroll</button>*@
+                                    @*<hr class="bottom-line">*@
                                 </div>
                                 <div class="container1">
                                     <div class="container__item">
                                         <form class="form1">
-                                            <span style="font-size:23px;">$  </span>
-                                            <input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="margin-top:28px;" />
-                                            <button type="button" id="submitButton" onclick="location.href='#ClinicHeader'"
-                                                    class="btn btn--primary btn--inside uppercase" style="font-size:18px;transition: all 0.3s ease-in-out;">
-                                                Submit
-                                            </button>
-                                            <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
+                                            
                                         </form>
                                     </div>
 
-                                    <div style="margin-top:30px;margin-left:68%">
+                                    @*<div style="margin-top:30px;margin-left:68%">
                                         <h4>Do not have a budget in mind?</h4>
                                         <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
-                                    </div>
+                                    </div>*@
                                 </div>
-                                <div class="header-section text-center" id="ClinicHeader" style="margin-top:0;padding-bottom:25px">
+                                <div class="header-section text-center" id="ClinicHeader" style="margin-top:10px;padding-bottom:25px">
                                     <div class="hero" id="hero2">
                                         <div class="inner" style="padding-bottom:30px">
                                             <h2 style="padding-top:4%;color:white;font-size:28px">
@@ -737,14 +759,27 @@
                                                 Queensland Dental Clinics
                                             </h2>
 
-                                            <p style="margin-bottom:20px;font-size:18px;">
-                                                Find out your nearby public dental clinic within budget by entering your location below.<br />
-                                                'Total Cost' includes the dental treatment cost shown above and the transport cost by driving. <br />locate the clinic in the map by clicking on the "+" button.
+                                            <p style="margin-bottom:20px;font-size:18px;margin-top:15px">
+                                                'Total Cost' includes the dental treatment cost shown above and the transport cost by driving. <br />locate the clinic on the map by clicking on the "+" button.
                                             </p>
                                             <hr class="bottom-line">
-                                            <div class="form-group" style="width:100%;margin-top:25px;margin-bottom:23px;">
-                                                <label style="font-family:'Agency FB';font-size:30px;color:white;">Please enter your current location: </label>
-                                                <input type="text" id="from_places" class="form-control" style="width:65%;margin-left:20%;" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                            <div class="form-group" style="width:100%;margin-top:10px;margin-bottom:23px;">
+                                                <label style="font-family:'Agency FB';font-size:30px;color:white;display:block">Please enter your budget: </label>
+                                                <span style="font-size:23px;color:white">$  </span>
+                                                <input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="width:28%;margin-top:0px;height:45px" />
+
+
+                                                <label style="font-family:'Agency FB';font-size:30px;color:white;display:block;margin-top:10px">Your current location: </label>
+                                                <input type="text" id="from_places" class="form-control" style="width:46%;margin-left:27%;height:45px" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                                <button type="button" id="submitButton" 
+                                                        class="btn btn--primary btn--inside uppercase" style="margin-left:2%;margin-top:20px;font-size:18px;transition: all 0.3s ease-in-out;">
+                                                    Submit
+                                                </button>
+                                                <button id="reset" onClick="window.location.reload()" onclick="location.href='@Url.Action("Emergency_Cavities","Home")#budgetlocation'"
+                                                        class="btn btn--primary btn--inside uppercase" style="margin-top:20px;font-size:18px;transition: all 0.3s ease-in-out;margin-left:10px">
+                                                    Reset All
+                                                </button>
+                                                <div id="warning" style="display:none;color:lightcoral;font-size:22px;position:relative">Please enter your budget and location above before submitting.</div>
                                                 <input id="origin" type="hidden" name="origin" required />
                                             </div>
                                         </div>
@@ -830,7 +865,7 @@
                         </div>
                         <div class="header-section text-center">
                             <a id="goBack" class="btn btn--primary btn--inside uppercase" style="margin-top:30px;margin-bottom:20px;float:left;margin-left:2%;font-weight:bolder;font-size:16px;display:block" href='@Url.Action("Cavities","Home")'> < Previous </a>
-                            <a id="toHotel" class="btn-submit" style="margin-top:35px;margin-bottom:20px;float:right;margin-right:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href='@Url.Action("Hotels", "Home")'> Find Accomodations nearby clinics </a>
+                            <a id="toHotel" class="btn btn--primary btn--inside uppercase" style="margin-top:35px;margin-bottom:20px;float:right;font-weight:bolder;font-size:14px;letter-spacing:3px;padding:15px 12px 15px 12px" href='@Url.Action("Hotels", "Home")'> Find Accomodations nearby clinics </a>
                         </div>
                     </div>
                 </div>

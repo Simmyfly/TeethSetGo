@@ -13,6 +13,7 @@
 <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <link href="~/Content/css/problems.css" rel="stylesheet" />
 <link href="~/Content/css/font.css" rel="stylesheet" />
+<link href="~/Content/css/FixedHeader.css" rel="stylesheet" />
 @*<script src="~/Content/js/showQuestion.js"></script>*@
 <!--load css-->
 <style>
@@ -33,46 +34,38 @@
     p {
         font-size: 18px;
     }
-
 </style>
 <!--load script for google map-->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs7DFmUEpY4gmsmLmCIBNihn6trxxVChc&callback=initMap&libraries=places&language=en"></script>
 <script>
     var budget;
+    var budget_input;
+    var previousValue = $("#from_places").val();
     $(document).ready(function () {
-        $('#submitButton').click(function () {
-            var budget_input = document.getElementById('input').value;
-            if (!budget_input) {
-                //alert("no input for budget.");
-                document.getElementById('warning').style.display = 'block';
-
-            } else {
-                budget = parseFloat(budget_input);
-                document.getElementById('warning').style.display = 'none';
-                document.getElementById('content').style.display = 'none';
-                //document.getElementById('content').removeClass("tab - pane active");
-                //document.getElementById('ClinicsMap').addClass("tab-pane active");
-                document.getElementById('ClinicsMap').style.display = 'inline';
-                $('#priceTab').removeClass();
-                document.getElementById('clinicsTab').style.color = '#57b87b';
-                document.getElementById('goBack').style.display = 'block';
+        $("#from_places").keyup(function (event) {
+            var currentValue = $(this).val();
+            if (event.keyCode === 13) {
+                //previousValue = currentValue;
+                $("#submitButton").click();
             }
-            console.log(budget);
         });
-        $(document).on('click', '#goBack', function () {
-            $('#priceTab').addClass('active');
-            document.getElementById('content').style.display = 'inline';
-            document.getElementById('ClinicsMap').style.display = 'none';
-        });
-        $(document).on('click', '#priceTab', function () {
-            $('#priceTab').addClass('active');
-            document.getElementById('content').style.display = 'inline';
-            document.getElementById('ClinicsMap').style.display = 'none';
+        $('a[href^="#"]').on('click', function (event) {
+
+            var target = $(this.getAttribute('href'));
+
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            }
+
         });
 
-    });
+        });
 
 
+    var placesValue;
     var map;
     function initMap() {
 
@@ -153,9 +146,45 @@
             //})
 
 
-            google.maps.event.addListener(searchBox, 'places_changed', function () {
-                console.log(searchBox.getPlaces());
+            $('#submitButton').click(function() {
+            //google.maps.event.addListener(searchBox, 'places_changed', function ()
+                budget_input = document.getElementById('input').value;
+                placesValue = document.getElementById('from_places').value;
+
+                if (!budget_input || !placesValue) {
+                    //alert("no input for budget.");
+                    document.getElementById('warning').style.display = 'block';
+
+                } else {
+                    budget = parseFloat(budget_input);
+                    document.getElementById('warning').style.display = 'none';
+                    //document.getElementById('content').style.display = 'none';
+                    //document.getElementById('content').removeClass("tab - pane active");
+                    //document.getElementById('ClinicsMap').addClass("tab-pane active");
+                    document.getElementById('ClinicsMap').style.display = 'inline';
+                    //$('#priceTab').removeClass();
+                    //document.getElementById('clinicsTab').style.color = '#57b87b';
+
+                    //document.getElementById('toHotel').style.display = 'inline-block';
+
+                console.log(budget);
+
+                //delete all existing rows in table
+                var tablelist = document.getElementById("myTable");
+                console.log(tablelist.rows.length);
+                for (var i = tablelist.rows.length - 1; i > 0; i--) {
+                    tablelist.deleteRow(i);
+                }
+                console.log(tablelist.rows.length);
+
                 places = searchBox.getPlaces();
+                 if (typeof places != 'undefined') {
+                        document.getElementById('map').style.display = 'block';
+                }
+
+
+                places = searchBox.getPlaces();
+                    console.log(places.length);
 
                 //bound
                 var bounds = new google.maps.LatLngBounds();
@@ -192,10 +221,10 @@
                 filtered_data = filterByBudget(newData, budget);
                 if (filtered_data.length < 1) {
                     document.getElementById('noClinics').style.display = 'block';
+                } else {
+                    document.getElementById('noClinics').style.display = 'none';
                 }
 
-                //change color of th
-                //document.getElementsByClassName('hide').color = "black";
 
                 //console.log(filtered_data);
                 var table = $('#myTable').DataTable({
@@ -244,7 +273,9 @@
                 $('#myTable tbody').on('click', 'td.details-control', function () {
                     var tr = $(this).closest('tr');
                     var row = table.row(tr);
+                    console.log(tr);
                     var c_name = tr.children(":nth-child(2)").text();
+                    console.log(c_name);
                     var markerLat;
                     var markerLong;
                     var clinicN;
@@ -271,6 +302,7 @@
                         });
 
                     } else {
+                        //console.log(row.data());
                         row.child(format(row.data())).show();
                         tr.addClass('shown');
                         //console.log(tr.children(":nth-child(2)").text());
@@ -342,6 +374,7 @@
                 }
             //change the marker for filtered_data
                 changeMarker(filtered_data);
+            }
             })
 
             function changeMarker(dataset) {
@@ -354,7 +387,7 @@
 
                         if (parseFloat(d.Lat) == parseFloat(lat_marker) || parseFloat(d.Long) == parseFloat(lng_marker)) {
                             current_marker.setIcon(image);
-                            console.log(current_marker);
+                            //console.log(current_marker);
                         }
                     });
 
@@ -518,6 +551,7 @@
                     <div class="intro-para text-center quote" style="margin-top:0">
                         <p class="big-text" style="font-size:35px">Chipped Tooth</p>
                         <p class="small-text" style="width:60%;margin-left:20%;font-size:18px;">Teeth can chip, crack (fracture) or break. If you have a chipped tooth, you might not feel any tooth pain unless the chip is large enough to expose the nerves in the inner layer of the tooth. </p>
+
                         @*<a href="#courses" class="btn get-quote" style="font-size:21px">Select Your Dental Issu</a>*@
                     </div>
                     <a href="#courses" class="mouse-hover" style="display:none;">
@@ -530,41 +564,41 @@
 </div>
 
 <section class="design-process-section" id="process-tab">
-    <div class="container" width="85%">
-        <div class="row" width="90%">
-            <div class="col-xs-12" width="100%">
+    <div class="container" style="width:82%">
+        <div class="row" width="100%">
+            <div class="col-xs-12" style="width:100%;padding-right:0px;padding-left:0px">
                 <!-- design process steps-->
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:800px;margin-left:23%" role="tablist">
-                    <li role="presentation">
+                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:800px;margin-left:30%;margin-top:28px" role="tablist">
+                    <li role="presentation" style="width:24%">
                         <a href='@Url.Action("Index", "Home")#courses'>
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <p>Dental Problems</p>
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="width:23%">
                         <a href='@Url.Action("ChippedTooth", "Home")'>
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                             <p>Problem Details</p>
                         </a>
                     </li>
-                    @*<li role="presentation">
-                        <a href="@Url.Action("Toothache", "Home")#feature">
+                    <li role="presentation" style="display:none;">
+                        <a href="@Url.Action("ChippedTooth", "Home")#feature">
                             <i class="fa fa-qrcode" aria-hidden="true"></i>
                             <p>Category Selection</p>
                         </a>
-                    </li>*@
-                    <li role="presentation" class="active" id="priceTab">
+                    </li>
+                    <li role="presentation" id="priceTab" style="display:none">
                         <a href="#content">
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <p>Price and Budget</p>
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="active" style="width:23%">
                         <a aria-controls="ClinicsMap" id="clinicsTab">
                             @*<a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"/>*@
                             <i class="fa fa-send-o" aria-hidden="true"></i>
-                            <p>Find Dental Clinics</p>
+                            <p>Price and Clinics</p>
                         </a>
                     </li>
                 </ul>
@@ -588,85 +622,149 @@
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="content">
-                        <div class="design-process-content" style="padding-right:3%;height:1020px">
+                    <div role="tabpanel" class="tab-pane" id="content">
+                        <div class="design-process-content" style="padding-right:3%">
                             <!--Pricing-->
-                            <section id="pricing" class="section-padding" style="width:100%;margin-bottom:0;padding-bottom:28px;padding-top:10px;background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);">
+                            <section id="pricing" class="section-padding" style="width:100%;margin-bottom:0;background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="header-section text-center">
-                                            <h2>Cost of Dental Treatment</h2>
-                                            <p style="color:#4B4B4C;width:75%;margin-left:10%;margin-bottom:30px">This price may be subjective to change based on the severity of dental problem and the treatment suggested by the doctor.</p>
-                                            <hr class="bottom-line">
-                                            <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for chipped tooth problem is: </strong></p>
-                                        </div>
 
-                                        <div class="col-md-3 col-sm-3" style="margin-left:35%">
-                                            <div class="price-table">
-                                                <!-- Plan  -->
-                                                <div class="pricing-head">
-                                                    <h4>Teeth Bounding</h4>
-                                                    <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:28px">98.5~125.5</span>
-                                                </div>
-                                                <!-- Plean Detail -->
-                                                @*<div class="price-in mart-15">
-                                                      <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
-                                                    </div>*@
-                                            </div>
-                                        </div>
+
+
                                     </div>
                                 </div>
                             </section>
                             <!--/ Pricing-->
                             <!--budget section-->
                             <div>
-                                <div class="header-section text-center" style="margin-top:35px;padding-top:20px">
-                                    <div id="fontbody" style="margin-top:0">
-                                        <div class="font1">Get the best of us</div>
-                                        <div class="font1">
-                                            <span>by telling us your budget  </span>
+                                @*<div class="header-section text-center" style="margin-top:35px;padding-top:20px">
+                                        <div id="fontbody" style="margin-top:0">
+                                            <div class="font1">&ensp; Get the best of us</div>
+                                            <div class="font1">
+                                                <span>by telling us your budget  &ensp; &ensp; </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
-                                    <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
-                                    <hr class="bottom-line">
-                                </div>
-                                <div class="container1">
-                                    <div class="container__item">
-                                        <form class="form1">
-                                            <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 390)" style="margin-top:28px;" />
-                                            <button onclick="location.href='#ClinicsMap'" type="button" id="submitButton"
-                                                    class="btn btn--primary btn--inside uppercase" style="font-size:18px">
-                                                Submit
-                                            </button>
-                                            <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
-                                        </form>
-                                    </div>
 
-                                    <div style="margin-top:30px;margin-left:70%">
-                                        <h4>Do not have a budget in mind?</h4>
-                                        <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                                        <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
+                                        <hr class="bottom-line">
                                     </div>
-                                </div>
+                                    <div class="container1">
+                                        <div class="container__item">
+                                            <form class="form1">
+                                                <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="margin-top:28px;" />
+                                                <button type="button" id="submitButton"
+                                                        class="btn btn--primary btn--inside uppercase" style="font-size:18px">
+                                                    Submit
+                                                </button>
+                                                <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
+                                            </form>
+                                        </div>
+
+                                        <div style="margin-top:30px;margin-left:70%">
+                                            <h4>Do not have a budget in mind?</h4>
+                                            <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                                        </div>
+                                    </div>*@
 
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="ClinicsMap" style="padding-right:0;width:100%">
-                        <div class="design-process-content" style="padding-right:0;padding-left:0;padding-top:0;width:100%;height:1030px">
+                    <div role="tabpanel" class="tab-pane active" id="ClinicsMap" style="padding-right:0;width:100%;">
+                        <div class="design-process-content" style="padding-right:0;padding-left:0;padding-top:0;padding-bottom:20%;width:100%;height:120%">
                             <div class="container" style="width:100%;margin-right:5px;margin-top:0;padding:0;">
-                                <div class="header-section text-center" style="background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);margin-top:0;padding-bottom:25px">
-                                    <h2>
-                                        <br />
-                                        Queensland Dental Clinics
-                                    </h2>
+                                <div class="header-section" style="margin-top:0px;padding-top:0px">
+                                    <div class="text-center" style="margin-top:50px;margin-bottom:30px">
+                                        <h3>
+                                            You are a priority case, you will be put into the next available timeslot.<br /><br />
+                                            Scroll down to view the price and hospitals near you.
+                                        </h3>
+                                        <a href="#hero1" id="top"><img style="height:45px;width:83px;margin-bottom:40px;margin-top:30px;" src="~/Content/img/scrolldown1.png" /></a>
+                                    </div>
+                                    <div id="hero1" class="hero" style="margin-left:0;margin-top:0px;">
+                                        <div class="inner" style="padding-bottom:30px;padding-top:23px">
 
-                                    <p style="margin-bottom:20px;font-size:18px;">Find out your nearby public dental clinic within budget by entering your location below:</p>
-                                    <hr class="bottom-line">
-                                    <div class="form-group" style="width:100%;margin-top:25px;margin-bottom:23px;">
-                                        <label style="font-family:'Agency FB';font-size:25px">Please enter your current location: </label>
-                                        <input type="text" id="from_places" class="form-control" style="width:65%;margin-left:20%;" placeholder="location or address(e.g.Sunshine Coast Airport)" />
-                                        <input id="origin" type="hidden" name="origin" required />
+                                            <div class="left-element" style="width:47%;margin-left:15%;margin-top:45px">
+                                                <div class="header-section text-center">
+                                                    <h2 style="color:white;">Cost of Dental Treatment</h2>
+                                                    <p style="width:75%;margin-left:10%;margin-bottom:25px">This price may be subjective to change based on the severity of dental problem and the treatment suggested by the doctor.</p>
+                                                    <hr class="bottom-line">
+
+                                                    <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Chipped Tooth is: </strong></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="right-element" style="margin-left:38%;padding-right:0px;margin-top:45px">
+                                                <div class="col-md-3 col-sm-3" style="margin-top:3%;width:70%">
+                                                    <div class="price-table" style="height:3%;box-shadow: -5px 0 5px -5px #333;border: 1px solid #ccc;width:80%">
+                                                        <!-- Plan  -->
+                                                        <div class="pricing-head">
+                                                            <h4>Teeth Bounding</h4>
+                                                            <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:28px">98.5~125.5</span>
+                                                        </div>
+                                                        <!-- Plean Detail -->
+                                                        @*<div class="price-in mart-15">
+                                                              <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="budgetlocation"></div>
+                                    <div id="fontbody" style="margin-top:2%">
+                                        <div class="font1">&ensp; Get the best of us</div>
+                                        <div class="font1">
+                                            <span>by telling us your budget and location &ensp;</span>
+                                        </div>
+                                    </div>
+                                    @*<h2>GET THE BEST OF US BY TELLING US YOUR BUDGET</h2>*@
+                                    <p class="text-center" style="margin-top:2px;margin-bottom:20px">Find out nearby dental services within your budget by entering your budget and location below.</p>
+                                    <a href="#hero2" id="top" style="margin-left:47%;margin-top:26px;"><img style="height:45px;width:83px;margin-bottom:55px" src="~/Content/img/scrolldown1.png" /></a>
+                                    @*<button class="btn btn--primary btn--inside uppercase" id="scroll" onclick="location.href='#hero2'">Scroll</button>*@
+                                    @*<hr class="bottom-line">*@
+                                </div>
+                                <div class="container1">
+                                    <div class="container__item">
+                                        <form class="form1"></form>
+                                    </div>
+
+                                    @*<div style="margin-top:30px;margin-left:68%">
+                                            <h4>Do not have a budget in mind?</h4>
+                                            <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                                        </div>*@
+                                </div>
+                                <div class="header-section text-center" id="ClinicHeader" style="margin-top:10px;padding-bottom:25px">
+                                    <div class="hero" id="hero2">
+                                        <div class="inner" style="padding-bottom:30px">
+                                            <h2 style="padding-top:4%;color:white;font-size:28px">
+                                                <br />
+                                                Queensland Dental Clinics
+                                            </h2>
+
+                                            <p style="margin-bottom:20px;font-size:18px;margin-top:15px">
+                                                'Total Cost' includes the dental treatment cost shown above and the transport cost by driving. <br />locate the clinic on the map by clicking on the "+" button.
+                                            </p>
+                                            <hr class="bottom-line">
+                                            <div class="form-group" style="width:100%;margin-top:10px;margin-bottom:23px;">
+                                                <label style="font-family:'Agency FB';font-size:30px;color:white;display:block">Please enter your budget: </label>
+                                                <span style="font-size:23px;color:white">$  </span>
+                                                <input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="width:28%;margin-top:0px;height:45px" />
+
+
+                                                <label style="font-family:'Agency FB';font-size:30px;color:white;display:block;margin-top:10px">Your current location: </label>
+                                                <input type="text" id="from_places" class="form-control" style="width:46%;margin-left:27%;height:45px" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                                <button type="button" id="submitButton"
+                                                        class="btn btn--primary btn--inside uppercase" style="margin-left:2%;margin-top:20px;font-size:18px;transition: all 0.3s ease-in-out;">
+                                                    Submit
+                                                </button>
+                                                <button id="reset" onClick="window.location.reload()" onclick="location.href='@Url.Action("Emergency_ChippedTooth","Home")#budgetlocation'"
+                                                        class="btn btn--primary btn--inside uppercase" style="margin-top:20px;font-size:18px;transition: all 0.3s ease-in-out;margin-left:10px">
+                                                    Reset All
+                                                </button>
+                                                <div id="warning" style="display:none;color:lightcoral;font-size:22px;position:relative">Please enter your budget and location above before submitting.</div>
+                                                <input id="origin" type="hidden" name="origin" required />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div style="display: inline-block;width:45%;left: 0;">
@@ -681,22 +779,22 @@
                                             @*<input type="submit" value="See nearby clinics" class="btn btn-primary" />*@
                                             @*</form>*@
 
-                                            <div id="result" style="margin-top:25px">
-                                                <div class="text-center" style="font-size:18px;background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%)">Clinics Within your Budget:</div>
+                                            <div id="result" style="margin-top:0px">
+                                                <div class="text-center" style="font-size:22px;background:rgba(0,0,0,0.8);color:white;margin-bottom:10px">Clinics Wihin your Budget</div>
                                                 <table id="myTable" style="width:100%" class="cell-border compact stripe hover order-column">
                                                     <thead>
                                                         <tr>
                                                             <th></th>
-                                                            <th class="hide1">Clinic Name</th>
-                                                            <th class="hide1">Distance</th>
-                                                            <th class="hide1">Total Cost</th>
+                                                            <th>Clinic Name</th>
+                                                            <th>Distance</th>
+                                                            <th>Total Cost</th>
                                                             <th style="color:white">Lat</th>
                                                             <th style="color:white">Long</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tablebody"></tbody>
                                                 </table>
-                                                <div class="text-center" style="display:none;font-size:23px;color:#5FCF80;font-family:'Agency FB'" id="noClinics">
+                                                <div class="text-center" style="display:none;font-size:23px;color:#5FCF80" id="noClinics">
                                                     There are no public dental clinics within your budget.
 
                                                 </div>
@@ -710,29 +808,29 @@
                                 </div>
                                 <!--section for map-->
                                 <div style="display: inline-block;position:absolute;width:61%;right: 0;">
-                                    
-                                    <div id="map" style="height:600px;width:100%;margin:0;padding:0"></div>
+
+                                    <div id="map" style="display:none;height:550px;width:100%;margin:0;padding:0"></div>
                                     <div style="margin-bottom:20px">
                                         <strong style="font-size:19px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Legend:</strong>
                                         <table style="width:100%">
-                                            <tr style="width:80%">
-                                                <td>
-                                                    <img src="~/Content/img/newPerson.png" style="width:25px;height:40px" />
+                                            <tr style="width:80%;">
+                                                <td style="padding-bottom:12px">
+                                                    <img src="~/Content/img/newPerson.png" style="width:25px;height:36px" />
                                                     Your current location
                                                 </td>
-                                                <td>
-                                                    <img src="~/Content/img/rsz_1marker-clipart-green.png" style="width:25px;height:40px" />
+                                                <td style="padding-bottom:12px">
+                                                    <img src="~/Content/img/rsz_1marker-clipart-green.png" style="width:23px;height:36px" />
                                                     Dental Clinics within budget
                                                 </td>
                                             </tr>
                                             <tr style="width:80%">
 
                                                 <td>
-                                                    <img src="~/Content/img/beachflag.png" style="width:25px;height:40px" />
+                                                    <img src="~/Content/img/beachflag.png" style="width:23px;height:36px" />
                                                     Current Selected Clinic
                                                 </td>
                                                 <td>
-                                                    <img src="~/Content/img/marker_default.jpg" style="width:25px;height:40px" />
+                                                    <img src="~/Content/img/marker_default.jpg" style="width:23px;height:36px" />
                                                     Dental Clinics exceeding budget
                                                 </td>
                                             </tr>
@@ -748,7 +846,8 @@
 
                         </div>
                         <div class="header-section text-center">
-                            <a id="goBack" class="btn-submit" style="display:none;margin-top:20px;margin-bottom:20px;float:left;margin-left:2%;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="#content"> Back to Budgets</a>
+                            <a id="goBack" class="btn btn--primary btn--inside uppercase" style="margin-top:30px;margin-bottom:20px;float:left;margin-left:2%;font-weight:bolder;font-size:16px;display:block" href='@Url.Action("ChippedTooth","Home")'> < Previous </a>
+                            <a id="toHotel" class="btn btn--primary btn--inside uppercase" style="margin-top:35px;margin-bottom:20px;float:right;font-weight:bolder;font-size:14px;letter-spacing:3px;padding:15px 12px 15px 12px" href='@Url.Action("Hotels", "Home")'> Find Accomodations nearby clinics </a>
                         </div>
                     </div>
                 </div>
@@ -757,8 +856,6 @@
         </div>
     </div>
 </section>
-
-
 
 
 

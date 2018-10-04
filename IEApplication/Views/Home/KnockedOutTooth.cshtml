@@ -79,35 +79,30 @@
             <div class="col-xs-12" width="100%">
                 <!-- design process steps-->
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:790px;margin-left:23%" role="tablist">
-                    <li role="presentation">
+                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:790px;margin-left:24%" role="tablist">
+                    <li role="presentation" style="width:26%">
                         <a href='@Url.Action("Index", "Home")#courses'>
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <p>Dental Problems</p>
                         </a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation" class="active"vstyle="width:25%">
                         <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab">
                             <i class="fa fa-clipboard" aria-hidden="true"></i>
                             <p>Problem Details</p>
                         </a>
                     </li>
-                    @*<li role="presentation" class="active">
-                            <a href="#strategy" aria-controls="optimization" role="tab" data-toggle="tab">
-                                <i class="fa fa-qrcode" aria-hidden="true"></i>
-                                <p>Category Selection</p>
-                            </a>
-                        </li>*@
-                    <li role="presentation">
+                   
+                    <li role="presentation" style="display:none">
                         <a>
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <p>Price and Budget</p>
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="width:26%">
                         <a>
                             <i class="fa fa-send-o" aria-hidden="true"></i>
-                            <p>Find Dental Clinics</p>
+                            <p>Price and Clinics</p>
                         </a>
                     </li>
                 </ul>
@@ -154,7 +149,7 @@
                                                     <li>
                                                         <div>
                                                             <p>
-                                                                <strong>To Relieve Pain / Discomfort:</strong><br />
+                                                                <strong>To Relieve Pain / Discomfort:</strong><br /><br/>
                                                             <p style="font-family:'Times New Roman', Times, serif;">
                                                                 •	If the knocked out tooth is dirty, gently rinse it with milk without touching the root and follow the steps below. Do not scrub.<br />
                                                                 •	Locate the tooth and hold it by the crown (smooth white part).<br />
@@ -201,9 +196,11 @@
 
                         </div>
                         <div class="row">
-                            <a id="goBackButton" class="btn-submit" style="float:left;margin-left:3%;margin-top:15px;background-color:white;color:#5FCF80;font-weight:bolder;border: 2px solid #5fcf80;font-size:15px" href="@Url.Action("Index", "Home")#courses"> Back to Dental Problems</a>
+                            <div class="header-section text-center">
+                                <a id="goBack" class="btn btn--primary btn--inside uppercase" style="margin-top:30px;margin-bottom:20px;float:left;margin-left:2%;font-weight:bolder;font-size:16px;display:block" href='@Url.Action("Index","Home")#courses'> < Previous </a>
+                            </div>
                             <a id="submitButton" href='@Url.Action("Emergency_KnockedOutTooth", "Home")'
-                               class="btn btn--primary btn--inside uppercase" style="display:inline-block;font-size:20px;margin-top:-25%;padding:8px;margin-left:18%">
+                               class="btn btn--primary btn--inside uppercase" style="display:inline-block;font-size:20px;margin-top:-25%;padding:8px;margin-left:25%">
                                 Get the Price>
                             </a>
                         </div>
