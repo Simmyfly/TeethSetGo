@@ -32,7 +32,7 @@
     }
 
         .font1:last-of-type span {
-            margin-left: -500px;
+            margin-left: -430px;
             animation: slidein 7s infinite;
         }
 
@@ -84,7 +84,7 @@
     }
 
     30% {
-        width: 500px;
+        width: 430px;
     }
 
     80% {
@@ -93,7 +93,7 @@
 
     100% {
         opacity: 0;
-        width: 500px;
+        width: 430px;
     }
 }
 

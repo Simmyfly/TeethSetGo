@@ -20,7 +20,7 @@
                          <p style="font-size:20px;color:white;margin-top:-20px">Queensland<p>                    
                     </div>
                     <div class="intro-para text-center quote">
-                        <p class="big-text">Still Waiting For Your Dental Care?</p>
+                        <p class="big-text">Still waiting for your Dental Care?</p>
                         <p class="small-text"></p>
                         <a href="#courses" class="btn get-quote" style="font-size:21px;font-family: 'Alegreya Sans', sans-serif;letter-spacing:normal">Select Your Dental Issue</a>
                         <a href="#courses" class="mouse-hover" style="display:none;">
@@ -37,40 +37,42 @@
 <!--Dental issues-->
 <section id="courses" class="section-padding">
     <div class="container" style="width:80%">
-        <div class="row">
-            <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:800px;margin-bottom:45px;margin-left:25%" role="tablist">
-                <li role="presentation" class="active">
-                    <a>
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                        <p>Dental Problems</p>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a>
-                        <i class="fa fa-clipboard" aria-hidden="true"></i>
-                        <p>Problem Details</p>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a>
-                        <i class="fa fa-qrcode" aria-hidden="true"></i>
-                        <p>Category Selection</p>
-                    </a>
-                </li>
-                <li role="presentation" id="priceTab" style="display:none">
-                    <a>
-                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                        <p>Price and Budget</p>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a aria-controls="ClinicsMap" id="clinicsTab">
-                        @*<a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"/>*@
-                        <i class="fa fa-send-o" aria-hidden="true"></i>
-                        <p>Price and Clinics</p>
-                    </a>
-                </li>
-            </ul>
+        <div class="row" style="margin-top:-20px">
+            <p style="font-size:17px;text-align:center">Follow the steps below to find a hospital near you within a budget:</p>
+            <div style="text-align:center">
+                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:800px;margin-bottom:45px;" role="tablist">
+                    <li role="presentation" class="active">
+                        <a>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <p>Dental Problems</p>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a>
+                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <p>Problem Details</p>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a>
+                            <i class="fa fa-qrcode" aria-hidden="true"></i>
+                            <p>Category Selection</p>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a>
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <p>Price and Budget</p>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a>
+                            <i class="fa fa-send-o" aria-hidden="true"></i>
+                            <p>Find Dental Clinics</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="header-section text-center">
                 <h2>Are you Suffering from any of these issues?</h2>
 
@@ -115,7 +117,7 @@
                     <img src="~/Content/img/Chippedtooth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Chipped Tooth</h3>
-                        <p>Chipped of tooth enamel</p>
+                        <p>Chipped off tooth enamel</p>
                     </figcaption>
                     <a href='@Url.Action("ChippedTooth", "Home")'></a>
                 </figure>
@@ -193,7 +195,7 @@
                     <img src="~/Content/img/Crookedteeth.png" class="img-responsive" style="height:250px;width:360px">
                     <figcaption>
                         <h3>Crooked Teeth</h3>
-                        <p>Teeth grow in crooked, overlapping, or twisted</p>
+                        <p>Teeth that are crooked, overlapping or twisted</p>
                     </figcaption>
                     <a href="@Url.Action("CrookedTeeth", "Home")" class="notUrgent"></a>
                 </figure>
@@ -253,11 +255,36 @@
             <div class="col-md-6">
                 <div class="detail-info">
                     <hgroup>
-                        <h3 class="det-txt"> Is Queensland still suffering from long dental waiting times?</h3>
+                        <h3 class="det-txt" style="line-height:52px;font-size:35px"> Is Queensland still suffering from long dental waiting times?</h3>
                         <h4 class="sm-txt">(Updated from June 2018)</h4>
                     </hgroup>
                     <p class="det-p"></p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--section for quiz-->
+<section id="quiz" class="section-padding" style="background: url('../Content/img/screen1.png') no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="detail-info" style="margin-left:7%">
+                    <hgroup>
+                        <h3 class="det-txt" style="line-height:50px;font-size:35px;margin-top:40px"> Take a quiz to test your dental knowldge  
+                        <img src="~/Content/img/6402-200.png" style="margin-left:8px;height:32px;width:auto"/> </h3>
+                        <h4 class="sm-txt"></h4>
+                    </hgroup>
+                    <p class="det-p"></p>
+                </div>
+                
+                
+            </div>
+            <div class="col-md-6">
+                <a href="@Url.Action("Quiz", "Home")">
+                <img src="~/Content/img/quizImage.PNG" style="margin-left:13%;height:275px;width:auto"/>
+                    </a>
             </div>
         </div>
     </div>

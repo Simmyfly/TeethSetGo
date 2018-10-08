@@ -135,39 +135,41 @@
             <div class="col-xs-12" style="width:100%;padding-right:0px;padding-left:0px">
                 <!-- design process steps-->
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:800px;margin-left:24%;" role="tablist">
-                    <li role="presentation">
-                        <a href='@Url.Action("Index", "Home")#courses'>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <p>Dental Problems</p>
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href='@Url.Action("GapBetweenTeeth", "Home")'>
-                            <i class="fa fa-clipboard" aria-hidden="true"></i>
-                            <p>Problem Details</p>
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="@Url.Action("GapBetweenTeeth", "Home")#feature">
-                            <i class="fa fa-qrcode" aria-hidden="true"></i>
-                            <p>Category Selection</p>
-                        </a>
-                    </li>
-                    <li role="presentation" id="priceTab" style="display:none">
-                        <a href="#content">
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                            <p>Price and Budget</p>
-                        </a>
-                    </li>
-                    <li role="presentation" class="active">
-                        <a aria-controls="ClinicsMap" id="clinicsTab">
-                            @*<a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"/>*@
-                            <i class="fa fa-send-o" aria-hidden="true"></i>
-                            <p>Price and Clinics</p>
-                        </a>
-                    </li>
-                </ul>
+                <div style="text-align:center">
+                    <ul class="nav nav-tabs process-model more-icon-preocess" style="max-width:780px;" role="tablist">
+                        <li role="presentation">
+                            <a href='@Url.Action("Index", "Home")#courses'>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <p>Dental Problems</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href='@Url.Action("TooManyTeeth", "Home")'>
+                                <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                <p>Problem Details</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="@Url.Action("TooManyTeeth", "Home")#feature">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                <p>Category Selection</p>
+                            </a>
+                        </li>
+                        <li role="presentation" id="priceTab" class="active">
+                            <a href="#content">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                <p>Price and Budget</p>
+                            </a>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a aria-controls="ClinicsMap" id="clinicsTab">
+                                @*<a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"/>*@
+                                <i class="fa fa-send-o" aria-hidden="true"></i>
+                                <p>Find Dental Clinics</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!-- end design process steps-->
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -204,33 +206,33 @@
                             <!--budget section-->
                             <div>
                                 @*<div class="header-section text-center" style="margin-top:35px;padding-top:20px">
-                                        <div id="fontbody" style="margin-top:0">
-                                            <div class="font1">&ensp; Get the best of us</div>
-                                            <div class="font1">
-                                                <span>by telling us your budget  &ensp; &ensp; </span>
-                                            </div>
-                                        </div>
+                            <div id="fontbody" style="margin-top:0">
+                                <div class="font1">&ensp; Get the best of us</div>
+                                <div class="font1">
+                                    <span>by telling us your budget  &ensp; &ensp; </span>
+                                </div>
+                            </div>
 
-                                        <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
-                                        <hr class="bottom-line">
-                                    </div>
-                                    <div class="container1">
-                                        <div class="container__item">
-                                            <form class="form1">
-                                                <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="margin-top:28px;" />
-                                                <button type="button" id="submitButton"
-                                                        class="btn btn--primary btn--inside uppercase" style="font-size:18px">
-                                                    Submit
-                                                </button>
-                                                <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
-                                            </form>
-                                        </div>
+                            <p style="margin-top:30px">Enter your budget to check out nearby dental service within your budget</p>
+                            <hr class="bottom-line">
+                        </div>
+                        <div class="container1">
+                            <div class="container__item">
+                                <form class="form1">
+                                    <span style="font-size:23px;">$  </span><input type="number" min="1" max="999" id="input" class="form1__field" placeholder="Your budget (e.g. 395)" style="margin-top:28px;" />
+                                    <button type="button" id="submitButton"
+                                            class="btn btn--primary btn--inside uppercase" style="font-size:18px">
+                                        Submit
+                                    </button>
+                                    <div id="warning" style="display:none;color:red;font-size:19px;position:relative">Please enter a value for your budget above to submit.</div>
+                                </form>
+                            </div>
 
-                                        <div style="margin-top:30px;margin-left:70%">
-                                            <h4>Do not have a budget in mind?</h4>
-                                            <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
-                                        </div>
-                                    </div>*@
+                            <div style="margin-top:30px;margin-left:70%">
+                                <h4>Do not have a budget in mind?</h4>
+                                <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                            </div>
+                        </div>*@
 
                             </div>
                         </div>
@@ -248,7 +250,7 @@
                                                     <p style="width:75%;margin-left:10%;margin-bottom:25px">This price may be subjective to change based on the severity of dental problem and the treatment suggested by the doctor.</p>
                                                     <hr class="bottom-line">
 
-                                                    <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for Gap Between Teeth is: </strong></p>
+                                                    <p style="margin-bottom:25px;font-size:21px"><strong>Estimated treatment cost for gap between teeth is: </strong></p>
                                                 </div>
                                             </div>
 
@@ -258,12 +260,12 @@
                                                         <!-- Plan  -->
                                                         <div class="pricing-head">
                                                             <h4>Veneers Direct / Indirect</h4>
-                                                            <span class="fa fa-usd curency"></span> <span class="amount" style="font-size:32px">341~1155</span>
+                                                            <span class="amount" style="font-size:22px"><strong>$</strong>341~1155</span>
                                                         </div>
                                                         <!-- Plean Detail -->
                                                         @*<div class="price-in mart-15">
-                                                              <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
-                                                            </div>*@
+                                                  <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
+                                                </div>*@
                                                     </div>
                                                 </div>
                                             </div>
@@ -288,9 +290,9 @@
                                     </div>
 
                                     @*<div style="margin-top:30px;margin-left:68%">
-                                            <h4>Do not have a budget in mind?</h4>
-                                            <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
-                                        </div>*@
+                                <h4>Do not have a budget in mind?</h4>
+                                <a href='@Url.Action("AllClinics", "Home")' class="btn btn--primary btn--inside uppercase" style="font-size:15px;padding:6px;">Check for all dental clinics></a>
+                            </div>*@
                                 </div>
 
 
@@ -298,8 +300,8 @@
                                 <div style="position:absolute;width:100%;right: 0;">
                                     <div class="form-group" style="width:100%;margin-top:20px;margin-bottom:25px">
                                         @*<label style="font-family:'Agency FB';font-size:22px">Please enter your current location: </label>
-            <input type="text" id="from_places" class="form-control" style="width:65%" placeholder="location or address(e.g.Sunshine Coast Airport)" />
-            <input id="origin" type="hidden" name="origin" required />*@
+                                <input type="text" id="from_places" class="form-control" style="width:65%" placeholder="location or address(e.g.Sunshine Coast Airport)" />
+                                <input id="origin" type="hidden" name="origin" required />*@
                                     </div>
 
                                     <iframe src="https://leopalmieri.shinyapps.io/gapbetweenteeth/" style="width: 100%;height:830px;"></iframe>
