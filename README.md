@@ -10,7 +10,9 @@ Website users can choose the dental problems they have, as follows:<br/>
 <p>select their categories, <br/>
 <img src="Images/screenshot33.png" width="400">
 <p>
-<p>cost of recommended treatment would be provided. Next, enter their suburb and budgets, <br/>
-<img src="Images/screenshot32.png" width="400">
-
+<p>cost of recommended treatment would be provided. <br/>
+<img src="Images/screenshot2.png" width="400">
+<p>
+<p>Next, enter their budgets and location,<br/>
+<img src="Images/screenshot4.png" width="400">
 <p>then all the hospitals within user selected criteria will be shown on map. Waiting time data of each hospital would be display as well as the total cost.
